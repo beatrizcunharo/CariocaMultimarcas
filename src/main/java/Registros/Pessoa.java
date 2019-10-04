@@ -11,14 +11,14 @@ public class Pessoa {
     private String telefone;
     private Date dataRegistro;
     private Endereco endereco;
-    private int numVendas;//NUMERO DE COMPRAS NA LOJA PARA OS CLIENTES E NUMERO DE VENDAS PARA O FUNCIONARIO
+    private int numCompras;
     
     public Pessoa(){
         nome = null;
         telefone = null;
         dataRegistro = null;
         endereco = null;
-        numVendas = 0;
+        numCompras = 0;
     }
 
     public String getNome() {
@@ -53,11 +53,12 @@ public class Pessoa {
         this.endereco = endereco;
     }    
 
-    public int getNumVendas() {
-        return numVendas;
+    public int getNumCompras() {
+        return numCompras;
     }
     
-    public void setNumVendas(int numVendas) {
-        this.numVendas = numVendas;
+    public void setNumCompras(int numVendas) {
+        this.numCompras = numVendas;
     }
 }
+

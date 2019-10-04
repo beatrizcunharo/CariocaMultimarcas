@@ -260,7 +260,7 @@ public class Clientes extends javax.swing.JFrame {
 
         jLabel21.setText("IE:");
 
-        jButton4.setText("Cadastrar Endereço");
+        jButton4.setText("Alterar Endereço");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -342,7 +342,7 @@ public class Clientes extends javax.swing.JFrame {
                                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnVoltar3)
-                                .addGap(0, 9, Short.MAX_VALUE)))))
+                                .addGap(0, 25, Short.MAX_VALUE)))))
                 .addGap(23, 23, 23))
         );
         jPanel4Layout.setVerticalGroup(

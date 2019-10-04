@@ -7,12 +7,12 @@ import java.util.Date;
  */
 public class PessoaFisica extends Pessoa{
     private String cpf;
-    private Date dataDeNasc;
+    private Date dataNasc;
     private String sexo;
     
     public PessoaFisica(){
         cpf = null;
-        dataDeNasc = null;
+        dataNasc = null;
         sexo = null;
     }
 
@@ -24,12 +24,12 @@ public class PessoaFisica extends Pessoa{
         this.cpf = cpf;
     }
 
-    public Date getDataDeNasc() {
-        return dataDeNasc;
+    public Date getDataNasc() {
+        return dataNasc;
     }
 
-    public void setDataDeNasc(Date dataDeNasc) {
-        this.dataDeNasc = dataDeNasc;
+    public void setDataNasc(Date dataDeNasc) {
+        this.dataNasc = dataDeNasc;
     }
 
     public String getSexo() {
@@ -40,3 +40,4 @@ public class PessoaFisica extends Pessoa{
         this.sexo = sexo;
     }
 }
+

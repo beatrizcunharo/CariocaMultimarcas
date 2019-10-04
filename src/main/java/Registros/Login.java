@@ -7,12 +7,10 @@ package Registros;
 public class Login {
     private String usuario;
     private String senha;
-    private Funcionario funcionario;
     
     public Login(){
-        usuario = null;
-        senha = null;
-        funcionario = null;
+        usuario = " ";
+        senha = " ";
     }
 
     public String getUsuario() {
@@ -30,12 +28,9 @@ public class Login {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-    }    
 }
+
+
+
+
+
