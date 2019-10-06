@@ -7,7 +7,7 @@ package Frames;
 
 /**
  *
- * @author Beatr
+ * @author Beatriz Cunha Rodrigues - Matricula 201776038 / Ivanylson Honorio Goncalves - Matricula 201776002 / Daniel Ribeiro Lavra Matricula 201735042 /Mikaela Cristiny Quitz Matricula 201676014/Jakson Duarte Martins junior Matricula 201435004
  */
 public class Principal extends javax.swing.JFrame {
 

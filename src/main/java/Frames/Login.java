@@ -2,7 +2,7 @@ package Frames;
 
 /**
  *
- * @author Beatr
+ * @author Beatriz Cunha Rodrigues - Matricula 201776038
  */
 public class Login extends javax.swing.JFrame {
 

@@ -7,7 +7,7 @@ package Frames;
 
 /**
  *
- * @author Beatr
+ * @author Beatriz Cunha Rodrigues - Matricula 201776038
  */
 public class Enderecos extends javax.swing.JFrame {
 

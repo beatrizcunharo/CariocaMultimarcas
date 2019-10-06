@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author Beatr
+ * @author Beatriz Cunha Rodrigues - Matricula 201776038
  */
 public class Logar extends javax.swing.JFrame {
 
