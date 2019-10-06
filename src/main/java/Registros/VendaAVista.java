@@ -2,7 +2,7 @@ package Registros;
 
 /**
  *
- * @author Beatr
+ * @author Beatriz Cunha Rodrigues - Matricula 201776038
  */
 public class VendaAVista extends Venda{
     private double desconto;

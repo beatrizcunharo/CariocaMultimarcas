@@ -2,7 +2,7 @@ package Registros;
 
 /**
  *
- * @author Beatr
+ * @author Beatriz Cunha Rodrigues - Matricula 201776038
  */
 public class Login {
     private String usuario;

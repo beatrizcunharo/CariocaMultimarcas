@@ -3,7 +3,7 @@ import java.util.Date;
 
 /**
  *
- * @author Beatr
+ * @author Beatriz Cunha Rodrigues - Matricula 201776038
  */
 public class PessoaFisica extends Pessoa{
     private String cpf;
