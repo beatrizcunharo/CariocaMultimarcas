@@ -1,5 +1,6 @@
 package Registros;
 
+
 /**
  *
  * @author Beatriz Cunha Rodrigues - Matricula 201776038
@@ -7,10 +8,12 @@ package Registros;
 public class Login {
     private String usuario;
     private String senha;
+    private String tipo;
     
     public Login(){
         usuario = " ";
         senha = " ";
+        tipo = " ";
     }
 
     public String getUsuario() {
@@ -29,6 +32,18 @@ public class Login {
         this.senha = senha;
     }
     
+    public String getTipo(){
+        return tipo;
+    }
+    
+    public void setTipo(String tipo){
+        this.tipo = tipo;
+    }
+    
+    /*public boolean cadastraLogin(){
+        Login login = new Login();
+        JSONObject loginJ = new JSONObject();
+    }*/
 }
 
 

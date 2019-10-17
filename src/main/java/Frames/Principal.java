@@ -1,13 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Frames;
 
 /**
  *
- * @author Beatriz Cunha Rodrigues - Matricula 201776038 / Ivanylson Honorio Goncalves - Matricula 201776002 / Daniel Ribeiro Lavra Matricula 201735042 /Mikaela Cristiny Quitz Matricula 201676014/Jakson Duarte Martins junior Matricula 201435004
+ * @author Beatriz Cunha Rodrigues - Matricula 201776038 / Ivanylson Honorio
+ * Goncalves - Matricula 201776002 / Daniel Ribeiro Lavra Matricula 201735042
+ * /Mikaela Cristiny Quitz Matricula 201676014/Jakson Duarte Martins junior
+ * Matricula 201435004
  */
 public class Principal extends javax.swing.JFrame {
 
@@ -16,13 +14,10 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
-
-    Clientes cli = new Clientes();
-    Logar log = new Logar();
-    Login l = new Login();
-    Estoque es = new Estoque();
-    Vendas v = new Vendas();
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -142,28 +137,24 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        cli.setVisible(true);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        log.setVisible(true);
-        es.dispose();
-        v.dispose();
-        cli.dispose();
-        l.dispose();
-        this.dispose();
+        
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        l.setVisible(true);
+        Login login = new Login();
+        login.setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
-        es.setVisible(true);
+        
     }//GEN-LAST:event_btnEstoqueActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        v.setVisible(true);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

@@ -63,7 +63,7 @@ public class Logar extends javax.swing.JFrame {
                                     .addComponent(txtSenha))
                                 .addGap(52, 52, 52))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(196, 196, 196)
+                        .addGap(212, 212, 212)
                         .addComponent(btnOk)))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
@@ -80,9 +80,9 @@ public class Logar extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                .addGap(40, 40, 40)
                 .addComponent(btnOk)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
