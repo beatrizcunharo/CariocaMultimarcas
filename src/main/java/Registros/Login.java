@@ -1,11 +1,11 @@
 package Registros;
-
+import com.google.gson.*;
 
 /**
  *
  * @author Beatriz Cunha Rodrigues - Matricula 201776038
  */
-public class Login {
+public class Login{
     private String usuario;
     private String senha;
     private String tipo;
@@ -40,9 +40,11 @@ public class Login {
         this.tipo = tipo;
     }
     
-    /*public boolean cadastraLogin(){
-        Login login = new Login();
-        JSONObject loginJ = new JSONObject();
+    /*public void cadastraLogin(String user, String senha, String tipo){
+        setUsuario(user);
+        setSenha(senha);
+        setTipo(tipo);
+        
     }*/
 }
 

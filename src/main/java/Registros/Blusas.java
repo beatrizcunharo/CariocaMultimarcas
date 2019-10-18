@@ -1,12 +1,14 @@
 package Registros;
-
 /**
  *
  * @author ice
  */
+import com.google.gson.*;
+          
 public class Blusas extends Produto{
     //INCLUI MOLETONS, CAMISAS e CAMISETAS
     private String tamanho;
+
     
     public Blusas(){
         tamanho = null;
