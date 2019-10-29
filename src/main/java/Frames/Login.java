@@ -1,5 +1,9 @@
 package Frames;
 
+import Arquivo.Informacao;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Beatriz Cunha Rodrigues - Matricula 201776038
@@ -10,8 +14,20 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+       
     }
-    
+    public boolean vazioCadastro(){
+        if(txtUsuario.getText().equals("") || txtSenha.getText().equals("") || txtConfirmSenha.getText().equals("") || comboTipo.getSelectedItem().equals("Selecione..."))
+            return true;
+        else
+            return false;
+    }
+    public void limparCadastro(){
+        txtUsuario.setText("");txtSenha.setText("");txtConfirmSenha.setText("");comboTipo.setSelectedItem("Selecione...");
+    }
+    public void limparAlterar(){
+        txtUsuario1.setText("");txtSenha1.setText("");txtConfirmSenha1.setText("");comboTipo1.setSelectedItem("Selecione...");
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -29,7 +45,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtConfirmSenha = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
-        comboTipo = new javax.swing.JComboBox<>();
+        comboTipo = new javax.swing.JComboBox<String>();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         txtUsuario1 = new javax.swing.JTextField();
@@ -41,7 +57,7 @@ public class Login extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtConfirmSenha1 = new javax.swing.JPasswordField();
         jLabel12 = new javax.swing.JLabel();
-        comboTipo1 = new javax.swing.JComboBox<>();
+        comboTipo1 = new javax.swing.JComboBox<String>();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txtUsuario2 = new javax.swing.JTextField();
@@ -86,7 +102,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setText("Tipo:");
 
-        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Administrador", "Funcionário" }));
+        comboTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Administrador", "Funcionário" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -97,8 +113,9 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83)
-                        .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(74, 74, 74)
+                        .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -111,7 +128,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                             .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                             .addComponent(comboTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(btnVoltar)
                 .addGap(58, 58, 58))
         );
@@ -134,7 +151,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviar)
                     .addComponent(btnLimpar)
@@ -170,7 +187,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel12.setText("Tipo:");
 
-        comboTipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Administrador", "Funcionário" }));
+        comboTipo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Administrador", "Funcionário" }));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -243,6 +260,11 @@ public class Login extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnVoltar2.setText("Voltar");
         btnVoltar2.addActionListener(new java.awt.event.ActionListener() {
@@ -324,23 +346,46 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltar1ActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        txtUsuario.setText("");
-        txtSenha.setText("");
-        txtConfirmSenha.setText("");
-        comboTipo.setSelectedItem("Selecione...");
+        limparCadastro();
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnLimpar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar1ActionPerformed
-       txtUsuario1.setText("");
-       txtSenha1.setText("");
-       txtConfirmSenha1.setText("");
-       comboTipo1.setSelectedItem("Selecione...");
+       limparAlterar();
     }//GEN-LAST:event_btnLimpar1ActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-        
+        Registros.Login l = new Registros.Login();        
+        List<String> retorno = new ArrayList<>();
+        if(vazioCadastro() == true){
+            JOptionPane.showMessageDialog(null, "Há campos vazios.");
+        }else if(!txtSenha.getText().equals(txtConfirmSenha.getText())){
+            JOptionPane.showMessageDialog(null, "As senhas não conferem.");
+            txtSenha.setText("");
+            txtConfirmSenha.setText("");
+        }else if(txtUsuario.getText().equals(l.getUsuario())){
+            JOptionPane.showMessageDialog(null, "Esse nome de usuário já está em uso.");
+            txtUsuario.setText("");
+        }else{
+            String user = txtUsuario.getText();
+            String senha = txtSenha.getText();
+            String tipo = comboTipo.getSelectedItem().toString();
+            if(l.cadastra(user, senha, tipo) == false){
+                System.out.println("Não foi possivel cadastrar.");
+            }else{
+                System.out.println("Cadastro efetuado com sucesso.");
+                limparCadastro();
+            }
+            
+        }
+            
     }//GEN-LAST:event_btnEnviarActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        Registros.Login l = new Registros.Login();
+        l.imprime();
+    }//GEN-LAST:event_btnBuscarActionPerformed
+    
+    
     /**
      * @param args the command line arguments
      */
