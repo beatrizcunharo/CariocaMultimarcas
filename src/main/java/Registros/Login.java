@@ -12,13 +12,19 @@ public class Login{
     private String usuario;
     private String senha;
     private String tipo;
-    private List<String> info = new ArrayList<>();
+    public List<String> info = new ArrayList<>();
     
     
     public Login(){
         usuario = " ";
         senha = " ";
         tipo = " ";
+    }
+    
+    public Login (String user, String senha, String tipo){
+        this.usuario = user;
+        this.senha = senha;
+        this.tipo = tipo;
     }
 
     public String getUsuario() {
@@ -45,24 +51,23 @@ public class Login{
         this.tipo = tipo;
     }
     public boolean cadastra(String user, String senha, String tipo){
+        Login l = new Login(user,senha,tipo);
         Informacao i = new Informacao(); 
         setUsuario(user);
         setSenha(senha);
         setTipo(tipo);
-        info.add(getUsuario());
-        info.add(getSenha());
-        info.add(getTipo());
+        info.add(l.getUsuario());
+        info.add(l.getSenha());
+        info.add(l.getTipo());
+        
         if(info.isEmpty())
             return false;
         else{
-            i.input(info);
+            i.inputLogin(info);
             return true;
         }        
     }
-    public void imprime(){
-        for(int i=0;i<info.size();i++)
-            System.out.println(info.get(i));
-    }
+    
 }
 
 
