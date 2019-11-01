@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,16 +22,12 @@ import java.util.List;
 
  */
 public class Informacao {
-    public boolean inputLogin(List <String> info){
-        String arquivo = "C:\\Users\\Beatr\\Documents\\GitHub\\TrabalhoOO\\arquivoLogin.json";
-        Type tipoLista = new TypeToken<List<String>>() {}.getType();
-        List<String> lista = new LinkedList<String>();
-        Login l = new Login();
-        lista.addAll(info);
-        
+    public boolean inputLogin(List <Login> info){
+        Type tipoLista = new TypeToken<List<Login>>() {}.getType();
+                
         Gson gson = new Gson();
-        String json = gson.toJson(lista, tipoLista);
-        List<String> lista2 = gson.fromJson(json, tipoLista);
+        String json = gson.toJson(info, tipoLista);
+        //List<String> lista2 = gson.fromJson(json, tipoLista);
         try{
             
             FileWriter input = new FileWriter("C:\\Users\\Beatr\\Documents\\GitHub\\TrabalhoOO\\arquivoLogin.json");

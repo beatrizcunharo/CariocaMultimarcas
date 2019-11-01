@@ -17,13 +17,16 @@ public class Login{
     private String usuario;
     private String senha;
     private String tipo;
-    List<String> info = new ArrayList<>();
+    List<Login> info;
     
     
     public Login(){
         usuario = " ";
         senha = " ";
         tipo = " ";
+        
+        if(info ==null || info.isEmpty())
+            info = new ArrayList<>();
     }
     
 
@@ -52,12 +55,11 @@ public class Login{
     }
     public boolean cadastra(String user, String senha, String tipo){
         Informacao i = new Informacao();
-        setUsuario(user);
-        setSenha(senha);
-        setTipo(tipo);
-        info.add(user);
-        info.add(senha);
-        info.add(tipo);
+        Login l = new Login();
+        l.setUsuario(user);
+        l.setSenha(senha);
+        l.setTipo(tipo);
+        info.add(l);
         if(info.isEmpty())
             return false;
         else{
