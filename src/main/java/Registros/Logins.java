@@ -13,59 +13,67 @@ import javax.swing.JOptionPane;
     @author MIKAELA CRISTINY QUITZ              201676014
 
  */
-public class Login{
+public class Logins{
     private String usuario;
     private String senha;
     private String tipo;
-    List<Login> info;
     
-    
-    public Login(){
-        usuario = " ";
-        senha = " ";
-        tipo = " ";
-        
-        if(info ==null || info.isEmpty())
-            info = new ArrayList<>();
+    public Logins(){
+        usuario = "";
+        senha = "";
+        tipo = "";
     }
-    
 
+    /**
+     * @return the usuario
+     */
     public String getUsuario() {
         return usuario;
     }
 
+    /**
+     * @param usuario the usuario to set
+     */
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 
+    /**
+     * @return the senha
+     */
     public String getSenha() {
         return senha;
     }
 
+    /**
+     * @param senha the senha to set
+     */
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
-    public String getTipo(){
+
+    /**
+     * @return the tipo
+     */
+    public String getTipo() {
         return tipo;
     }
-    
-    public void setTipo(String tipo){
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    public boolean cadastra(String user, String senha, String tipo){
+    
+    public void cadastra(String user, String senha, String tipo){
+        Logins l = new Logins();
         Informacao i = new Informacao();
-        Login l = new Login();
         l.setUsuario(user);
         l.setSenha(senha);
         l.setTipo(tipo);
-        info.add(l);
-        if(info.isEmpty())
-            return false;
-        else{
-            i.inputLogin(info);
-            return true;
-        }
+        i.logins.add(l);
+        i.inputLogin();
     }
 }
 

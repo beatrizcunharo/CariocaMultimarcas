@@ -1,6 +1,7 @@
 package Frames;
 
 import Arquivo.Informacao;
+import Registros.Logins;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -361,25 +362,13 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpar1ActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-        Registros.Login l = new Registros.Login();        
-        Informacao i = new Informacao();
-        
-        if(vazioCadastro() == true){
-            JOptionPane.showMessageDialog(null, "Há campos vazios.");
-        }else if(!txtSenha.getText().equals(txtConfirmSenha.getText())){
-            JOptionPane.showMessageDialog(null, "As senhas não conferem.");
-            txtSenha.setText("");
-            txtConfirmSenha.setText("");
-        }else{
-            String user = txtUsuario.getText();
-            String senha = txtSenha.getText();
-            String tipo = comboTipo.getSelectedItem().toString();
-            if(l.cadastra(user,senha,tipo) == true)
-                JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
-            else
-                JOptionPane.showMessageDialog(null, "Erro de cadastro.");
-            limparCadastro();
-        }
+       Logins l = new Logins();
+       String user = txtUsuario.getText();
+       String senha = txtSenha.getText();
+       String tipo = comboTipo.getSelectedItem().toString();
+       l.cadastra(user, senha, tipo);
+       limparCadastro();
+       
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed

@@ -1,13 +1,12 @@
 package Arquivo;
 
-import Registros.Login;
+import Registros.Logins;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 
@@ -22,12 +21,14 @@ import java.util.List;
 
  */
 public class Informacao {
-    public boolean inputLogin(List <Login> info){
-        Type tipoLista = new TypeToken<List<Login>>() {}.getType();
-                
+    public List<Logins> logins = new ArrayList<>();
+    
+    
+    public void inputLogin(){
+        Type tipoLista = new TypeToken<List<Logins>>() {}.getType();
         Gson gson = new Gson();
-        String json = gson.toJson(info, tipoLista);
-        //List<String> lista2 = gson.fromJson(json, tipoLista);
+        String json = gson.toJson(logins, tipoLista);
+        
         try{
             
             FileWriter input = new FileWriter("C:\\Users\\Beatr\\Documents\\GitHub\\TrabalhoOO\\arquivoLogin.json");
@@ -35,10 +36,8 @@ public class Informacao {
             input.write(json);
             input.close();
             System.out.println(json);
-            return true;
         }catch(IOException ex){
             ex.printStackTrace();
-            return false;
         }
     }
     
