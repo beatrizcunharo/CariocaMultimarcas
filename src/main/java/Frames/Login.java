@@ -363,7 +363,6 @@ public class Login extends javax.swing.JFrame {
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         Registros.Login l = new Registros.Login();        
         Informacao i = new Informacao();
-        List<String> lista = new ArrayList<>();
         
         if(vazioCadastro() == true){
             JOptionPane.showMessageDialog(null, "Há campos vazios.");
@@ -375,25 +374,12 @@ public class Login extends javax.swing.JFrame {
             String user = txtUsuario.getText();
             String senha = txtSenha.getText();
             String tipo = comboTipo.getSelectedItem().toString();
-            lista.add(user);
-            lista.add(senha);
-            lista.add(tipo);
-            
-            if(!lista.isEmpty()){
-                if(l.cadastra(lista) == true)
-                    JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
-                else
-                    JOptionPane.showMessageDialog(null, "Erro ao cadastrar.");
-            }
-            /*if(i.inputLogin() == false){
-                System.out.println("Não foi possivel cadastrar.");
-            }else{
-                System.out.println("Cadastro efetuado com sucesso.");              
-                limparCadastro();
-            }*/
-            l.imprime();
+            if(l.cadastra(user,senha,tipo) == true)
+                JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
+            else
+                JOptionPane.showMessageDialog(null, "Erro de cadastro.");
+            limparCadastro();
         }
-            
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed

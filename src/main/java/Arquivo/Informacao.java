@@ -21,13 +21,13 @@ import java.util.List;
 
  */
 public class Informacao {
-    public boolean inputLogin(){
+    public boolean inputLogin(List <String> info){
         String arquivo = "C:\\Users\\Beatr\\Documents\\GitHub\\TrabalhoOO\\arquivoLogin.json";
         Type tipoLista = new TypeToken<List<String>>() {}.getType();
         List<String> lista = new LinkedList<String>();
         Login l = new Login();
-        //lista.addAll(l.info);
-
+        lista.addAll(info);
+        
         Gson gson = new Gson();
         String json = gson.toJson(lista, tipoLista);
         List<String> lista2 = gson.fromJson(json, tipoLista);

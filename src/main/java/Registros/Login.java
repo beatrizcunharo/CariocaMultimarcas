@@ -1,4 +1,5 @@
 package Registros;
+import Arquivo.Informacao;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -49,20 +50,21 @@ public class Login{
     public void setTipo(String tipo){
         this.tipo = tipo;
     }
-    public boolean cadastra(List<String> lista){
-        for(int i=0;i<lista.size();i++){
-            info.add(lista.get(i));
-        }
+    public boolean cadastra(String user, String senha, String tipo){
+        Informacao i = new Informacao();
+        setUsuario(user);
+        setSenha(senha);
+        setTipo(tipo);
+        info.add(user);
+        info.add(senha);
+        info.add(tipo);
         if(info.isEmpty())
             return false;
-        else
+        else{
+            i.inputLogin(info);
             return true;
+        }
     }
-    
-    public void imprime(){
-        JOptionPane.showMessageDialog(null,info);
-    }
-    
 }
 
 
