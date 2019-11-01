@@ -1,13 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Frames;
 
 /**
  *
- * @author Beatriz Cunha Rodrigues - Matricula 201776038
+ *  
+    @author BEATRIZ CUNHA RODRIGUES             201776038
+    @author DANIEL RIBEIRO LAVRA                201735042
+    @author IVANYLSON HONÓRIO GONÇALVES         201776002
+    @author JAKSON DUARTE MARTINS JÚNIOR	201435004
+    @author MIKAELA CRISTINY QUITZ              201676014
+
  */
 public class Estoque extends javax.swing.JFrame {
 

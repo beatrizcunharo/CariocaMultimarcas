@@ -4,7 +4,13 @@ import java.util.Date;
 
 /**
  *
- * @author ice
+ *  
+    @author BEATRIZ CUNHA RODRIGUES             201776038
+    @author DANIEL RIBEIRO LAVRA                201735042
+    @author IVANYLSON HONÓRIO GONÇALVES         201776002
+    @author JAKSON DUARTE MARTINS JÚNIOR	201435004
+    @author MIKAELA CRISTINY QUITZ              201676014
+
  */
 public class Produto {
     private int codigo;

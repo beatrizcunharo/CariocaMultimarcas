@@ -3,11 +3,16 @@ package Frames;
 import Arquivo.Informacao;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.paint.Color;
 import javax.swing.JOptionPane;
 /**
  *
- * @author Beatriz Cunha Rodrigues - Matricula 201776038
+ *  
+    @author BEATRIZ CUNHA RODRIGUES             201776038
+    @author DANIEL RIBEIRO LAVRA                201735042
+    @author IVANYLSON HONÓRIO GONÇALVES         201776002
+    @author JAKSON DUARTE MARTINS JÚNIOR	201435004
+    @author MIKAELA CRISTINY QUITZ              201676014
+
  */
 public class Login extends javax.swing.JFrame {
 

@@ -1,12 +1,16 @@
 package Registros;
-import Arquivo.Informacao;
-import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 /**
  *
- * @author Beatriz Cunha Rodrigues - Matricula 201776038
+ *  
+    @author BEATRIZ CUNHA RODRIGUES             201776038
+    @author DANIEL RIBEIRO LAVRA                201735042
+    @author IVANYLSON HONÓRIO GONÇALVES         201776002
+    @author JAKSON DUARTE MARTINS JÚNIOR	201435004
+    @author MIKAELA CRISTINY QUITZ              201676014
+
  */
 public class Login{
     private String usuario;
