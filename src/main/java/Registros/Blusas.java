@@ -5,7 +5,7 @@ package Registros;
  */
           
 public class Blusas extends Produto{
-    //INCLUI MOLETONS, CAMISAS e CAMISETAS
+    //INCLUI CAMISAS e CAMISETAS
     private String tamanho;
 
     

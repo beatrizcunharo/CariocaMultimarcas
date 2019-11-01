@@ -1,6 +1,6 @@
 package Registros;
 
-import java.awt.List;
+import java.util.List;
 import java.util.ArrayList;
 
 
@@ -10,5 +10,5 @@ import java.util.ArrayList;
  */
 public class Estoque {
     //metodos e lista de produtos
-    //List<Produto> produto = new ArrayList<>();
+    List<Produto> produto = new ArrayList<>();
 }

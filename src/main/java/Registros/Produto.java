@@ -7,6 +7,7 @@ import java.util.Date;
  * @author ice
  */
 public class Produto {
+    private int codigo;
     private int qtde;
     private double valor;
     private String nome;
@@ -14,6 +15,7 @@ public class Produto {
     private Date dataRegistro;
     
     public Produto(){
+        codigo = 0;
         qtde = 0;
         valor = 0.0;
         nome = null;
@@ -21,6 +23,14 @@ public class Produto {
         dataRegistro = null;
     }
 
+    public int getCodigo(){
+        return codigo;
+    }
+    
+    public void setCodigo(int cod){
+        this.codigo = cod;
+    }
+    
     public int getQtde() {
         return qtde;
     }

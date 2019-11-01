@@ -12,7 +12,7 @@ public class Login{
     private String usuario;
     private String senha;
     private String tipo;
-    public List<String> info = new ArrayList<>();
+    List<String> info = new ArrayList<>();
     
     
     public Login(){
@@ -21,11 +21,6 @@ public class Login{
         tipo = " ";
     }
     
-    public Login (String user, String senha, String tipo){
-        this.usuario = user;
-        this.senha = senha;
-        this.tipo = tipo;
-    }
 
     public String getUsuario() {
         return usuario;
@@ -50,22 +45,18 @@ public class Login{
     public void setTipo(String tipo){
         this.tipo = tipo;
     }
-    public boolean cadastra(String user, String senha, String tipo){
-        Login l = new Login(user,senha,tipo);
-        Informacao i = new Informacao(); 
-        setUsuario(user);
-        setSenha(senha);
-        setTipo(tipo);
-        info.add(l.getUsuario());
-        info.add(l.getSenha());
-        info.add(l.getTipo());
-        
+    public boolean cadastra(List<String> lista){
+        for(int i=0;i<lista.size();i++){
+            info.add(lista.get(i));
+        }
         if(info.isEmpty())
             return false;
-        else{
-            i.inputLogin(info);
+        else
             return true;
-        }        
+    }
+    
+    public void imprime(){
+        JOptionPane.showMessageDialog(null,info);
     }
     
 }
