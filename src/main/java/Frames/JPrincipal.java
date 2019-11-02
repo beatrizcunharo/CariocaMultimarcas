@@ -10,12 +10,12 @@ package Frames;
     @author MIKAELA CRISTINY QUITZ              201676014
 
  */
-public class Principal extends javax.swing.JFrame {
+public class JPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form Menu
      */
-    public Principal() {
+    public JPrincipal() {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -26,21 +26,21 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnCliente = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
         btnEstoque = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnVendas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setText("Clientes");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCliente.setText("Clientes");
+        btnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnClienteActionPerformed(evt);
             }
         });
 
@@ -65,10 +65,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Vendas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnVendas.setText("Vendas");
+        btnVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnVendasActionPerformed(evt);
             }
         });
 
@@ -86,7 +86,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(btnLogout))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(btnCliente)
                         .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -97,7 +97,7 @@ public class Principal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                                 .addComponent(btnEstoque)
                                 .addGap(51, 51, 51)
-                                .addComponent(jButton2)
+                                .addComponent(btnVendas)
                                 .addGap(37, 37, 37)))))
                 .addContainerGap())
         );
@@ -106,18 +106,17 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnLogout)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
+                            .addComponent(btnVendas)
                             .addComponent(btnEstoque)
                             .addComponent(btnLogin)
-                            .addComponent(jButton1))
+                            .addComponent(btnCliente))
                         .addGap(116, 116, 116))))
         );
 
@@ -139,26 +138,30 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+        JClientes clientes = new JClientes();
+        clientes.setVisible(true);
+    }//GEN-LAST:event_btnClienteActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        
+        JLogar logar = new JLogar();
+        logar.setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        Login login = new Login();
+        JLogin login = new JLogin();
         login.setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
-        
+        JEstoque estoque = new JEstoque();
+        estoque.setVisible(true);
     }//GEN-LAST:event_btnEstoqueActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
+        JVendas vendas = new JVendas();
+        vendas.setVisible(true);
+    }//GEN-LAST:event_btnVendasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,31 +180,33 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+                new JPrincipal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCliente;
     private javax.swing.JButton btnEstoque;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnVendas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

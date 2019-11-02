@@ -1,9 +1,7 @@
 package Frames;
 
-import Arquivo.Informacao;
-import Registros.Logins;
-import java.util.ArrayList;
-import java.util.List;
+import Arquivo.ArquivoLogin;
+import Registros.Login;
 import javax.swing.JOptionPane;
 /**
  *
@@ -15,13 +13,14 @@ import javax.swing.JOptionPane;
     @author MIKAELA CRISTINY QUITZ              201676014
 
  */
-public class Login extends javax.swing.JFrame {
+public class JLogin extends javax.swing.JFrame {
 
-    public Login() {
+    ArquivoLogin arquivoLogin;
+    public JLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        
+        arquivoLogin = new ArquivoLogin();
        
     }
     public boolean vazioCadastro(){
@@ -336,19 +335,19 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        Principal principal = new Principal();
+        JPrincipal principal = new JPrincipal();
         principal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar2ActionPerformed
-        Principal principal = new Principal();
+        JPrincipal principal = new JPrincipal();
         principal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVoltar2ActionPerformed
 
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
-        Principal principal = new Principal();
+        JPrincipal principal = new JPrincipal();
         principal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVoltar1ActionPerformed
@@ -362,13 +361,22 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpar1ActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-       Logins l = new Logins();
        String user = txtUsuario.getText();
        String senha = txtSenha.getText();
+       String confirmaSenha = txtConfirmSenha.getText();
        String tipo = comboTipo.getSelectedItem().toString();
-       l.cadastra(user, senha, tipo);
-       limparCadastro();
-       
+       if(vazioCadastro() == true){
+           JOptionPane.showMessageDialog(null, "Há campos vazios.");
+       }else{
+           if(!senha.equals(confirmaSenha)){
+               JOptionPane.showMessageDialog(null, "As senhas são diferentes.");
+               txtConfirmSenha.setText("");
+           }else{
+               arquivoLogin.cadastra(user, senha, tipo);
+               arquivoLogin.inputLogin();
+               limparCadastro();
+           }
+       }
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -393,20 +401,21 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new JLogin().setVisible(true);
             }
         });
     }

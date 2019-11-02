@@ -10,8 +10,8 @@ package Frames;
     @author MIKAELA CRISTINY QUITZ              201676014
 
  */
-public class Clientes extends javax.swing.JFrame {
-    public Clientes() {
+public class JClientes extends javax.swing.JFrame {
+    public JClientes() {
         initComponents();
     }
     @SuppressWarnings("unchecked")
@@ -22,7 +22,7 @@ public class Clientes extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jLabel2 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -32,7 +32,7 @@ public class Clientes extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtCPF = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<String>();
         jLabel7 = new javax.swing.JLabel();
         txtDataNasc = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -45,7 +45,7 @@ public class Clientes extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        jComboBox4 = new javax.swing.JComboBox<String>();
         jLabel14 = new javax.swing.JLabel();
         txtNome1 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -55,7 +55,7 @@ public class Clientes extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         txtCPF1 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        jComboBox5 = new javax.swing.JComboBox<String>();
         jLabel19 = new javax.swing.JLabel();
         txtDataNasc1 = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
@@ -68,7 +68,7 @@ public class Clientes extends javax.swing.JFrame {
         btnVoltar3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<String>();
         jLabel11 = new javax.swing.JLabel();
         txtCpf = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -86,7 +86,7 @@ public class Clientes extends javax.swing.JFrame {
 
         jLabel1.setText("Cliente:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Cliente Físico", "Cliente Jurídico" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Cliente Físico", "Cliente Jurídico" }));
 
         jLabel2.setText("Nome:");
 
@@ -98,7 +98,7 @@ public class Clientes extends javax.swing.JFrame {
 
         jLabel6.setText("Sexo:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Feminino", "Masculino" }));
 
         jLabel7.setText("Data Nascimento:");
 
@@ -246,7 +246,7 @@ public class Clientes extends javax.swing.JFrame {
 
         jLabel13.setText("Cliente:");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Cliente Físico", "Cliente Jurídico" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Cliente Físico", "Cliente Jurídico" }));
 
         jLabel14.setText("Nome:");
 
@@ -258,7 +258,7 @@ public class Clientes extends javax.swing.JFrame {
 
         jLabel18.setText("Sexo:");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Feminino", "Masculino" }));
 
         jLabel19.setText("Data Nascimento:");
 
@@ -406,7 +406,7 @@ public class Clientes extends javax.swing.JFrame {
 
         jLabel10.setText("Cliente: ");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Cliente Físico", "Cliente Jurídico" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Cliente Físico", "Cliente Jurídico" }));
 
         jLabel11.setText("CPF:");
 
@@ -536,20 +536,21 @@ public class Clientes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Clientes().setVisible(true);
+                new JClientes().setVisible(true);
             }
         });
     }

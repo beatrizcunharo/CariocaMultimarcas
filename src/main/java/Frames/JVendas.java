@@ -10,8 +10,8 @@ package Frames;
     @author MIKAELA CRISTINY QUITZ              201676014
 
  */
-public class Vendas extends javax.swing.JFrame {
-    public Vendas() {
+public class JVendas extends javax.swing.JFrame {
+    public JVendas() {
         initComponents();
     }
     @SuppressWarnings("unchecked")
@@ -23,14 +23,14 @@ public class Vendas extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        cmbTipo = new javax.swing.JComboBox<>();
+        cmbTipo = new javax.swing.JComboBox<String>();
         jLabel9 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtCPF = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         txtCNPJ = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtProd = new javax.swing.JTextField();
@@ -39,20 +39,20 @@ public class Vendas extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtValor = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<String>();
         txtValorParc = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        cmbTipo1 = new javax.swing.JComboBox<>();
+        cmbTipo1 = new javax.swing.JComboBox<String>();
         jLabel12 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         btnVoltar1 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         txtCPF1 = new javax.swing.JTextField();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<String>();
         txtCNPJ1 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtProd1 = new javax.swing.JTextField();
@@ -61,12 +61,12 @@ public class Vendas extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         txtValor1 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        jComboBox4 = new javax.swing.JComboBox<String>();
         txtValorParc1 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        jComboBox5 = new javax.swing.JComboBox<String>();
         jLabel20 = new javax.swing.JLabel();
         txtCpf = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
@@ -88,7 +88,7 @@ public class Vendas extends javax.swing.JFrame {
 
         jLabel6.setText("CPF:");
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Á vista", "Á prazo" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Á vista", "Á prazo" }));
 
         jLabel9.setText("Cliente:");
 
@@ -105,7 +105,7 @@ public class Vendas extends javax.swing.JFrame {
 
         jLabel5.setText("CNPJ:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Físico", "Jurídico" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Físico", "Jurídico" }));
 
         jLabel7.setText("Produto:");
 
@@ -115,7 +115,7 @@ public class Vendas extends javax.swing.JFrame {
 
         jLabel4.setText("Parcelas:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "1x", "2x", "3x", "4x", "5x", "6x c/ juros", "7x c/ juros", "8x c/ juros" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "1x", "2x", "3x", "4x", "5x", "6x c/ juros", "7x c/ juros", "8x c/ juros" }));
 
         jLabel8.setText("Valor:");
 
@@ -209,7 +209,7 @@ public class Vendas extends javax.swing.JFrame {
 
         jLabel11.setText("CPF:");
 
-        cmbTipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Á vista", "Á prazo" }));
+        cmbTipo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Á vista", "Á prazo" }));
 
         jLabel12.setText("Cliente:");
 
@@ -226,7 +226,7 @@ public class Vendas extends javax.swing.JFrame {
 
         jLabel13.setText("CNPJ:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Físico", "Jurídico" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Físico", "Jurídico" }));
 
         jLabel14.setText("Produto:");
 
@@ -236,7 +236,7 @@ public class Vendas extends javax.swing.JFrame {
 
         jLabel17.setText("Parcelas:");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "1x", "2x", "3x", "4x", "5x", "6x c/ juros", "7x c/ juros", "8x c/ juros" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "1x", "2x", "3x", "4x", "5x", "6x c/ juros", "7x c/ juros", "8x c/ juros" }));
 
         jLabel18.setText("Valor:");
 
@@ -328,7 +328,7 @@ public class Vendas extends javax.swing.JFrame {
 
         jLabel19.setText("Cliente: ");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Cliente Físico", "Cliente Jurídico" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Cliente Físico", "Cliente Jurídico" }));
 
         jLabel20.setText("CPF:");
 
@@ -411,11 +411,11 @@ public class Vendas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -450,20 +450,21 @@ public class Vendas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Vendas().setVisible(true);
+                new JVendas().setVisible(true);
             }
         });
     }

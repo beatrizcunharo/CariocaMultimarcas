@@ -1,8 +1,4 @@
 package Registros;
-import Arquivo.Informacao;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JOptionPane;
 /**
  *
  *  
@@ -13,12 +9,12 @@ import javax.swing.JOptionPane;
     @author MIKAELA CRISTINY QUITZ              201676014
 
  */
-public class Logins{
+public class Login{
     private String usuario;
     private String senha;
     private String tipo;
     
-    public Logins(){
+    public Login(){
         usuario = "";
         senha = "";
         tipo = "";
@@ -64,16 +60,6 @@ public class Logins{
      */
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-    
-    public void cadastra(String user, String senha, String tipo){
-        Logins l = new Logins();
-        Informacao i = new Informacao();
-        l.setUsuario(user);
-        l.setSenha(senha);
-        l.setTipo(tipo);
-        i.logins.add(l);
-        i.inputLogin();
     }
 }
 

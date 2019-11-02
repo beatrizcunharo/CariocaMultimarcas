@@ -10,12 +10,12 @@ package Frames;
     @author MIKAELA CRISTINY QUITZ              201676014
 
  */
-public class Estoque extends javax.swing.JFrame {
+public class JEstoque extends javax.swing.JFrame {
 
     /**
      * Creates new form Estoque
      */
-    public Estoque() {
+    public JEstoque() {
         initComponents();
     }
 
@@ -33,7 +33,7 @@ public class Estoque extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        cmbSexo = new javax.swing.JComboBox<>();
+        cmbSexo = new javax.swing.JComboBox<String>();
         jLabel9 = new javax.swing.JLabel();
         txtTamanho = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
@@ -51,7 +51,7 @@ public class Estoque extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtNome1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        cmbSexo1 = new javax.swing.JComboBox<>();
+        cmbSexo1 = new javax.swing.JComboBox<String>();
         jLabel10 = new javax.swing.JLabel();
         txtTamanho1 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
@@ -83,7 +83,7 @@ public class Estoque extends javax.swing.JFrame {
 
         jLabel6.setText("Sexo:");
 
-        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino", "Unissex" }));
+        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Feminino", "Masculino", "Unissex" }));
 
         jLabel9.setText("Tamanho:");
 
@@ -131,7 +131,7 @@ public class Estoque extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(cmbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                                 .addComponent(jLabel4))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -190,7 +190,7 @@ public class Estoque extends javax.swing.JFrame {
 
         jLabel8.setText("Sexo:");
 
-        cmbSexo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino", "Unissex" }));
+        cmbSexo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Feminino", "Masculino", "Unissex" }));
 
         jLabel10.setText("Tamanho:");
 
@@ -238,7 +238,7 @@ public class Estoque extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(cmbSexo1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                                 .addComponent(jLabel13))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -401,20 +401,21 @@ public class Estoque extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Estoque().setVisible(true);
+                new JEstoque().setVisible(true);
             }
         });
     }

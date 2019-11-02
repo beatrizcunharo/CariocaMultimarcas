@@ -1,8 +1,10 @@
 package Arquivo;
 
-import Registros.Logins;
+import Registros.Login;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -20,12 +22,24 @@ import java.util.List;
     @author MIKAELA CRISTINY QUITZ              201676014
 
  */
-public class Informacao {
-    public List<Logins> logins = new ArrayList<>();
+public class ArquivoLogin {
+    public List<Login> logins;
     
     
-    public void inputLogin(){
-        Type tipoLista = new TypeToken<List<Logins>>() {}.getType();
+    public ArquivoLogin(){
+        this.logins = new ArrayList<>();
+    }
+    
+    public void cadastra(String user, String senha, String tipo){
+        Login l = new Login();      
+        l.setUsuario(user);
+        l.setSenha(senha);
+        l.setTipo(tipo);
+        logins.add(l);  
+    }
+    
+    public boolean inputLogin(){
+        Type tipoLista = new TypeToken<List<Login>>() {}.getType();
         Gson gson = new Gson();
         String json = gson.toJson(logins, tipoLista);
         
@@ -35,28 +49,31 @@ public class Informacao {
             
             input.write(json);
             input.close();
-            System.out.println(json);
+            return true;
         }catch(IOException ex){
             ex.printStackTrace();
+            return false;
         }
     }
     
-    /*
-    public void outputLogin(){ 
+    
+    /*public Login outputLogin(){ 
         Gson gson = new Gson();
- 
+        
+        
         try {
  
-            BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Beatr\\Documents\\arquivo.json"));
+            BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Beatr\\Documents\\GitHub\\TrabalhoOO\\arquivoLogin.json"));
  
             //Converte String JSON para objeto Java
             Login obj = gson.fromJson(br, Login.class);
  
             System.out.println(obj);
- 
+            return obj;
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }   
     }
-    */  
+    */
 }
