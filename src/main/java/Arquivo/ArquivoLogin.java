@@ -2,14 +2,19 @@ package Arquivo;
 
 import Registros.Login;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -30,6 +35,7 @@ public class ArquivoLogin {
         this.logins = new ArrayList<>();
     }
     
+    
     public void cadastra(String user, String senha, String tipo){
         Login l = new Login();      
         l.setUsuario(user);
@@ -38,7 +44,7 @@ public class ArquivoLogin {
         logins.add(l);  
     }
     
-    public boolean inputLogin(){
+    public boolean input(){
         Type tipoLista = new TypeToken<List<Login>>() {}.getType();
         Gson gson = new Gson();
         String json = gson.toJson(logins, tipoLista);
@@ -52,28 +58,28 @@ public class ArquivoLogin {
             return true;
         }catch(IOException ex){
             ex.printStackTrace();
-            return false;
         }
+        return false;
     }
-    
-    
-    /*public Login outputLogin(){ 
+     
+   
+    public void output(){
+        
         Gson gson = new Gson();
-        
-        
-        try {
- 
-            BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Beatr\\Documents\\GitHub\\TrabalhoOO\\arquivoLogin.json"));
- 
-            //Converte String JSON para objeto Java
-            Login obj = gson.fromJson(br, Login.class);
- 
-            System.out.println(obj);
-            return obj;
-        } catch (IOException e) {
+        Type tipo = new TypeToken<List<Login>>() {}.getType();
+        File nome = new File("C:\\Users\\Beatr\\Documents\\GitHub\\TrabalhoOO\\arquivoLogin.json");
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(nome));
+            String collect = br.lines().collect(Collectors.joining());
+            List<Login> lista = gson.fromJson(collect, tipo);
+            for (Login lista1 : lista) {
+                System.out.println(lista1.getUsuario());
+                System.out.println(lista1.getSenha());
+                System.out.println(lista1.getTipo());
+            }
+        }catch (IOException e){
             e.printStackTrace();
-            return null;
-        }   
+        }        
+ 
     }
-    */
 }

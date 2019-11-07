@@ -373,14 +373,14 @@ public class JLogin extends javax.swing.JFrame {
                txtConfirmSenha.setText("");
            }else{
                arquivoLogin.cadastra(user, senha, tipo);
-               arquivoLogin.inputLogin();
+               arquivoLogin.input();
                limparCadastro();
            }
        }
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-       
+        arquivoLogin.output();
     }//GEN-LAST:event_btnBuscarActionPerformed
     
     
