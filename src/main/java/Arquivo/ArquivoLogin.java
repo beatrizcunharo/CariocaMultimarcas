@@ -78,7 +78,7 @@ public class ArquivoLogin {
             }
             return false;
         }
-    public List<Login> output(){
+    public void output(){
         
         Gson gson = new Gson();
         Type tipo = new TypeToken<List<Login>>() {}.getType();
@@ -87,10 +87,8 @@ public class ArquivoLogin {
             BufferedReader br = new BufferedReader(new FileReader(nome));
             String collect = br.lines().collect(Collectors.joining());
             List<Login> lista = gson.fromJson(collect, tipo);
-            return lista;
         }catch (IOException e){
             e.printStackTrace();
-        }        
-        return null;
+        }       
     }
 }

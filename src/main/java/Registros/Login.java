@@ -66,8 +66,6 @@ public class Login{
         this.tipo = tipo;
     }
     
-    public boolean existeUsuario(String user){
-    }
    
 }
 
