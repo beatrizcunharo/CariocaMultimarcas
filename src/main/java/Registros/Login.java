@@ -1,4 +1,8 @@
 package Registros;
+
+import Arquivo.ArquivoLogin;
+import java.util.List;
+
 /**
  *
  *  
@@ -61,6 +65,10 @@ public class Login{
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+    
+    public boolean existeUsuario(String user){
+    }
+   
 }
 
 

@@ -2,6 +2,11 @@ package Frames;
 
 import Arquivo.ArquivoLogin;
 import Registros.Login;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
@@ -35,7 +40,7 @@ public class JLogin extends javax.swing.JFrame {
     public void limparAlterar(){
         txtUsuario1.setText("");txtSenha1.setText("");txtConfirmSenha1.setText("");comboTipo1.setSelectedItem("Selecione...");
     }
-
+     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -372,15 +377,22 @@ public class JLogin extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(null, "As senhas são diferentes.");
                txtConfirmSenha.setText("");
            }else{
-               arquivoLogin.cadastra(user, senha, tipo);
-               arquivoLogin.input();
-               limparCadastro();
+               
+                    arquivoLogin.cadastra(user, senha, tipo);
+                    try {
+                        arquivoLogin.input();
+                        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
+                    } catch (IOException ex) {
+                        Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    limparCadastro(); 
+               
            }
        }
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        arquivoLogin.output();
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
     
     

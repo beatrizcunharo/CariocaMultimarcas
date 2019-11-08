@@ -4,13 +4,17 @@ import Registros.Login;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import com.google.gson.internal.Streams;
 import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +38,7 @@ public class ArquivoLogin {
     public ArquivoLogin(){
         this.logins = new ArrayList<>();
     }
-    
-    
+        
     public void cadastra(String user, String senha, String tipo){
         Login l = new Login();      
         l.setUsuario(user);
@@ -44,26 +47,38 @@ public class ArquivoLogin {
         logins.add(l);  
     }
     
-    public boolean input(){
+    
+    public boolean input() throws IOException{
         Type tipoLista = new TypeToken<List<Login>>() {}.getType();
         Gson gson = new Gson();
         String json = gson.toJson(logins, tipoLista);
         
-        try{
+        File file = new File("C:\\Users\\Beatr\\Documents\\GitHub\\TrabalhoOO\\arquivoLogin.json");
+          
+            if(file.exists()){
+                FileReader reader = new FileReader(file);
+                BufferedReader buffer = new BufferedReader(reader);
+                StringBuffer sb = new StringBuffer();
+                while(buffer.ready()){
+                    sb.append(buffer.readLine()+"\n");
+                }
+                file.getParentFile().mkdirs();
+
+                Writer fw = new OutputStreamWriter( new FileOutputStream(file) ) ;
+                fw.write( sb.toString() );
+                fw.write(json);
+                fw.close();
+            }else{
+                
+                FileWriter input = new FileWriter("C:\\Users\\Beatr\\Documents\\GitHub\\TrabalhoOO\\arquivoLogin.json");
             
-            FileWriter input = new FileWriter("C:\\Users\\Beatr\\Documents\\GitHub\\TrabalhoOO\\arquivoLogin.json");
-            
-            input.write(json);
-            input.close();
-            return true;
-        }catch(IOException ex){
-            ex.printStackTrace();
+                input.write(json);
+                input.close();
+                return true;
+            }
+            return false;
         }
-        return false;
-    }
-     
-   
-    public void output(){
+    public List<Login> output(){
         
         Gson gson = new Gson();
         Type tipo = new TypeToken<List<Login>>() {}.getType();
@@ -72,14 +87,10 @@ public class ArquivoLogin {
             BufferedReader br = new BufferedReader(new FileReader(nome));
             String collect = br.lines().collect(Collectors.joining());
             List<Login> lista = gson.fromJson(collect, tipo);
-            for (Login lista1 : lista) {
-                System.out.println(lista1.getUsuario());
-                System.out.println(lista1.getSenha());
-                System.out.println(lista1.getTipo());
-            }
+            return lista;
         }catch (IOException e){
             e.printStackTrace();
         }        
- 
+        return null;
     }
 }
