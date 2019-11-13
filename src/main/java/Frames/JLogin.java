@@ -1,10 +1,8 @@
 package Frames;
 
 import Arquivo.ArquivoLogin;
-import Registros.Login;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -392,7 +390,7 @@ public class JLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        arquivoLogin.output();
+    arquivoLogin.output();       
     }//GEN-LAST:event_btnBuscarActionPerformed
     
     

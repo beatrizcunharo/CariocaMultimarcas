@@ -1,8 +1,5 @@
 package Registros;
 
-import Arquivo.ArquivoLogin;
-import java.util.List;
-
 /**
  *
  *  
