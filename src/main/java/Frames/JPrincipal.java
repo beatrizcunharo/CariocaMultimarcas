@@ -19,6 +19,7 @@ public class JPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        
     }
     
     @SuppressWarnings("unchecked")

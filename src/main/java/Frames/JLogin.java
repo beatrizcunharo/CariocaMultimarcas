@@ -410,20 +410,33 @@ public class JLogin extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         JPrincipal principal = new JPrincipal();
-        principal.setVisible(true);
-        this.dispose();
+        if(principal.isVisible() == false){
+           principal.setVisible(true);
+           this.setVisible(false);
+        }else{
+            this.setVisible(false);
+        }
+        
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar2ActionPerformed
         JPrincipal principal = new JPrincipal();
-        principal.setVisible(true);
-        this.dispose();
+        if(principal.isVisible() == false){
+           principal.setVisible(true);
+           this.setVisible(false);
+        }else{
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_btnVoltar2ActionPerformed
 
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
         JPrincipal principal = new JPrincipal();
-        principal.setVisible(true);
-        this.dispose();
+        if(!principal.isVisible() == false){
+           principal.setVisible(true);
+           this.setVisible(false);
+        }else{
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_btnVoltar1ActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed

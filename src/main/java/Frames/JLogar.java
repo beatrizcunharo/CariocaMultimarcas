@@ -1,5 +1,10 @@
 package Frames;
 
+import Arquivo.ArquivoLogin;
+import Registros.Login;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  *  
@@ -11,9 +16,12 @@ package Frames;
 
  */
 public class JLogar extends javax.swing.JFrame {
-
+    ArquivoLogin arquivoLogin;
     public JLogar() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        arquivoLogin = new ArquivoLogin();
         
     }
     
@@ -104,7 +112,23 @@ public class JLogar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-    
+        JPrincipal principal = new JPrincipal();
+        List<Login> lista = arquivoLogin.output();
+        for(int i=0;i<lista.size();i++){
+            if(txtUsu.getText().equals(lista.get(i).getUsuario())){
+                if(txtSenha.getText().equals(lista.get(i).getSenha())){
+                    JOptionPane.showMessageDialog(null, "Bem vindo, "+txtUsu.getText()+"!");
+                    principal.setVisible(true);
+                    this.setVisible(false);    
+                }else{
+                    JOptionPane.showMessageDialog(null, "Senha incorreta");
+                    txtSenha.setText("");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuário inexistente");
+                txtUsu.setText("");
+            }
+        }
     }//GEN-LAST:event_btnOkActionPerformed
 
     /**

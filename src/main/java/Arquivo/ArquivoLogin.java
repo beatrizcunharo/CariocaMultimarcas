@@ -55,9 +55,8 @@ public class ArquivoLogin {
         File file = new File("arquivoLogin.json");
           
             if(file.exists()){
-                                
+                
                 Writer fw = new OutputStreamWriter( new FileOutputStream(file) ) ;
-               
                 fw.write(json);
                 fw.close();
             }else{
