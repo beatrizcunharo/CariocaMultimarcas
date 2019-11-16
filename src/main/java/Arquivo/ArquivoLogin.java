@@ -55,21 +55,14 @@ public class ArquivoLogin {
         File file = new File("arquivoLogin.json");
           
             if(file.exists()){
-//                FileReader reader = new FileReader(file);
-//                BufferedReader buffer = new BufferedReader(reader);
-//                StringBuffer sb = new StringBuffer();
-//                while(buffer.ready()){
-//                    sb.append(buffer.readLine());
-//                }
-                file.getParentFile().mkdirs();
-
+                                
                 Writer fw = new OutputStreamWriter( new FileOutputStream(file) ) ;
-//                fw.write( sb.toString() );
+               
                 fw.write(json);
                 fw.close();
             }else{
                 
-                FileWriter input = new FileWriter(file, false);
+                FileWriter input = new FileWriter(file);
             
                 input.write(json);
                 input.close();
@@ -78,23 +71,24 @@ public class ArquivoLogin {
             return false;
         }   
     
-    public void output(){
+    public List<Login> output(){
         
         Gson gson = new Gson();
         Type tipo = new TypeToken<List<Login>>() {}.getType();
         File nome = new File("arquivoLogin.json");
         try{
             BufferedReader br = new BufferedReader(new FileReader(nome));
-            //FileReader reader = new FileReader(nome);
+            
             String collect = br.lines().collect(Collectors.joining());
             
-            System.out.println(collect);
             List<Login> lista = gson.fromJson(collect, tipo);
          
             logins.addAll(lista);
-            System.out.println(lista);
+            return lista;
         }catch (IOException e){
             e.printStackTrace();
         }       
+        return null;
     }
+    
 }

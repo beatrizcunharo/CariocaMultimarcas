@@ -1,11 +1,17 @@
 package Frames;
 
 import Arquivo.ArquivoLogin;
+import Registros.Login;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  *  
@@ -17,13 +23,17 @@ import javax.swing.JOptionPane;
 
  */
 public class JLogin extends javax.swing.JFrame {
-
+    DefaultTableModel tabela=new DefaultTableModel();
     ArquivoLogin arquivoLogin;
+    String vetTabela[]=new String[7];
     public JLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         arquivoLogin = new ArquivoLogin();
+        tabela.addColumn("Usuário");
+        tabela.addColumn("Tipo");
+        
        
     }
     public boolean vazioCadastro(){
@@ -37,6 +47,33 @@ public class JLogin extends javax.swing.JFrame {
     }
     public void limparAlterar(){
         txtUsuario1.setText("");txtSenha1.setText("");txtConfirmSenha1.setText("");comboTipo1.setSelectedItem("Selecione...");
+    }
+    
+    public void pesquisa(){
+        List<Login> l = arquivoLogin.output();
+        int t = tabela.getRowCount();
+        for (int i = 0; i < t; i++) {
+            tabela.removeRow(0);
+        }
+        for(int i=0;i<l.size();i++){
+            vetTabela[0] = l.get(i).getUsuario();
+            vetTabela[1] = l.get(i).getTipo();
+            tabela.addRow(vetTabela);
+        }
+    }
+    public void pesquisaPorUsuario(){
+        List<Login> l = arquivoLogin.output();
+        int t = tabela.getRowCount();
+        for (int i = 0; i < t; i++) {
+            tabela.removeRow(0);
+        }
+        for (int i=0;i<l.size();i++) {
+            if(txtUsuario2.getText().equals(l.get(i).getUsuario())){
+                vetTabela[0] = l.get(i).getUsuario();
+                vetTabela[1] = l.get(i).getTipo();
+            }
+        }
+        tabela.addRow(vetTabela);
     }
      
     @SuppressWarnings("unchecked")
@@ -259,14 +296,7 @@ public class JLogin extends javax.swing.JFrame {
 
         jLabel11.setText("Usuário:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
+        jTable1.setModel(tabela);
         jScrollPane1.setViewportView(jTable1);
 
         btnBuscar.setText("Buscar");
@@ -291,9 +321,6 @@ public class JLogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(237, 237, 237)
-                        .addComponent(btnBuscar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(237, 237, 237)
                         .addComponent(btnVoltar2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(112, 112, 112)
@@ -302,7 +329,10 @@ public class JLogin extends javax.swing.JFrame {
                         .addComponent(txtUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(230, 230, 230)
+                        .addComponent(btnBuscar)))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -312,9 +342,9 @@ public class JLogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
-                .addGap(53, 53, 53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(btnBuscar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnVoltar2)
@@ -368,6 +398,14 @@ public class JLogin extends javax.swing.JFrame {
        String senha = txtSenha.getText();
        String confirmaSenha = txtConfirmSenha.getText();
        String tipo = comboTipo.getSelectedItem().toString();
+       List <Login> logins = arquivoLogin.output();
+       String usuarioExistente = "";
+       for(int i=0;i<logins.size();i++){
+           if(user.equals(logins.get(i).getUsuario())){
+               usuarioExistente = logins.get(i).getUsuario();
+               break;
+           }
+       }
        if(vazioCadastro() == true){
            JOptionPane.showMessageDialog(null, "Há campos vazios.");
        }else{
@@ -375,7 +413,10 @@ public class JLogin extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(null, "As senhas são diferentes.");
                txtConfirmSenha.setText("");
            }else{
-               
+                if(!usuarioExistente.equals("")){
+                    JOptionPane.showMessageDialog(null, "Usuário já existente.");
+                    txtUsuario.setText("");
+                }else{
                     arquivoLogin.cadastra(user, senha, tipo);
                     try {
                         arquivoLogin.input();
@@ -384,13 +425,17 @@ public class JLogin extends javax.swing.JFrame {
                         Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     limparCadastro(); 
-               
+                }
            }
        }
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-    arquivoLogin.output();       
+    if(txtUsuario2.getText().isEmpty()){
+        pesquisa();
+    }else{
+        pesquisaPorUsuario();
+    }
     }//GEN-LAST:event_btnBuscarActionPerformed
     
     
