@@ -2,6 +2,7 @@ package Frames;
 
 import Arquivo.ArquivoLogin;
 import Registros.Login;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class JLogin extends javax.swing.JFrame {
     DefaultTableModel tabela=new DefaultTableModel();
     ArquivoLogin arquivoLogin;
     String vetTabela[]=new String[7];
+    int posicao;
     public JLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -42,6 +44,14 @@ public class JLogin extends javax.swing.JFrame {
         else
             return false;
     }
+    
+    public boolean vazioAlterar(){
+        if(txtUsuario1.getText().equals("") || txtSenha1.getText().equals("") || txtConfirmSenha1.getText().equals("") || comboTipo1.getSelectedItem().equals("Selecione..."))
+            return true;
+        else
+            return false;
+    }
+    
     public void limparCadastro(){
         txtUsuario.setText("");txtSenha.setText("");txtConfirmSenha.setText("");comboTipo.setSelectedItem("Selecione...");
     }
@@ -75,6 +85,8 @@ public class JLogin extends javax.swing.JFrame {
         }
         tabela.addRow(vetTabela);
     }
+    
+    File file = new File("arquivoLogin.json");
      
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -109,9 +121,11 @@ public class JLogin extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txtUsuario2 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         btnBuscar = new javax.swing.JButton();
         btnVoltar2 = new javax.swing.JButton();
+        btnAlterar1 = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -222,6 +236,11 @@ public class JLogin extends javax.swing.JFrame {
         });
 
         btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnVoltar1.setText("Voltar");
         btnVoltar1.addActionListener(new java.awt.event.ActionListener() {
@@ -245,8 +264,9 @@ public class JLogin extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83)
-                        .addComponent(btnLimpar1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(64, 64, 64)
+                        .addComponent(btnLimpar1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -259,9 +279,9 @@ public class JLogin extends javax.swing.JFrame {
                             .addComponent(txtSenha1, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                             .addComponent(txtUsuario1, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                             .addComponent(comboTipo1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(btnVoltar1)
-                .addGap(58, 58, 58))
+                .addGap(73, 73, 73))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,7 +302,7 @@ public class JLogin extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(comboTipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAlterar)
                     .addComponent(btnLimpar1)
@@ -296,8 +316,8 @@ public class JLogin extends javax.swing.JFrame {
 
         jLabel11.setText("Usuário:");
 
-        jTable1.setModel(tabela);
-        jScrollPane1.setViewportView(jTable1);
+        table.setModel(tabela);
+        jScrollPane1.setViewportView(table);
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -313,15 +333,26 @@ public class JLogin extends javax.swing.JFrame {
             }
         });
 
+        btnAlterar1.setText("Alterar");
+        btnAlterar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterar1ActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(237, 237, 237)
-                        .addComponent(btnVoltar2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(112, 112, 112)
                         .addComponent(jLabel11)
@@ -332,7 +363,14 @@ public class JLogin extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(230, 230, 230)
-                        .addComponent(btnBuscar)))
+                        .addComponent(btnBuscar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(btnVoltar2)
+                        .addGap(72, 72, 72)
+                        .addComponent(btnAlterar1)
+                        .addGap(65, 65, 65)
+                        .addComponent(btnExcluir)))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -347,7 +385,10 @@ public class JLogin extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnVoltar2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVoltar2)
+                    .addComponent(btnAlterar1)
+                    .addComponent(btnExcluir))
                 .addGap(19, 19, 19))
         );
 
@@ -398,36 +439,53 @@ public class JLogin extends javax.swing.JFrame {
        String senha = txtSenha.getText();
        String confirmaSenha = txtConfirmSenha.getText();
        String tipo = comboTipo.getSelectedItem().toString();
-       List <Login> logins = arquivoLogin.output();
-       String usuarioExistente = "";
-       for(int i=0;i<logins.size();i++){
-           if(user.equals(logins.get(i).getUsuario())){
-               usuarioExistente = logins.get(i).getUsuario();
-               break;
-           }
-       }
-       if(vazioCadastro() == true){
-           JOptionPane.showMessageDialog(null, "Há campos vazios.");
-       }else{
-           if(!senha.equals(confirmaSenha)){
-               JOptionPane.showMessageDialog(null, "As senhas são diferentes.");
-               txtConfirmSenha.setText("");
-           }else{
-                if(!usuarioExistente.equals("")){
-                    JOptionPane.showMessageDialog(null, "Usuário já existente.");
-                    txtUsuario.setText("");
+       if(file.exists()){
+            List <Login> logins = arquivoLogin.output();
+            String usuarioExistente = "";
+            for(int i=0;i<logins.size();i++){
+                if(user.equals(logins.get(i).getUsuario())){
+                    usuarioExistente = logins.get(i).getUsuario();
+                    break;
+                }
+            }
+            if(vazioCadastro() == true){
+            JOptionPane.showMessageDialog(null, "Há campos vazios.");
+            }else{
+                if(!senha.equals(confirmaSenha)){
+                    JOptionPane.showMessageDialog(null, "As senhas são diferentes.");
+                    txtConfirmSenha.setText("");
                 }else{
-                    arquivoLogin.cadastra(user, senha, tipo);
-                    try {
-                        arquivoLogin.input();
-                        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
+                    if(!usuarioExistente.equals("")){
+                        JOptionPane.showMessageDialog(null, "Usuário já existente.");
+                        txtUsuario.setText("");
+                    }else{
+                        arquivoLogin.cadastra(user, senha, tipo);
+                        try {
+                            arquivoLogin.input();
+                            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
+                        } catch (IOException ex) {
+                            Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        limparCadastro(); 
+                    }
+                }
+            }
+        }else{
+            if(!senha.equals(confirmaSenha)){
+                JOptionPane.showMessageDialog(null, "As senhas são diferentes.");
+                txtConfirmSenha.setText("");
+            }else{
+                arquivoLogin.cadastra(user, senha, tipo);
+                try {
+                    arquivoLogin.input();
+                    JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
                     } catch (IOException ex) {
                         Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     limparCadastro(); 
                 }
-           }
-       }
+        }
+       
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -437,6 +495,71 @@ public class JLogin extends javax.swing.JFrame {
         pesquisaPorUsuario();
     }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar1ActionPerformed
+    String cod = table.getValueAt(table.getSelectedRow(), 0).toString();
+        if (table.getSelectedRow() >= 0) {
+            List<Login> l = arquivoLogin.output();
+            for(int i=0;i<l.size();i++){
+                if(l.get(i).getUsuario().equals(cod)){
+                   txtUsuario1.setText(l.get(i).getUsuario());
+                   txtSenha1.setText(l.get(i).getSenha());
+                   txtConfirmSenha1.setText(l.get(i).getSenha());
+                   comboTipo1.setSelectedItem(l.get(i).getTipo());
+                   posicao = i;
+                   break;
+                }
+            }
+            
+            jTabbedPane1.setSelectedIndex(1);
+        }else{
+           JOptionPane.showMessageDialog(null, "Selecione uma linha.");
+        }
+    }//GEN-LAST:event_btnAlterar1ActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+    String user = txtUsuario1.getText();
+    String senha = txtSenha1.getText();
+    String confirmaSenha = txtConfirmSenha1.getText();
+    String tipo = comboTipo1.getSelectedItem().toString();   
+    if(vazioAlterar()== true){
+        JOptionPane.showMessageDialog(null, "Há campos vazios.");
+    }else{
+        if(!senha.equals(confirmaSenha)){
+            JOptionPane.showMessageDialog(null, "As senhas são diferentes.");
+            txtConfirmSenha.setText("");
+        }else{
+            try {
+                arquivoLogin.alterar(user,senha,tipo,posicao);
+                JOptionPane.showMessageDialog(null, "Alterado com sucesso.");
+                limparAlterar();
+            } catch (IOException ex) {
+                Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        String user = table.getValueAt(table.getSelectedRow(), 0).toString();
+        if (table.getSelectedRow() >= 0) {
+
+            if (JOptionPane.showConfirmDialog(null, "Deseja excluir realmente?", "Confirmação", 0) == 0) {
+
+                try {
+                    if (arquivoLogin.excluir(user)) {
+                        JOptionPane.showMessageDialog(null, "Excluido com sucesso");
+                        pesquisa();
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
+        }
+
+    }//GEN-LAST:event_btnExcluirActionPerformed
     
     
     /**
@@ -477,8 +600,10 @@ public class JLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnAlterar1;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEnviar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnLimpar1;
     private javax.swing.JButton btnVoltar;
@@ -500,7 +625,7 @@ public class JLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table;
     private javax.swing.JPasswordField txtConfirmSenha;
     private javax.swing.JPasswordField txtConfirmSenha1;
     private javax.swing.JPasswordField txtSenha;

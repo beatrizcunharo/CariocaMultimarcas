@@ -46,7 +46,7 @@ public class ArquivoLogin {
         logins.add(l);  
     }
     
-    
+
     public boolean input() throws IOException{
         Type tipoLista = new TypeToken<List<Login>>() {}.getType();
         Gson gson = new Gson();
@@ -71,6 +71,24 @@ public class ArquivoLogin {
             return false;
         }   
     
+    public void alterar(String user, String senha, String tipo, int pos) throws IOException{
+        
+        Type tipoLista = new TypeToken<List<Login>>() {}.getType();
+        Gson gson = new Gson();
+        List<Login> lista = output();
+        lista.get(pos).setUsuario(user);
+        lista.get(pos).setSenha(senha);
+        lista.get(pos).setTipo(tipo);
+        logins.addAll(lista);
+        String json = gson.toJson(lista, tipoLista);
+        File file = new File("arquivoLogin.json");
+        file.delete();
+        FileWriter input = new FileWriter(file);
+        input.write(json);
+        input.close(); 
+        
+    }   
+    
     public List<Login> output(){
         
         Gson gson = new Gson();
@@ -91,4 +109,23 @@ public class ArquivoLogin {
         return null;
     }
     
+    public boolean excluir(String user) throws IOException{
+        Type tipoLista = new TypeToken<List<Login>>() {}.getType();
+        File file = new File("arquivoLogin.json");
+        Gson gson = new Gson();
+        List<Login> l = output();
+        for(int i=0;i<logins.size();i++){
+            if(logins.get(i).getUsuario().equals(user)){
+                logins.remove(i);
+                l.remove(i);
+                file.delete();
+                FileWriter input = new FileWriter(file);
+                String json = gson.toJson(l, tipoLista);
+                input.write(json);
+                input.close();
+                return true;
+            }
+        }
+        return false;
+    }
 }
