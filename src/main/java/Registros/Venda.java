@@ -17,14 +17,14 @@ public class Venda{
     private double valor;
     private Pessoa pessoa;
     private Date data;
-    private Estoque estoque;
+    //private ArquivoEstoque estoque;
     
     public Venda(){
         qtde = 0;
         valor = 0.0;
         pessoa = null;
         data = null;
-        estoque = null;
+        //estoque = null;
     }
 
     public int getQtde() {
@@ -59,13 +59,13 @@ public class Venda{
         this.data = data;
     }
 
-    public Estoque getEstoque() {
-        return estoque;
-    }
+   // public Estoque getEstoque() {
+   //     return estoque;
+   // }
 
-    public void setEstoque(Estoque estoque) {
-        this.estoque = estoque;
-    }
+    //public void setEstoque(Estoque estoque) {
+   //     this.estoque = estoque;
+   // }
 }
 
 

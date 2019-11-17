@@ -1,7 +1,6 @@
 package Arquivo;
 
 import Registros.Endereco;
-import Registros.Pessoa;
 import Registros.PessoaFisica;
 import Registros.PessoaJuridica;
 import com.google.gson.Gson;
@@ -16,7 +15,6 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 

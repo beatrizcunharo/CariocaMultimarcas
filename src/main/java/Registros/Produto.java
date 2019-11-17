@@ -15,10 +15,11 @@ import java.util.Date;
 public class Produto {
     private int codigo;
     private int qtde;
+    private String tipo;
     private double valor;
     private String nome;
     private String sexo;
-    private Date dataRegistro;
+    private String dataRegistro;
     
     public Produto(){
         codigo = 0;
@@ -27,6 +28,7 @@ public class Produto {
         nome = null;
         sexo = null;
         dataRegistro = null;
+        tipo = null;
     }
 
     public int getCodigo(){
@@ -69,11 +71,25 @@ public class Produto {
         this.sexo = sexo;
     }
 
-    public Date getDataRegistro() {
+    public String getDataRegistro() {
         return dataRegistro;
     }
 
-    public void setDataRegistro(Date dataRegistro) {
+    public void setDataRegistro(String dataRegistro) {
         this.dataRegistro = dataRegistro;
     }    
+
+    /**
+     * @return the tipo
+     */
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 }

@@ -1216,7 +1216,13 @@ public class JClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnVoltar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar3ActionPerformed
-        // TODO add your handling code here:
+        JPrincipal principal = new JPrincipal();
+        if(principal.isVisible() == false){
+           principal.setVisible(true);
+           this.setVisible(false);
+        }else{
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_btnVoltar3ActionPerformed
 
     private void cmbTipo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipo3ActionPerformed
@@ -1225,21 +1231,21 @@ public class JClientes extends javax.swing.JFrame {
             txtCEP2.setEnabled(false);txtCNPJ2.setEnabled(false);txtCPF2.setEnabled(false);txtCidade2.setEnabled(false);
             txtComplemento2.setEnabled(false);txtDataNasc2.setEnabled(false);txtDataRegis2.setEnabled(false);txtIE2.setEnabled(false);
             txtNumero2.setEnabled(false);txtPais2.setEnabled(false);txtRua2.setEnabled(false);cmbEstado2.setEnabled(false);
-            btnAlterar.setEnabled(false);
+            btnAlterar.setEnabled(false);limparAlterar();
         }
         if(cmbTipo3.getSelectedIndex() == 1){
             txtNome2.setEnabled(true);txtTel2.setEnabled(true);cmbSexo2.setEnabled(true); txtBairro2.setEnabled(true);
             txtCEP2.setEnabled(true);txtCNPJ2.setEnabled(false);txtCPF2.setEnabled(true);txtCidade2.setEnabled(true);
             txtComplemento2.setEnabled(true);txtDataNasc2.setEnabled(true);txtDataRegis2.setEnabled(true);txtIE2.setEnabled(false);
             txtNumero2.setEnabled(true);txtPais2.setEnabled(true);txtRua2.setEnabled(true);cmbEstado2.setEnabled(true);
-            btnAlterar.setEnabled(true);
+            btnAlterar.setEnabled(true);limparAlterar();
         }   
         if(cmbTipo3.getSelectedIndex() == 2){
             txtNome2.setEnabled(true);txtTel2.setEnabled(true);cmbSexo2.setEnabled(false); txtBairro2.setEnabled(true);
             txtCEP2.setEnabled(true);txtCNPJ2.setEnabled(true);txtCPF2.setEnabled(false);txtCidade2.setEnabled(true);
             txtComplemento2.setEnabled(true);txtDataNasc2.setEnabled(false);txtDataRegis2.setEnabled(true);txtIE2.setEnabled(true);
             txtNumero2.setEnabled(true);txtPais2.setEnabled(true);txtRua2.setEnabled(true);cmbEstado2.setEnabled(true);
-            btnAlterar.setEnabled(true);
+            btnAlterar.setEnabled(true);limparAlterar();
         }
     }//GEN-LAST:event_cmbTipo3ActionPerformed
 
@@ -1249,19 +1255,19 @@ public class JClientes extends javax.swing.JFrame {
             txtCEP.setEnabled(false);txtCNPJ.setEnabled(false);txtCPF.setEnabled(false);txtCidade.setEnabled(false);
             txtComplemento.setEnabled(false);txtDataNasc.setEnabled(false);txtDataRegis.setEnabled(false);txtIE.setEnabled(false);
             txtNumero.setEnabled(false);txtPais.setEnabled(false);txtRua.setEnabled(false);cmbEstado.setEnabled(false);
-            btnEnviar.setEnabled(false);
+            btnEnviar.setEnabled(false);limparCadastro();
         }
         if(cmbTipo.getSelectedIndex() == 1){
             txtNome.setEnabled(true);txtTel.setEnabled(true);cmbSexo.setEnabled(true); txtBairro.setEnabled(true);
             txtCEP.setEnabled(true);txtCNPJ.setEnabled(false);txtCPF.setEnabled(true);txtCidade.setEnabled(true);
             txtComplemento.setEnabled(true);txtDataNasc.setEnabled(true);txtDataRegis.setEnabled(true);txtIE.setEnabled(false);
-            txtNumero.setEnabled(true);txtPais.setEnabled(true);txtRua.setEnabled(true);cmbEstado.setEnabled(true);btnEnviar.setEnabled(true);
+            txtNumero.setEnabled(true);txtPais.setEnabled(true);txtRua.setEnabled(true);cmbEstado.setEnabled(true);btnEnviar.setEnabled(true);limparCadastro();
         }
         if(cmbTipo.getSelectedIndex() == 2){
             txtNome.setEnabled(true);txtTel.setEnabled(true);cmbSexo.setEnabled(false); txtBairro.setEnabled(true);
             txtCEP.setEnabled(true);txtCNPJ.setEnabled(true);txtCPF.setEnabled(false);txtCidade.setEnabled(true);
             txtComplemento.setEnabled(true);txtDataNasc.setEnabled(false);txtDataRegis.setEnabled(true);txtIE.setEnabled(true);
-            txtNumero.setEnabled(true);txtPais.setEnabled(true);txtRua.setEnabled(true);cmbEstado.setEnabled(true);btnEnviar.setEnabled(true);
+            txtNumero.setEnabled(true);txtPais.setEnabled(true);txtRua.setEnabled(true);cmbEstado.setEnabled(true);btnEnviar.setEnabled(true);limparCadastro();
         }
         
         
