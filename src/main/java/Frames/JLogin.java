@@ -458,7 +458,7 @@ public class JLogin extends javax.swing.JFrame {
                 }
             }
             if(vazioCadastro() == true){
-            JOptionPane.showMessageDialog(null, "Há campos vazios.");
+                JOptionPane.showMessageDialog(null, "Há campos vazios.");
             }else{
                 if(!senha.equals(confirmaSenha)){
                     JOptionPane.showMessageDialog(null, "As senhas são diferentes.");

@@ -1,13 +1,14 @@
 package Frames;
 
 import Arquivo.ArquivoCliente;
+import Arquivo.ArquivoEndereco;
 import Registros.Endereco;
-import Registros.Pessoa;
 import Registros.PessoaFisica;
 import Registros.PessoaJuridica;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.swing.JFormattedTextField;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,9 +25,11 @@ public class JClientes extends javax.swing.JFrame {
     DefaultTableModel tabela=new DefaultTableModel();
     String vetTabela[]=new String[17];
     ArquivoCliente arquivoCliente;
+    ArquivoEndereco arquivoEnder;
     public JClientes() {
         initComponents();
         arquivoCliente = new ArquivoCliente();
+        arquivoEnder = new ArquivoEndereco();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         tabela.addColumn("Tipo");tabela.addColumn("Nome");tabela.addColumn("CPF");tabela.addColumn("Sexo");tabela.addColumn("Telefone");
@@ -53,28 +56,28 @@ public class JClientes extends javax.swing.JFrame {
     
     public boolean vazioCadastro(){
         boolean vazio = false;
-        if(cmbTipo.getSelectedItem().equals("Cliente Físico")){
-            if(txtNome.getText().equals("") || txtTel.getText().equals("(  )          ") || txtCPF.getText().equals("   .   .   -  ") || cmbSexo.getSelectedItem().equals("Selecione aqui...")
-               || txtDataNasc.getText().equals("  /  /    ") || txtDataRegis.getText().equals("  /  /    ") || txtCEP.getText().equals("     -   ")
-               || txtRua.getText().equals("") || txtBairro.getText().equals("") || txtCidade.getText().equals("") || txtNumero.getText().equals("")
-               || cmbEstado.getSelectedItem().equals("Selecione aqui...") || txtPais.getText().equals("") || txtComplemento.getText().equals("") ){
-               vazio = true;
-            }else{
-                if(cmbTipo.getSelectedItem().equals("Cliente Jurídico")){
-                    if(txtNome.getText().equals("") || txtTel.getText().equals("(  )          ") || txtCNPJ.getText().equals("  .   .   /    -  ") || txtIE.getText().equals("")
-                    || txtDataRegis.getText().equals("  /  /    ") || txtCEP.getText().equals("     -   ") || txtRua.getText().equals("") || txtBairro.getText().equals("")
-                    || txtCidade.getText().equals("") || txtNumero.getText().equals("") || cmbEstado.getSelectedItem().equals("Selecione aqui...")
-                    || txtPais.getText().equals("") || txtComplemento.getText().equals("")){
+        if(cmbTipo.getSelectedIndex() == 0)
+            vazio = true;
+        else{
+            if(cmbTipo.getSelectedIndex() == 1){
+                if(txtNome.getText().equals("") || txtTel.getText().equals("(  )          ") || txtCPF.getText().equals("   .   .   -  ") || cmbSexo.getSelectedItem().equals("Selecione aqui...")
+                    || txtDataNasc.getText().equals("  /  /    ") || txtDataRegis.getText().equals("  /  /    ") || txtCEP.getText().equals("     -   ")
+                    || txtRua.getText().equals("") || txtBairro.getText().equals("") || txtCidade.getText().equals("") || txtNumero.getText().equals("")
+                    || cmbEstado.getSelectedItem().equals("Selecione aqui...") || txtPais.getText().equals("") || txtComplemento.getText().equals("") ){
                         vazio = true;
-                    }
                 }else{
-                    if(cmbTipo.getSelectedItem().equals("Selecione aqui..."))
-                        vazio = true;
-                    else
-                        vazio = false;
+                    if(cmbTipo.getSelectedIndex() == 2){
+                        if(txtNome.getText().equals("") || txtTel.getText().equals("(  )          ") || txtCNPJ.getText().equals("  .   .   /    -  ") || txtIE.getText().equals("")
+                            || txtDataRegis.getText().equals("  /  /    ") || txtCEP.getText().equals("     -   ") || txtRua.getText().equals("") || txtBairro.getText().equals("")
+                            || txtCidade.getText().equals("") || txtNumero.getText().equals("") || cmbEstado.getSelectedItem().equals("Selecione aqui...")
+                            || txtPais.getText().equals("") || txtComplemento.getText().equals("")){
+                                vazio = true;
+                        }else
+                            vazio = false;
+                    }
                 }
-            }
-        }
+            }            
+        }    
         return vazio;
     }
     @SuppressWarnings("unchecked")
@@ -920,40 +923,55 @@ public class JClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-       PessoaFisica f = new PessoaFisica();
-       PessoaJuridica j = new PessoaJuridica();
-       Endereco e = new Endereco();
        
-       
-       f.setTipo(cmbTipo.getSelectedItem().toString());
-       f.setNome(txtNome.getText());
-       f.setTelefone(txtTel.getText());
-       f.setNumCompras(0);
-       f.setDataRegistro(txtDataRegis.getText());
-       e.setBairro(txtBairro.getText());
-       e.setCEP(txtCEP.getText());
-       e.setCidade(txtCidade.getText());
-       e.setComplemento(txtComplemento.getText());
-       e.setEstado(cmbEstado.getSelectedItem().toString());
-       e.setNumero(Integer.parseInt(txtNumero.getText()));
-       e.setPais(txtPais.getText());
-       e.setRua(txtRua.getText());
-       if(cmbTipo.getSelectedItem().equals("Cliente Físico")){
-           f.setCpf(txtCPF.getText());
-           f.setSexo(cmbSexo.getSelectedItem().toString());
-           f.setDataNasc(txtDataNasc.getText());
+       String tipo = cmbTipo.getSelectedItem().toString();
+       String nome = txtNome.getText();
+       String telefone = txtTel.getText();
+       int numCompras = 0;
+       String dataRegistro = txtDataRegis.getText();
+       String bairro = txtBairro.getText();
+       String CEP = txtCEP.getText();
+       String cidade = txtCidade.getText();
+       String complemento = txtComplemento.getText();
+       String estado = cmbEstado.getSelectedItem().toString();
+       int numero = Integer.parseInt(txtNumero.getText());
+       String pais = txtPais.getText();
+       String rua = txtRua.getText();
+       String cpf = txtCPF.getText();
+       String sexo = cmbSexo.getSelectedItem().toString();
+       String dataNasc = txtDataNasc.getText();
+       String ie = txtIE.getText();
+       String cnpj = txtCNPJ.getText();
+       if(vazioCadastro() == true){
+           JOptionPane.showMessageDialog(null, "Há campos vazios.");
        }else{
-           if(cmbTipo.getSelectedItem().equals("Cliente Jurídico")){
-               j.setCnpj(txtCNPJ.getText());
-               j.setIe(txtIE.getText());
-           }
-       }
-       
+            if(cmbTipo.getSelectedIndex() == 1){
+                arquivoCliente.cadastraPessoaFisica(tipo, nome, cpf, sexo, telefone, dataNasc, numCompras, dataRegistro, bairro, rua, CEP, complemento, cidade, pais, estado, numero);
+                try {
+                    arquivoCliente.inputPessoaFisica();
+                    JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
+                    limparCadastro();
+                } catch (IOException ex) {
+                    Logger.getLogger(JClientes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                if(cmbTipo.getSelectedIndex() == 2){
+                    arquivoCliente.cadastraPessoaJuridica(tipo, nome, cnpj, ie, telefone, numCompras, dataRegistro, bairro, rua, CEP, complemento, cidade, pais, estado, numero);
+                    try {
+                        arquivoCliente.inputPessoaJuridica();
+                        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
+                        limparCadastro();
+                    } catch (IOException ex) {
+                        Logger.getLogger(JClientes.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }
    
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnLimpar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar2ActionPerformed
-        // TODO add your handling code here:
+        limparAlterar();
     }//GEN-LAST:event_btnLimpar2ActionPerformed
 
     private void btnEnviar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviar2ActionPerformed
