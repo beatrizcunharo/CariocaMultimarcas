@@ -36,7 +36,10 @@ public class JClientes extends javax.swing.JFrame {
         tabela.addColumn("CNPJ");tabela.addColumn("IE");tabela.addColumn("Data Nasc");tabela.addColumn("Data R.");
         tabela.addColumn("CEP");tabela.addColumn("Rua");tabela.addColumn("Número");tabela.addColumn("Bairro");tabela.addColumn("Cidade");
         tabela.addColumn("Estado");tabela.addColumn("País");tabela.addColumn("Complemento");tabela.addColumn("Num Compras");
-        
+        txtNome.setEnabled(false);txtTel.setEnabled(false);cmbSexo.setEnabled(false); txtBairro.setEnabled(false);
+        txtCEP.setEnabled(false);txtCNPJ.setEnabled(false);txtCPF.setEnabled(false);txtCidade.setEnabled(false);
+        txtComplemento.setEnabled(false);txtDataNasc.setEnabled(false);txtDataRegis.setEnabled(false);txtIE.setEnabled(false);
+        txtNumero.setEnabled(false);txtPais.setEnabled(false);txtRua.setEnabled(false);cmbEstado.setEnabled(false);btnEnviar.setEnabled(false);
                 
               
     }
@@ -186,6 +189,11 @@ public class JClientes extends javax.swing.JFrame {
         jLabel1.setText("Cliente:");
 
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Cliente Físico", "Cliente Jurídico" }));
+        cmbTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nome:");
 
@@ -497,6 +505,11 @@ public class JClientes extends javax.swing.JFrame {
         jLabel9.setText("Cliente:");
 
         cmbTipo3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Cliente Físico", "Cliente Jurídico" }));
+        cmbTipo3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipo3ActionPerformed(evt);
+            }
+        });
 
         jLabel30.setText("Nome:");
 
@@ -924,27 +937,27 @@ public class JClientes extends javax.swing.JFrame {
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
        
-       String tipo = cmbTipo.getSelectedItem().toString();
-       String nome = txtNome.getText();
-       String telefone = txtTel.getText();
-       int numCompras = 0;
-       String dataRegistro = txtDataRegis.getText();
-       String bairro = txtBairro.getText();
-       String CEP = txtCEP.getText();
-       String cidade = txtCidade.getText();
-       String complemento = txtComplemento.getText();
-       String estado = cmbEstado.getSelectedItem().toString();
-       int numero = Integer.parseInt(txtNumero.getText());
-       String pais = txtPais.getText();
-       String rua = txtRua.getText();
-       String cpf = txtCPF.getText();
-       String sexo = cmbSexo.getSelectedItem().toString();
-       String dataNasc = txtDataNasc.getText();
-       String ie = txtIE.getText();
-       String cnpj = txtCNPJ.getText();
        if(vazioCadastro() == true){
            JOptionPane.showMessageDialog(null, "Há campos vazios.");
        }else{
+            String tipo = cmbTipo.getSelectedItem().toString();
+            String nome = txtNome.getText();
+            String telefone = txtTel.getText();
+            int numCompras = 0;
+            String dataRegistro = txtDataRegis.getText();
+            String bairro = txtBairro.getText();
+            String CEP = txtCEP.getText();
+            String cidade = txtCidade.getText();
+            String complemento = txtComplemento.getText();
+            String estado = cmbEstado.getSelectedItem().toString();
+            int numero = Integer.parseInt(txtNumero.getText());
+            String pais = txtPais.getText();
+            String rua = txtRua.getText();
+            String cpf = txtCPF.getText();
+            String sexo = cmbSexo.getSelectedItem().toString();
+            String dataNasc = txtDataNasc.getText();
+            String ie = txtIE.getText();
+            String cnpj = txtCNPJ.getText();
             if(cmbTipo.getSelectedIndex() == 1){
                 arquivoCliente.cadastraPessoaFisica(tipo, nome, cpf, sexo, telefone, dataNasc, numCompras, dataRegistro, bairro, rua, CEP, complemento, cidade, pais, estado, numero);
                 try {
@@ -981,6 +994,34 @@ public class JClientes extends javax.swing.JFrame {
     private void btnVoltar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVoltar3ActionPerformed
+
+    private void cmbTipo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipo3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTipo3ActionPerformed
+
+    private void cmbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoActionPerformed
+        if(cmbTipo.getSelectedIndex() == 0){
+            txtNome.setEnabled(false);txtTel.setEnabled(false);cmbSexo.setEnabled(false); txtBairro.setEnabled(false);
+            txtCEP.setEnabled(false);txtCNPJ.setEnabled(false);txtCPF.setEnabled(false);txtCidade.setEnabled(false);
+            txtComplemento.setEnabled(false);txtDataNasc.setEnabled(false);txtDataRegis.setEnabled(false);txtIE.setEnabled(false);
+            txtNumero.setEnabled(false);txtPais.setEnabled(false);txtRua.setEnabled(false);cmbEstado.setEnabled(false);
+            btnEnviar.setEnabled(false);
+        }
+        if(cmbTipo.getSelectedIndex() == 1){
+            txtNome.setEnabled(true);txtTel.setEnabled(true);cmbSexo.setEnabled(true); txtBairro.setEnabled(true);
+            txtCEP.setEnabled(true);txtCNPJ.setEnabled(false);txtCPF.setEnabled(true);txtCidade.setEnabled(true);
+            txtComplemento.setEnabled(true);txtDataNasc.setEnabled(true);txtDataRegis.setEnabled(true);txtIE.setEnabled(false);
+            txtNumero.setEnabled(true);txtPais.setEnabled(true);txtRua.setEnabled(true);cmbEstado.setEnabled(true);btnEnviar.setEnabled(true);
+        }
+        if(cmbTipo.getSelectedIndex() == 2){
+            txtNome.setEnabled(true);txtTel.setEnabled(true);cmbSexo.setEnabled(false); txtBairro.setEnabled(true);
+            txtCEP.setEnabled(true);txtCNPJ.setEnabled(true);txtCPF.setEnabled(false);txtCidade.setEnabled(true);
+            txtComplemento.setEnabled(true);txtDataNasc.setEnabled(false);txtDataRegis.setEnabled(true);txtIE.setEnabled(true);
+            txtNumero.setEnabled(true);txtPais.setEnabled(true);txtRua.setEnabled(true);cmbEstado.setEnabled(true);btnEnviar.setEnabled(true);
+        }
+        
+        
+    }//GEN-LAST:event_cmbTipoActionPerformed
 
     /**
      * @param args the command line arguments

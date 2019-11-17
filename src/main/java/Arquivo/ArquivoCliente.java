@@ -108,7 +108,7 @@ public class ArquivoCliente {
             }
         }   
     public void inputPessoaJuridica() throws IOException{
-        Type tipoLista = new TypeToken<List<PessoaFisica>>() {}.getType();
+        Type tipoLista = new TypeToken<List<PessoaJuridica>>() {}.getType();
         Gson gson = new Gson();
         String json = gson.toJson(clientej, tipoLista);
         
