@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class PessoaFisica extends Pessoa{
     private String cpf;
-    private Date dataNasc;
+    private String dataNasc;
     private String sexo;
     
     public PessoaFisica(){
@@ -30,11 +30,11 @@ public class PessoaFisica extends Pessoa{
         this.cpf = cpf;
     }
 
-    public Date getDataNasc() {
+    public String getDataNasc() {
         return dataNasc;
     }
 
-    public void setDataNasc(Date dataDeNasc) {
+    public void setDataNasc(String dataDeNasc) {
         this.dataNasc = dataDeNasc;
     }
 

@@ -3,15 +3,11 @@ package Frames;
 import Arquivo.ArquivoLogin;
 import Registros.Login;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -26,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class JLogin extends javax.swing.JFrame {
     DefaultTableModel tabela=new DefaultTableModel();
     ArquivoLogin arquivoLogin;
-    String vetTabela[]=new String[7];
+    String vetTabela[]=new String[2];
     int posicao;
     public JLogin() {
         initComponents();

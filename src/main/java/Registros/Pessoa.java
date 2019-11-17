@@ -13,13 +13,15 @@ import java.util.Date;
 
  */
 public class Pessoa {
+    private String tipo;
     private String nome;
     private String telefone;
-    private Date dataRegistro;
+    private String dataRegistro;
     private Endereco endereco;
     private int numCompras;
     
     public Pessoa(){
+        tipo = null;
         nome = null;
         telefone = null;
         dataRegistro = null;
@@ -43,11 +45,11 @@ public class Pessoa {
         this.telefone = telefone;
     }
 
-    public Date getDataRegistro() {
+    public String getDataRegistro() {
         return dataRegistro;
     }
 
-    public void setDataRegistro(Date dataRegistro) {
+    public void setDataRegistro(String dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
 
@@ -65,6 +67,20 @@ public class Pessoa {
     
     public void setNumCompras(int numVendas) {
         this.numCompras = numVendas;
+    }
+
+    /**
+     * @return the tipo
+     */
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }
 
