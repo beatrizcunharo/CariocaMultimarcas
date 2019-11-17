@@ -5,6 +5,7 @@ import Registros.Endereco;
 import Registros.PessoaFisica;
 import Registros.PessoaJuridica;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,9 +23,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class JClientes extends javax.swing.JFrame {
     DefaultTableModel tabela=new DefaultTableModel();
-    String vetTabela[]=new String[17];
+    String vetTabela[]=new String[18];
     ArquivoCliente arquivoCliente;
-    
+    int posicao;
     public JClientes() {
         initComponents();
         arquivoCliente = new ArquivoCliente();
@@ -39,6 +40,10 @@ public class JClientes extends javax.swing.JFrame {
         txtComplemento.setEnabled(false);txtDataNasc.setEnabled(false);txtDataRegis.setEnabled(false);txtIE.setEnabled(false);
         txtNumero.setEnabled(false);txtPais.setEnabled(false);txtRua.setEnabled(false);cmbEstado.setEnabled(false);btnEnviar.setEnabled(false);
         txtCPF3.setEnabled(false);txtCNPJ3.setEnabled(false);
+        txtNome2.setEnabled(false);txtTel2.setEnabled(false);cmbSexo2.setEnabled(false); txtBairro2.setEnabled(false);
+        txtCEP2.setEnabled(false);txtCNPJ2.setEnabled(false);txtCPF2.setEnabled(false);txtCidade2.setEnabled(false);
+        txtComplemento2.setEnabled(false);txtDataNasc2.setEnabled(false);txtDataRegis2.setEnabled(false);txtIE2.setEnabled(false);
+        txtNumero2.setEnabled(false);txtPais2.setEnabled(false);txtRua2.setEnabled(false);cmbEstado2.setEnabled(false);btnAlterar.setEnabled(false);
               
     }
     
@@ -49,7 +54,7 @@ public class JClientes extends javax.swing.JFrame {
         txtPais.setText(""); txtComplemento.setText("");
     }
     public void limparAlterar(){
-        cmbTipo2.setSelectedItem("Selecione..."); txtNome2.setText("");txtTel2.setText("");txtCPF2.setText("");cmbSexo2.setSelectedItem("Selecione...");
+        cmbTipo3.setSelectedItem("Selecione..."); txtNome2.setText("");txtTel2.setText("");txtCPF2.setText("");cmbSexo2.setSelectedItem("Selecione...");
         txtCEP2.setText(""); txtRua2.setText("");txtBairro2.setText("");txtCidade2.setText(""); txtCNPJ2.setText("");txtIE2.setText("");
         txtDataNasc2.setText(""); txtDataRegis2.setText(""); txtNumero2.setText("");cmbEstado2.setSelectedItem("Selecione...");
         txtPais2.setText(""); txtComplemento2.setText("");
@@ -80,6 +85,151 @@ public class JClientes extends javax.swing.JFrame {
             }            
         }    
         return vazio;
+    }
+    
+    public boolean vazioAlterar(){
+        boolean vazio = false;
+        if(cmbTipo3.getSelectedIndex() == 0)
+            vazio = true;
+        else{
+            if(cmbTipo3.getSelectedIndex() == 1){
+                if(txtNome2.getText().equals("") || txtTel2.getText().equals("(  )          ") || txtCPF2.getText().equals("   .   .   -  ") || cmbSexo2.getSelectedItem().equals("Selecione aqui...")
+                    || txtDataNasc2.getText().equals("  /  /    ") || txtDataRegis2.getText().equals("  /  /    ") || txtCEP2.getText().equals("     -   ")
+                    || txtRua2.getText().equals("") || txtBairro2.getText().equals("") || txtCidade2.getText().equals("") || txtNumero2.getText().equals("")
+                    || cmbEstado2.getSelectedItem().equals("Selecione aqui...") || txtPais2.getText().equals("") || txtComplemento2.getText().equals("") ){
+                        vazio = true;
+                }else{
+                    if(cmbTipo3.getSelectedIndex() == 2){
+                        if(txtNome2.getText().equals("") || txtTel2.getText().equals("(  )          ") || txtCNPJ2.getText().equals("  .   .   /    -  ") || txtIE2.getText().equals("")
+                            || txtDataRegis2.getText().equals("  /  /    ") || txtCEP2.getText().equals("     -   ") || txtRua2.getText().equals("") || txtBairro2.getText().equals("")
+                            || txtCidade2.getText().equals("") || txtNumero2.getText().equals("") || cmbEstado2.getSelectedItem().equals("Selecione aqui...")
+                            || txtPais2.getText().equals("") || txtComplemento2.getText().equals("")){
+                                vazio = true;
+                        }else
+                            vazio = false;
+                    }
+                }
+            }            
+        }    
+        return vazio;
+    }
+    
+    public void pesquisa(){
+        List<PessoaFisica> f = arquivoCliente.outputPessoaFisica();
+        List<Endereco> ef = arquivoCliente.outputEnderecoFisico();
+        List<PessoaJuridica> j = arquivoCliente.outputPessoaJuridica();
+        List<Endereco> ej = arquivoCliente.outputEnderecoJuridico();
+        int t = tabela.getRowCount();
+        for (int i = 0; i < t; i++) {
+            tabela.removeRow(0);
+        }
+        for(int i=0;i<f.size();i++){
+            vetTabela[0] = f.get(i).getTipo();
+            vetTabela[1] = f.get(i).getNome();
+            vetTabela[2] = f.get(i).getCpf();
+            vetTabela[3] = f.get(i).getSexo();
+            vetTabela[4] = f.get(i).getTelefone();
+            vetTabela[5] = "";
+            vetTabela[6] = "";
+            vetTabela[7] = f.get(i).getDataNasc();
+            vetTabela[8] = f.get(i).getDataRegistro();
+            vetTabela[9] = ef.get(i).getCEP();
+            vetTabela[10] = ef.get(i).getRua();
+            vetTabela[11] = ef.get(i).getNumero()+"";
+            vetTabela[12] = ef.get(i).getBairro();
+            vetTabela[13] = ef.get(i).getCidade();
+            vetTabela[14] = ef.get(i).getEstado();
+            vetTabela[15] = ef.get(i).getPais();
+            vetTabela[16] = ef.get(i).getComplemento();
+            vetTabela[17] = f.get(i).getNumCompras()+"";
+            tabela.addRow(vetTabela);
+        }
+        for(int i=0;i<j.size();i++){
+            vetTabela[0] = j.get(i).getTipo();
+            vetTabela[1] = j.get(i).getNome();
+            vetTabela[2] = "";
+            vetTabela[3] = "";
+            vetTabela[4] = j.get(i).getTelefone();
+            vetTabela[5] = j.get(i).getCnpj();
+            vetTabela[6] = j.get(i).getIe();
+            vetTabela[7] = "";
+            vetTabela[8] = j.get(i).getDataRegistro();
+            vetTabela[9] = ej.get(i).getCEP();
+            vetTabela[10] = ej.get(i).getRua();
+            vetTabela[11] = ej.get(i).getNumero()+"";
+            vetTabela[12] = ej.get(i).getBairro();
+            vetTabela[13] = ej.get(i).getCidade();
+            vetTabela[14] = ej.get(i).getEstado();
+            vetTabela[15] = ej.get(i).getPais();
+            vetTabela[16] = ej.get(i).getComplemento();
+            vetTabela[17] = j.get(i).getNumCompras()+"";
+            tabela.addRow(vetTabela);
+        }
+    }
+    
+    public void pesquisaPorCPF(){
+        List<PessoaFisica> f = arquivoCliente.outputPessoaFisica();
+        List<Endereco> ef = arquivoCliente.outputEnderecoFisico();
+        int t = tabela.getRowCount();
+        for (int i = 0; i < t; i++) {
+            tabela.removeRow(0);
+        }
+        for (int i=0;i<f.size();i++) {
+            if(txtCPF3.getText().equals(f.get(i).getCpf())){
+                vetTabela[0] = f.get(i).getTipo();
+                vetTabela[1] = f.get(i).getNome();
+                vetTabela[2] = f.get(i).getCpf();
+                vetTabela[3] = f.get(i).getSexo();
+                vetTabela[4] = f.get(i).getTelefone();
+                vetTabela[5] = "";
+                vetTabela[6] = "";
+                vetTabela[7] = f.get(i).getDataNasc();
+                vetTabela[8] = f.get(i).getDataRegistro();
+                vetTabela[9] = ef.get(i).getCEP();
+                vetTabela[10] = ef.get(i).getRua();
+                vetTabela[11] = ef.get(i).getNumero()+"";
+                vetTabela[12] = ef.get(i).getBairro();
+                vetTabela[13] = ef.get(i).getCidade();
+                vetTabela[14] = ef.get(i).getEstado();
+                vetTabela[15] = ef.get(i).getPais();
+                vetTabela[16] = ef.get(i).getComplemento();
+                vetTabela[17] = f.get(i).getNumCompras()+"";
+            
+            }
+        }
+        tabela.addRow(vetTabela);
+    }
+    
+    public void pesquisaPorCNPJ(){
+        List<PessoaJuridica> j = arquivoCliente.outputPessoaJuridica();
+        List<Endereco> ej = arquivoCliente.outputEnderecoJuridico();
+        int t = tabela.getRowCount();
+        for (int i = 0; i < t; i++) {
+            tabela.removeRow(0);
+        }
+        for (int i=0;i<j.size();i++) {
+            if(txtCNPJ3.getText().equals(j.get(i).getCnpj())){
+                vetTabela[0] = j.get(i).getTipo();
+                vetTabela[1] = j.get(i).getNome();
+                vetTabela[2] = "";
+                vetTabela[3] = "";
+                vetTabela[4] = j.get(i).getTelefone();
+                vetTabela[5] = j.get(i).getCnpj();
+                vetTabela[6] = j.get(i).getIe();
+                vetTabela[7] = "";
+                vetTabela[8] = j.get(i).getDataRegistro();
+                vetTabela[9] = ej.get(i).getCEP();
+                vetTabela[10] = ej.get(i).getRua();
+                vetTabela[11] = ej.get(i).getNumero()+"";
+                vetTabela[12] = ej.get(i).getBairro();
+                vetTabela[13] = ej.get(i).getCidade();
+                vetTabela[14] = ej.get(i).getEstado();
+                vetTabela[15] = ej.get(i).getPais();
+                vetTabela[16] = ej.get(i).getComplemento();
+                vetTabela[17] = j.get(i).getNumCompras()+"";
+            }
+        }
+        tabela.addRow(vetTabela);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -139,7 +289,7 @@ public class JClientes extends javax.swing.JFrame {
         jLabel45 = new javax.swing.JLabel();
         txtIE2 = new javax.swing.JTextField();
         btnLimpar2 = new javax.swing.JButton();
-        btnEnviar2 = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
         btnVoltar3 = new javax.swing.JButton();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
@@ -175,8 +325,6 @@ public class JClientes extends javax.swing.JFrame {
         btnVoltar2 = new javax.swing.JButton();
         btnAlterar1 = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
-        txtCPF4 = new javax.swing.JFormattedTextField();
-        txtCPF5 = new javax.swing.JFormattedTextField();
         txtCPF3 = new javax.swing.JFormattedTextField();
         txtCNPJ3 = new javax.swing.JFormattedTextField();
 
@@ -532,10 +680,10 @@ public class JClientes extends javax.swing.JFrame {
             }
         });
 
-        btnEnviar2.setText("Alterar");
-        btnEnviar2.addActionListener(new java.awt.event.ActionListener() {
+        btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnviar2ActionPerformed(evt);
+                btnAlterarActionPerformed(evt);
             }
         });
 
@@ -671,7 +819,7 @@ public class JClientes extends javax.swing.JFrame {
                         .addGap(173, 173, 173)
                         .addComponent(btnLimpar2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEnviar2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnVoltar3))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -802,7 +950,7 @@ public class JClientes extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLimpar2)
-                    .addComponent(btnEnviar2)
+                    .addComponent(btnAlterar)
                     .addComponent(btnVoltar3)))
         );
 
@@ -827,6 +975,11 @@ public class JClientes extends javax.swing.JFrame {
         jScrollPane1.setViewportView(table);
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnVoltar2.setText("Voltar");
         btnVoltar2.addActionListener(new java.awt.event.ActionListener() {
@@ -836,20 +989,18 @@ public class JClientes extends javax.swing.JFrame {
         });
 
         btnAlterar1.setText("Alterar");
+        btnAlterar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterar1ActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
-
-        try {
-            txtCPF4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        try {
-            txtCPF5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         try {
             txtCPF3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -898,16 +1049,6 @@ public class JClientes extends javax.swing.JFrame {
                 .addGap(161, 161, 161)
                 .addComponent(btnExcluir)
                 .addGap(172, 172, 172))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(304, 304, 304)
-                    .addComponent(txtCPF4, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(305, Short.MAX_VALUE)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(314, Short.MAX_VALUE)
-                    .addComponent(txtCPF5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(295, 295, 295)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -932,16 +1073,6 @@ public class JClientes extends javax.swing.JFrame {
                     .addComponent(btnAlterar1)
                     .addComponent(btnExcluir))
                 .addGap(21, 21, 21))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(223, 223, 223)
-                    .addComponent(txtCPF4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(223, Short.MAX_VALUE)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(233, Short.MAX_VALUE)
-                    .addComponent(txtCPF5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(213, 213, 213)))
         );
 
         jTabbedPane1.addTab("Pesquisar", jPanel1);
@@ -1038,16 +1169,78 @@ public class JClientes extends javax.swing.JFrame {
         limparAlterar();
     }//GEN-LAST:event_btnLimpar2ActionPerformed
 
-    private void btnEnviar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEnviar2ActionPerformed
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+    if(vazioAlterar() == true){
+           JOptionPane.showMessageDialog(null, "Há campos vazios.");
+       }else{
+            String tipo = cmbTipo3.getSelectedItem().toString();
+            String nome = txtNome2.getText();
+            String telefone = txtTel2.getText();
+            int numCompras = 0;
+            String dataRegistro = txtDataRegis2.getText();
+            String bairro = txtBairro2.getText();
+            String CEP = txtCEP2.getText();
+            String cidade = txtCidade2.getText();
+            String complemento = txtComplemento2.getText();
+            String estado = cmbEstado2.getSelectedItem().toString();
+            int numero = Integer.parseInt(txtNumero2.getText());
+            String pais = txtPais2.getText();
+            String rua = txtRua2.getText();
+            String cpf = txtCPF2.getText();
+            String sexo = cmbSexo2.getSelectedItem().toString();
+            String dataNasc = txtDataNasc2.getText();
+            String ie = txtIE2.getText();
+            String cnpj = txtCNPJ2.getText();
+            if(cmbTipo3.getSelectedIndex() == 1){
+                
+                try {
+                    arquivoCliente.alterarFisico(tipo, nome, cpf, sexo, telefone, dataNasc, numCompras, dataRegistro, bairro, rua, CEP, complemento, cidade, pais, estado, numero, posicao);
+                    JOptionPane.showMessageDialog(null, "Alterado com sucesso.");
+                    limparAlterar();
+                } catch (IOException ex) {
+                    Logger.getLogger(JClientes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                if(cmbTipo3.getSelectedIndex() == 2){
+                    
+                    try {
+                        arquivoCliente.alterarJuridico(tipo, nome, cnpj, ie, telefone, numCompras, dataRegistro, bairro, rua, CEP, complemento, cidade, pais, estado, numero, posicao);
+                        JOptionPane.showMessageDialog(null, "Alterado com sucesso.");
+                        limparAlterar();
+                    } catch (IOException ex) {
+                        Logger.getLogger(JClientes.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnVoltar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVoltar3ActionPerformed
 
     private void cmbTipo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipo3ActionPerformed
-        // TODO add your handling code here:
+        if(cmbTipo3.getSelectedIndex() == 0){
+            txtNome2.setEnabled(false);txtTel2.setEnabled(false);cmbSexo2.setEnabled(false); txtBairro2.setEnabled(false);
+            txtCEP2.setEnabled(false);txtCNPJ2.setEnabled(false);txtCPF2.setEnabled(false);txtCidade2.setEnabled(false);
+            txtComplemento2.setEnabled(false);txtDataNasc2.setEnabled(false);txtDataRegis2.setEnabled(false);txtIE2.setEnabled(false);
+            txtNumero2.setEnabled(false);txtPais2.setEnabled(false);txtRua2.setEnabled(false);cmbEstado2.setEnabled(false);
+            btnAlterar.setEnabled(false);
+        }
+        if(cmbTipo3.getSelectedIndex() == 1){
+            txtNome2.setEnabled(true);txtTel2.setEnabled(true);cmbSexo2.setEnabled(true); txtBairro2.setEnabled(true);
+            txtCEP2.setEnabled(true);txtCNPJ2.setEnabled(false);txtCPF2.setEnabled(true);txtCidade2.setEnabled(true);
+            txtComplemento2.setEnabled(true);txtDataNasc2.setEnabled(true);txtDataRegis2.setEnabled(true);txtIE2.setEnabled(false);
+            txtNumero2.setEnabled(true);txtPais2.setEnabled(true);txtRua2.setEnabled(true);cmbEstado2.setEnabled(true);
+            btnAlterar.setEnabled(true);
+        }   
+        if(cmbTipo3.getSelectedIndex() == 2){
+            txtNome2.setEnabled(true);txtTel2.setEnabled(true);cmbSexo2.setEnabled(false); txtBairro2.setEnabled(true);
+            txtCEP2.setEnabled(true);txtCNPJ2.setEnabled(true);txtCPF2.setEnabled(false);txtCidade2.setEnabled(true);
+            txtComplemento2.setEnabled(true);txtDataNasc2.setEnabled(false);txtDataRegis2.setEnabled(true);txtIE2.setEnabled(true);
+            txtNumero2.setEnabled(true);txtPais2.setEnabled(true);txtRua2.setEnabled(true);cmbEstado2.setEnabled(true);
+            btnAlterar.setEnabled(true);
+        }
     }//GEN-LAST:event_cmbTipo3ActionPerformed
 
     private void cmbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoActionPerformed
@@ -1076,15 +1269,122 @@ public class JClientes extends javax.swing.JFrame {
 
     private void cmbTipo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipo2ActionPerformed
        if(cmbTipo2.getSelectedIndex() == 0){
-           txtCPF3.setEnabled(false); txtCNPJ3.setEnabled(false);
+           txtCPF3.setEnabled(false); txtCNPJ3.setEnabled(false); txtCPF3.setText(""); txtCNPJ3.setText("");
        }
        if(cmbTipo2.getSelectedIndex() == 1){
-           txtCPF3.setEnabled(true); txtCNPJ3.setEnabled(false);
+           txtCPF3.setEnabled(true); txtCNPJ3.setEnabled(false);txtCNPJ3.setText("");
        }
        if(cmbTipo2.getSelectedIndex() == 2){
-           txtCPF3.setEnabled(false); txtCNPJ3.setEnabled(true);
+           txtCPF3.setEnabled(false); txtCNPJ3.setEnabled(true);txtCPF3.setText("");
        }
     }//GEN-LAST:event_cmbTipo2ActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if(cmbTipo2.getSelectedIndex() == 0){
+            pesquisa();
+        }else{
+            if((cmbTipo2.getSelectedIndex() == 1) && (!txtCPF3.getText().equals(""))){
+                pesquisaPorCPF();
+            }else{
+                if((cmbTipo2.getSelectedIndex() == 2) && (!txtCNPJ3.getText().equals(""))){
+                    pesquisaPorCNPJ();
+                }
+            }
+        }
+            
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        String cpf = table.getValueAt(table.getSelectedRow(), 2).toString();
+        String cnpj = table.getValueAt(table.getSelectedRow(), 5).toString();
+        if (table.getSelectedRow() >= 0) {
+
+            if (JOptionPane.showConfirmDialog(null, "Deseja excluir realmente?", "Confirmação", 0) == 0) {
+
+                try {
+                    if(!cpf.equals("")){
+                        if (arquivoCliente.excluirPessoaFisica(cpf)) {
+                           JOptionPane.showMessageDialog(null, "Excluido com sucesso");
+                           pesquisa();
+                        }
+                    }else{
+                        if(!cnpj.equals("")){
+                            if(arquivoCliente.excluirPessoaJuridica(cnpj)){
+                                JOptionPane.showMessageDialog(null, "Excluido com sucesso");
+                                pesquisa();
+                            }
+                        }
+                    }
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar1ActionPerformed
+        String cpf = table.getValueAt(table.getSelectedRow(), 2).toString();
+        String cnpj = table.getValueAt(table.getSelectedRow(), 5).toString();
+        if (table.getSelectedRow() >= 0) {
+            if(!cpf.equals("")){
+                List<PessoaFisica> f = arquivoCliente.outputPessoaFisica();
+                List<Endereco> ef = arquivoCliente.outputEnderecoFisico();
+                for(int i=0;i<f.size();i++){
+                    if(f.get(i).getCpf().equals(cpf)){
+                        cmbTipo3.setSelectedItem(f.get(i).getTipo());
+                        txtNome2.setText(f.get(i).getNome());
+                        txtBairro2.setText(ef.get(i).getBairro());
+                        txtCEP2.setText(ef.get(i).getCEP());
+                        txtCidade2.setText(ef.get(i).getCidade());
+                        txtDataNasc2.setText(f.get(i).getDataNasc());
+                        cmbEstado2.setSelectedItem(ef.get(i).getEstado());
+                        cmbSexo2.setSelectedItem(f.get(i).getSexo());
+                        txtCPF2.setText(f.get(i).getCpf());
+                        txtComplemento2.setText(ef.get(i).getComplemento());
+                        txtDataRegis2.setText(f.get(i).getDataRegistro());
+                        txtNumero2.setText(ef.get(i).getNumero()+"");
+                        txtTel2.setText(f.get(i).getTelefone());
+                        txtRua2.setText(ef.get(i).getRua());
+                        txtPais2.setText(ef.get(i).getPais());
+                        posicao = i;
+                        break;
+                    }
+                }
+                jTabbedPane1.setSelectedIndex(1);
+            }else{
+                if(!cnpj.equals("")){
+                    List<PessoaJuridica> j = arquivoCliente.outputPessoaJuridica();
+                    List<Endereco> ej = arquivoCliente.outputEnderecoJuridico();
+                    for(int i=0;i<j.size();i++){
+                        if(j.get(i).getCnpj().equals(cnpj)){
+                            cmbTipo3.setSelectedItem(j.get(i).getTipo());
+                            txtNome2.setText(j.get(i).getNome());
+                            txtBairro2.setText(ej.get(i).getBairro());
+                            txtCEP2.setText(ej.get(i).getCEP());
+                            txtCidade2.setText(ej.get(i).getCidade());
+                            txtCNPJ2.setText(j.get(i).getCnpj());
+                            cmbEstado2.setSelectedItem(ej.get(i).getEstado());
+                            txtIE2.setText(j.get(i).getIe());
+                            txtComplemento2.setText(ej.get(i).getComplemento());
+                            txtDataRegis2.setText(j.get(i).getDataRegistro());
+                            txtNumero2.setText(ej.get(i).getNumero()+"");
+                            txtTel2.setText(j.get(i).getTelefone());
+                            txtRua2.setText(ej.get(i).getRua());
+                            txtPais2.setText(ej.get(i).getPais());
+                            posicao = i;
+                            break;
+                        }
+                    }
+                    jTabbedPane1.setSelectedIndex(1);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Selecione uma linha.");
+                }
+            }
+        }
+    }//GEN-LAST:event_btnAlterar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1123,10 +1423,10 @@ public class JClientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnAlterar1;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEnviar;
-    private javax.swing.JButton btnEnviar2;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnLimpar2;
@@ -1195,8 +1495,6 @@ public class JClientes extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtCPF;
     private javax.swing.JFormattedTextField txtCPF2;
     private javax.swing.JFormattedTextField txtCPF3;
-    private javax.swing.JFormattedTextField txtCPF4;
-    private javax.swing.JFormattedTextField txtCPF5;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtCidade2;
     private javax.swing.JTextField txtComplemento;
