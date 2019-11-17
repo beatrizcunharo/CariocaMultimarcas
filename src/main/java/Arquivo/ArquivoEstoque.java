@@ -4,8 +4,10 @@ import Registros.Blusas;
 import Registros.Calcas;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -13,6 +15,7 @@ import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -106,4 +109,43 @@ public class ArquivoEstoque {
             }
             return false;
         } 
+    
+    public List<Blusas> outputBlusas(){
+        
+        Gson gson = new Gson();
+        Type tipo = new TypeToken<List<Blusas>>() {}.getType();
+        File nome = new File("arquivoBlusas.json");
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(nome));
+            
+            String collect = br.lines().collect(Collectors.joining());
+            
+            List<Blusas> lista = gson.fromJson(collect, tipo);
+         
+            blusas.addAll(lista);
+            return lista;
+        }catch (IOException e){
+            e.printStackTrace();
+        }       
+        return null;
+    }
+    public List<Calcas> outputCalcas(){
+        
+        Gson gson = new Gson();
+        Type tipo = new TypeToken<List<Calcas>>() {}.getType();
+        File nome = new File("arquivoCalcas.json");
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(nome));
+            
+            String collect = br.lines().collect(Collectors.joining());
+            
+            List<Calcas> lista = gson.fromJson(collect, tipo);
+         
+            calcas.addAll(lista);
+            return lista;
+        }catch (IOException e){
+            e.printStackTrace();
+        }       
+        return null;
+    }
 }

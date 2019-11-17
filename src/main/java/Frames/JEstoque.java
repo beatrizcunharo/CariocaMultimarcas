@@ -1,8 +1,11 @@
 package Frames;
 
 import Arquivo.ArquivoEstoque;
+import Registros.Blusas;
+import Registros.Calcas;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,13 +25,14 @@ public class JEstoque extends javax.swing.JFrame {
     DefaultTableModel tabela=new DefaultTableModel();
     String vetTabela[]=new String[10];
     ArquivoEstoque arquivoEstoque;
+    int codigo = 0;
     public JEstoque() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         arquivoEstoque = new ArquivoEstoque();
-        cmbTamanho.setEnabled(false);cmbTamanho1.setEnabled(false);cmbTamanho2.setEnabled(false);
-        cmbNumero.setEnabled(false);cmbNumero1.setEnabled(false);cmbNumero2.setEnabled(false);
+        cmbTamanho.setEnabled(false);cmbTamanho1.setEnabled(false);
+        cmbNumero.setEnabled(false);cmbNumero1.setEnabled(false);
         tabela.addColumn("Código");tabela.addColumn("Nome");tabela.addColumn("Tipo");
         tabela.addColumn("Tamanho");tabela.addColumn("Sexo");tabela.addColumn("Quantidade");
         tabela.addColumn("Valor Unit.");tabela.addColumn("Número");tabela.addColumn("Data Regis.");
@@ -433,6 +437,11 @@ public class JEstoque extends javax.swing.JFrame {
         jLabel15.setText("Nome:");
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnVoltar2.setText("Voltar");
         btnVoltar2.addActionListener(new java.awt.event.ActionListener() {
@@ -446,7 +455,7 @@ public class JEstoque extends javax.swing.JFrame {
 
         jLabel18.setText("Tipo:");
 
-        cmbTipo2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbTipo2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Camisa", "Camiseta", "Moletom", "Calça", "Bermuda", "Short" }));
 
         jLabel19.setText("Tamanho:");
 
@@ -592,6 +601,20 @@ public class JEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+        
+        if(fileB.exists()){
+           List<Blusas> blusas = arquivoEstoque.outputBlusas();
+           int i = blusas.size()-1;
+           codigo = blusas.get(i).getCodigo();
+           codigo = codigo+1;
+        }
+        if(fileC.exists()){
+            List<Calcas> calcas = arquivoEstoque.outputCalcas();
+            int i = calcas.size()-1;
+            codigo = calcas.get(i).getCodigo();
+            codigo = codigo+1;
+        }
+        
         if(vazioCadastro() == true){
             JOptionPane.showMessageDialog(null, "Há campos vazios.");
         }else{
@@ -603,7 +626,7 @@ public class JEstoque extends javax.swing.JFrame {
             double valor = Double.parseDouble(txtValor.getText());
             String dataRegistro = txtDataRegis.getText();
             if(tipo.equals("Camisa") || tipo.equals("Camiseta") || tipo.equals("Moletom")){
-                arquivoEstoque.cadastraBlusas(0, nome, tipo, tamanho, sexo, quantidade, valor, dataRegistro);
+                arquivoEstoque.cadastraBlusas(codigo, nome, tipo, tamanho, sexo, quantidade, valor, dataRegistro);
                 try {
                     arquivoEstoque.inputBlusas();
                     JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
@@ -614,7 +637,7 @@ public class JEstoque extends javax.swing.JFrame {
             }else{
                 if(tipo.equals("Calça") || tipo.equals("Bermuda") || tipo.equals("Short")){
                     int numero = Integer.parseInt(cmbNumero.getSelectedItem().toString());
-                    arquivoEstoque.cadastraCalcas(0, nome, tipo, numero, sexo, quantidade, valor, dataRegistro);
+                    arquivoEstoque.cadastraCalcas(codigo, nome, tipo, numero, sexo, quantidade, valor, dataRegistro);
                     try {
                         arquivoEstoque.inputCalcas();
                         JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
@@ -642,6 +665,10 @@ public class JEstoque extends javax.swing.JFrame {
     private void cmbTipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipo1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbTipo1ActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
