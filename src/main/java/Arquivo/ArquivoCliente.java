@@ -31,16 +31,21 @@ import java.util.List;
 public class ArquivoCliente {
     public List<PessoaFisica> clientef;
     public List<PessoaJuridica> clientej;
-    
+    public List<Endereco> enderecoF;
+    public List<Endereco> enderecoJ;
+
+
     
     public ArquivoCliente(){
         this.clientef = new ArrayList<>();
         this.clientej = new ArrayList<>();
+        this.enderecoF = new ArrayList<>();
+        this.enderecoJ = new ArrayList<>();
+         
     }
     
-    public void cadastraPessoaFisica(String tipo, String nome, String cpf, String sexo, String telefone, String dataNasc, int numCompras, String dataRegis, String bairro, String rua, String CEP, String complemento,String cidade, String pais, String estado, int numero){
+    public void cadastraPessoaFisica(String tipo, String nome, String cpf, String sexo, String telefone, String dataNasc, int numCompras, String dataRegis, String bairro, String rua, String CEP, String complemento,String cidade, String pais, String estado, int numero) throws IOException{
         PessoaFisica p = new PessoaFisica();
-        ArquivoEndereco ender = new ArquivoEndereco();
         Endereco e = new Endereco();
         p.setTipo(tipo);
         p.setCpf(cpf);
@@ -59,13 +64,13 @@ public class ArquivoCliente {
         e.setPais(pais);
         e.setRua(rua);
         p.setEndereco(e);
-        ender.cadastra(e);
+        enderecoF.add(e);
         clientef.add(p);
+        inputEnderecoF();
     }
     
-    public void cadastraPessoaJuridica(String tipo, String nome, String cnpj, String ie, String telefone, int numCompras, String dataRegis, String bairro, String rua, String CEP, String complemento,String cidade, String pais, String estado, int numero){
+    public void cadastraPessoaJuridica(String tipo, String nome, String cnpj, String ie, String telefone, int numCompras, String dataRegis, String bairro, String rua, String CEP, String complemento,String cidade, String pais, String estado, int numero) throws IOException{
         PessoaJuridica p = new PessoaJuridica();
-        ArquivoEndereco ender = new ArquivoEndereco();
         Endereco e = new Endereco();
         p.setTipo(tipo);
         p.setCnpj(cnpj);
@@ -83,9 +88,12 @@ public class ArquivoCliente {
         e.setPais(pais);
         e.setRua(rua);
         p.setEndereco(e);
-        ender.cadastra(e);
+        enderecoJ.add(e);
         clientej.add(p);
+        inputPessoaJuridica();
+        
     }
+    
     
     public void inputPessoaFisica() throws IOException{
         Type tipoLista = new TypeToken<List<PessoaFisica>>() {}.getType();
@@ -126,8 +134,52 @@ public class ArquivoCliente {
                 input.write(json);
                 input.close();
             }
-        }   
+        }
+    
+    public boolean inputEnderecoF() throws IOException{
+        Type tipoLista = new TypeToken<List<Endereco>>() {}.getType();
+        Gson gson = new Gson();
+        String json = gson.toJson(enderecoF, tipoLista);
         
+        File file = new File("arquivoEnderF.json");
+          
+            if(file.exists()){
+                
+                Writer fw = new OutputStreamWriter( new FileOutputStream(file) ) ;
+                fw.write(json);
+                fw.close();
+            }else{
+                
+                FileWriter input = new FileWriter(file);
+            
+                input.write(json);
+                input.close();
+                return true;
+            }
+            return false;
+        }   
+        public boolean inputEnderecoJ() throws IOException{
+            Type tipoLista = new TypeToken<List<Endereco>>() {}.getType();
+            Gson gson = new Gson();
+            String json = gson.toJson(enderecoJ, tipoLista);
+        
+            File file = new File("arquivoEnderJ.json");
+          
+            if(file.exists()){
+                
+                Writer fw = new OutputStreamWriter( new FileOutputStream(file) ) ;
+                fw.write(json);
+                fw.close();
+            }else{
+                
+                FileWriter input = new FileWriter(file);
+            
+                input.write(json);
+                input.close();
+                return true;
+            }
+            return false;
+        }   
     
     
 }
