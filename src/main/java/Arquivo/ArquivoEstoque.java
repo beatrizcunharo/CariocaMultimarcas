@@ -148,4 +148,85 @@ public class ArquivoEstoque {
         }       
         return null;
     }
+    
+    public boolean excluir(String nome) throws IOException{
+        Type tipoB = new TypeToken<List<Blusas>>() {}.getType();
+        Type tipoC = new TypeToken<List<Calcas>>() {}.getType();
+        File fileB = new File("arquivoBlusas.json");
+        File fileC = new File("arquivoCalcas.json");
+        Gson gson = new Gson();
+        List<Blusas> b = outputBlusas();
+        List<Calcas> c = outputCalcas();
+        boolean valida = false;
+        for(int i=0;i<b.size();i++){
+            if(b.get(i).getNome().equals(nome)){
+                blusas.remove(i);
+                b.remove(i);
+                fileB.delete();
+                FileWriter input = new FileWriter(fileB);
+                String json = gson.toJson(b, tipoB);
+                input.write(json);
+                input.close();
+                valida = true;
+            }
+        }
+        for(int i=0;i<c.size();i++){
+            if(c.get(i).getNome().equals(nome)){
+                calcas.remove(i);
+                c.remove(i);
+                fileC.delete();
+                FileWriter input = new FileWriter(fileC);
+                String json = gson.toJson(c, tipoC);
+                input.write(json);
+                input.close();
+                valida = true;
+            }
+        }
+        return valida;
+    }
+    
+    public void alterarBlusas(String nome, String tipo, String tamanho, String sexo, int quant,double valor, String dataRegis, int pos) throws IOException{
+        
+        Type tipoLista = new TypeToken<List<Blusas>>() {}.getType();
+        Gson gson = new Gson();
+        List<Blusas> lista = outputBlusas();
+        lista.get(pos).setNome(nome);
+        lista.get(pos).setTipo(tipo);
+        lista.get(pos).setTamanho(tamanho);
+        lista.get(pos).setSexo(sexo);
+        lista.get(pos).setQtde(quant);
+        lista.get(pos).setValor(valor);
+        lista.get(pos).setDataRegistro(dataRegis);
+        
+        blusas.addAll(lista);
+        String json = gson.toJson(lista, tipoLista);
+        File file = new File("arquivoBlusas.json");
+        file.delete();
+        FileWriter input = new FileWriter(file);
+        input.write(json);
+        input.close(); 
+        
+    }
+    public void alterarCalcas(String nome, String tipo, int num, String sexo, int quant,double valor, String dataRegis, int pos) throws IOException{
+        
+        Type tipoLista = new TypeToken<List<Calcas>>() {}.getType();
+        Gson gson = new Gson();
+        List<Calcas> lista = outputCalcas();
+        lista.get(pos).setNome(nome);
+        lista.get(pos).setTipo(tipo);
+        lista.get(pos).setNumero(num);
+        lista.get(pos).setSexo(sexo);
+        lista.get(pos).setQtde(quant);
+        lista.get(pos).setValor(valor);
+        lista.get(pos).setDataRegistro(dataRegis);
+        
+        calcas.addAll(lista);
+        String json = gson.toJson(lista, tipoLista);
+        File file = new File("arquivoCalcas.json");
+        file.delete();
+        FileWriter input = new FileWriter(file);
+        input.write(json);
+        input.close(); 
+        
+    }
 }

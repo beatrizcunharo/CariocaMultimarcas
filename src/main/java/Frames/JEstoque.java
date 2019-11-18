@@ -23,9 +23,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class JEstoque extends javax.swing.JFrame {
     DefaultTableModel tabela=new DefaultTableModel();
-    String vetTabela[]=new String[10];
+    String vetTabela[]=new String[9];
     ArquivoEstoque arquivoEstoque;
-    int codigo = 0;
+    
+    int posicao;
     public JEstoque() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -49,10 +50,222 @@ public class JEstoque extends javax.swing.JFrame {
         return vazio;
     }
     
+    public boolean vazioAlterar(){
+        boolean vazio = false;
+        if(txtNome1.getText().equals("") || cmbTipo1.getSelectedIndex() == 0 || cmbSexo1.getSelectedIndex() == 0
+            || txtQuant1.getText().equals("") || txtValor1.getText().equals("") || txtDataRegis1.getText().equals("")){
+                vazio = true;
+        }else{
+            vazio = false;
+        }
+        return vazio;
+    }
+    
     public void limparCadastro(){
         txtNome.setText("");cmbTipo.setSelectedIndex(0);cmbTamanho.setSelectedIndex(0);
         cmbNumero.setSelectedIndex(0);cmbSexo.setSelectedIndex(0);txtQuant.setText("");txtValor.setText("");
         txtDataRegis.setText("");
+    }
+    
+    public void limparAlterar(){
+        txtNome1.setText("");cmbTipo1.setSelectedIndex(0);cmbTamanho1.setSelectedIndex(0);
+        cmbNumero1.setSelectedIndex(0);cmbSexo1.setSelectedIndex(0);txtQuant1.setText("");txtValor1.setText("");
+        txtDataRegis1.setText("");
+    }
+    
+    public void pesquisa(){
+        List<Blusas> b = arquivoEstoque.outputBlusas();
+        List<Calcas> c = arquivoEstoque.outputCalcas();
+        int t = tabela.getRowCount();
+        for (int i = 0; i < t; i++) {
+            tabela.removeRow(0);
+        }
+        for(int i=0;i<b.size();i++){
+            vetTabela[0] = b.get(i).getCodigo()+"";
+            vetTabela[1] = b.get(i).getNome();
+            vetTabela[2] = b.get(i).getTipo();
+            vetTabela[3] = b.get(i).getTamanho();
+            vetTabela[4] = b.get(i).getSexo();
+            vetTabela[5] = b.get(i).getQtde()+"";
+            vetTabela[6] = b.get(i).getValor()+"";
+            vetTabela[7] = "";
+            vetTabela[8] = b.get(i).getDataRegistro();
+            tabela.addRow(vetTabela);
+        }
+        for(int i=0;i<c.size();i++){
+            vetTabela[0] = c.get(i).getCodigo()+"";
+            vetTabela[1] = c.get(i).getNome();
+            vetTabela[2] = c.get(i).getTipo();
+            vetTabela[3] = "";
+            vetTabela[4] = c.get(i).getSexo();
+            vetTabela[5] = c.get(i).getQtde()+"";
+            vetTabela[6] = c.get(i).getValor()+"";
+            vetTabela[7] = c.get(i).getNumero()+"";
+            vetTabela[8] = c.get(i).getDataRegistro();
+            tabela.addRow(vetTabela);
+        }
+    }
+    
+    public void pesquisaPorNome(String nome){
+        List<Blusas> b = arquivoEstoque.outputBlusas();
+        List<Calcas> c = arquivoEstoque.outputCalcas();
+        int t = tabela.getRowCount();
+        for (int i = 0; i < t; i++) {
+            tabela.removeRow(0);
+        }
+        for(int i=0;i<b.size();i++){
+            if(b.get(i).getNome().equals(nome)){
+                vetTabela[0] = b.get(i).getCodigo()+"";
+                vetTabela[1] = b.get(i).getNome();
+                vetTabela[2] = b.get(i).getTipo();
+                vetTabela[3] = b.get(i).getTamanho();
+                vetTabela[4] = b.get(i).getSexo();
+                vetTabela[5] = b.get(i).getQtde()+"";
+                vetTabela[6] = b.get(i).getValor()+"";
+                vetTabela[7] = "";
+                vetTabela[8] = b.get(i).getDataRegistro();
+                tabela.addRow(vetTabela);
+            }
+        }
+        for(int i=0;i<c.size();i++){
+            if(c.get(i).getNome().equals(nome)){
+                vetTabela[0] = c.get(i).getCodigo()+"";
+                vetTabela[1] = c.get(i).getNome();
+                vetTabela[2] = c.get(i).getTipo();
+                vetTabela[3] = "";
+                vetTabela[4] = c.get(i).getSexo();
+                vetTabela[5] = c.get(i).getQtde()+"";
+                vetTabela[6] = c.get(i).getValor()+"";
+                vetTabela[7] = c.get(i).getNumero()+"";
+                vetTabela[8] = c.get(i).getDataRegistro();
+                tabela.addRow(vetTabela);
+            }
+        }
+    }
+    
+    public void pesquisaPorCodigo(int codigo){
+        List<Blusas> b = arquivoEstoque.outputBlusas();
+        List<Calcas> c = arquivoEstoque.outputCalcas();
+        int t = tabela.getRowCount();
+        for (int i = 0; i < t; i++) {
+            tabela.removeRow(0);
+        }
+        for(int i=0;i<b.size();i++){
+            if(b.get(i).getCodigo() == codigo){
+                vetTabela[0] = b.get(i).getCodigo()+"";
+                vetTabela[1] = b.get(i).getNome();
+                vetTabela[2] = b.get(i).getTipo();
+                vetTabela[3] = b.get(i).getTamanho();
+                vetTabela[4] = b.get(i).getSexo();
+                vetTabela[5] = b.get(i).getQtde()+"";
+                vetTabela[6] = b.get(i).getValor()+"";
+                vetTabela[7] = "";
+                vetTabela[8] = b.get(i).getDataRegistro();
+                tabela.addRow(vetTabela);
+            }
+        }
+        for(int i=0;i<c.size();i++){
+            if(c.get(i).getCodigo() == codigo){
+                vetTabela[0] = c.get(i).getCodigo()+"";
+                vetTabela[1] = c.get(i).getNome();
+                vetTabela[2] = c.get(i).getTipo();
+                vetTabela[3] = "";
+                vetTabela[4] = c.get(i).getSexo();
+                vetTabela[5] = c.get(i).getQtde()+"";
+                vetTabela[6] = c.get(i).getValor()+"";
+                vetTabela[7] = c.get(i).getNumero()+"";
+                vetTabela[8] = c.get(i).getDataRegistro();
+                tabela.addRow(vetTabela);
+            }
+        }
+    }
+    
+    
+    public void pesquisaPorTipo(String tipo){
+        List<Blusas> b = arquivoEstoque.outputBlusas();
+        List<Calcas> c = arquivoEstoque.outputCalcas();
+        int t = tabela.getRowCount();
+        for (int i = 0; i < t; i++) {
+            tabela.removeRow(0);
+        }
+
+        if(tipo.equals("Camisa") || tipo.equals("Camiseta") || tipo.equals("Moletom")){
+           for(int i=0;i<b.size();i++){
+                if(b.get(i).getTipo().equals(tipo)){
+                    vetTabela[0] = b.get(i).getCodigo()+"";
+                    vetTabela[1] = b.get(i).getNome();
+                    vetTabela[2] = b.get(i).getTipo();
+                    vetTabela[3] = b.get(i).getTamanho();
+                    vetTabela[4] = b.get(i).getSexo();
+                    vetTabela[5] = b.get(i).getQtde()+"";
+                    vetTabela[6] = b.get(i).getValor()+"";
+                    vetTabela[7] = "";
+                    vetTabela[8] = b.get(i).getDataRegistro();
+                    tabela.addRow(vetTabela);
+                }
+            }
+        }else{
+            if(tipo.equals("Calça") || tipo.equals("Bermuda") || tipo.equals("Short")){
+               for(int i=0;i<c.size();i++){
+                    if(c.get(i).getTipo().equals(tipo)){
+                        vetTabela[0] = c.get(i).getCodigo()+"";
+                        vetTabela[1] = c.get(i).getNome();
+                        vetTabela[2] = c.get(i).getTipo();
+                        vetTabela[3] = "";
+                        vetTabela[4] = c.get(i).getSexo();
+                        vetTabela[5] = c.get(i).getQtde()+"";
+                        vetTabela[6] = c.get(i).getValor()+"";
+                        vetTabela[7] = c.get(i).getNumero()+"";
+                        vetTabela[8] = c.get(i).getDataRegistro();
+                        tabela.addRow(vetTabela);
+                    }
+                }
+            }
+        }
+    }
+    
+    public void pesquisaPorTamanho(String tamanho){
+        List<Blusas> b = arquivoEstoque.outputBlusas();
+        int t = tabela.getRowCount();
+        for (int i = 0; i < t; i++) {
+            tabela.removeRow(0);
+        }
+        for(int i=0;i<b.size();i++){
+            if(b.get(i).getTamanho().equals(tamanho)){
+                vetTabela[0] = b.get(i).getCodigo()+"";
+                vetTabela[1] = b.get(i).getNome();
+                vetTabela[2] = b.get(i).getTipo();
+                vetTabela[3] = b.get(i).getTamanho();
+                vetTabela[4] = b.get(i).getSexo();
+                vetTabela[5] = b.get(i).getQtde()+"";
+                vetTabela[6] = b.get(i).getValor()+"";
+                vetTabela[7] = "";
+                vetTabela[8] = b.get(i).getDataRegistro();
+                tabela.addRow(vetTabela);
+            }
+        }
+    }
+    
+    public void pesquisaPorNumero(int numero){
+        List<Calcas> c = arquivoEstoque.outputCalcas();
+        int t = tabela.getRowCount();
+        for (int i = 0; i < t; i++) {
+            tabela.removeRow(0);
+        }
+        for(int i=0;i<c.size();i++){
+            if(c.get(i).getNumero() == numero){
+                vetTabela[0] = c.get(i).getCodigo()+"";
+                vetTabela[1] = c.get(i).getNome();
+                vetTabela[2] = c.get(i).getTipo();
+                vetTabela[3] = "";
+                vetTabela[4] = c.get(i).getSexo();
+                vetTabela[5] = c.get(i).getQtde()+"";
+                vetTabela[6] = c.get(i).getValor()+"";
+                vetTabela[7] = c.get(i).getNumero()+"";
+                vetTabela[8] = c.get(i).getDataRegistro();
+                tabela.addRow(vetTabela);
+            }
+        }
     }
     
     File fileB = new File("arquivoBlusas.json");
@@ -108,7 +321,7 @@ public class JEstoque extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnVoltar2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jLabel18 = new javax.swing.JLabel();
         cmbTipo2 = new javax.swing.JComboBox();
         jLabel19 = new javax.swing.JLabel();
@@ -450,8 +663,8 @@ public class JEstoque extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(tabela);
-        jScrollPane1.setViewportView(jTable1);
+        table.setModel(tabela);
+        jScrollPane1.setViewportView(table);
 
         jLabel18.setText("Tipo:");
 
@@ -464,8 +677,18 @@ public class JEstoque extends javax.swing.JFrame {
         jLabel20.setText("Código:");
 
         btnAlterar1.setText("Alterar");
+        btnAlterar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterar1ActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Número:");
 
@@ -481,37 +704,36 @@ public class JEstoque extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(55, 55, 55)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel19)
-                                    .addComponent(jLabel15))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNome2, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                                    .addComponent(cmbTamanho2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbNumero2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jLabel20))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmbTipo2, 0, 198, Short.MAX_VALUE)
-                                    .addComponent(txtCodigo2)))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(78, 78, 78)
-                                .addComponent(btnVoltar2)
-                                .addGap(135, 135, 135)
-                                .addComponent(btnAlterar1)
-                                .addGap(104, 104, 104)
-                                .addComponent(btnExcluir)))
-                        .addGap(0, 116, Short.MAX_VALUE)))
+                        .addGap(55, 55, 55)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNome2, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                            .addComponent(cmbTamanho2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbNumero2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel20))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbTipo2, 0, 198, Short.MAX_VALUE)
+                            .addComponent(txtCodigo2))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(btnVoltar2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                        .addComponent(btnAlterar1)
+                        .addGap(136, 136, 136)
+                        .addComponent(btnExcluir)
+                        .addGap(127, 127, 127)))
                 .addContainerGap())
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(236, 236, 236)
+                .addGap(251, 251, 251)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -601,7 +823,7 @@ public class JEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-        
+        int codigo = 0;
         if(fileB.exists()){
            List<Blusas> blusas = arquivoEstoque.outputBlusas();
            int i = blusas.size()-1;
@@ -651,11 +873,41 @@ public class JEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnLimpar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar1ActionPerformed
-        // TODO add your handling code here:
+        limparAlterar();
     }//GEN-LAST:event_btnLimpar1ActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        if(vazioAlterar() == true){
+            JOptionPane.showMessageDialog(null, "Há campos vazios.");
+        }else{
+            String nome = txtNome1.getText();
+            String tipo = cmbTipo1.getSelectedItem().toString();
+            String tamanho = cmbTamanho1.getSelectedItem().toString();
+            String sexo = cmbSexo1.getSelectedItem().toString();
+            int quantidade = Integer.parseInt(txtQuant1.getText());
+            double valor = Double.parseDouble(txtValor1.getText());
+            String dataRegistro = txtDataRegis1.getText();
+            if(tipo.equals("Camisa") || tipo.equals("Camiseta") || tipo.equals("Moletom")){
+                try {
+                    arquivoEstoque.alterarBlusas(nome, tipo, tamanho, sexo, quantidade, valor, dataRegistro, posicao);
+                    JOptionPane.showMessageDialog(null, "Alterado com sucesso.");
+                    limparAlterar();
+                } catch (IOException ex) {
+                    Logger.getLogger(JEstoque.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                if(tipo.equals("Calça") || tipo.equals("Bermuda") || tipo.equals("Short")){
+                    int numero = Integer.parseInt(cmbNumero1.getSelectedItem().toString());
+                    try {
+                        arquivoEstoque.alterarCalcas(nome, tipo, numero, sexo, numero, valor, dataRegistro, posicao);
+                        JOptionPane.showMessageDialog(null, "Alterado com sucesso.");
+                        limparAlterar();
+                    } catch (IOException ex) {
+                        Logger.getLogger(JEstoque.class.getName()).log(Level.SEVERE, null, ex);
+                    } 
+                }
+            }
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnVoltar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar3ActionPerformed
@@ -663,12 +915,101 @@ public class JEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltar3ActionPerformed
 
     private void cmbTipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipo1ActionPerformed
-        // TODO add your handling code here:
+        if(cmbTipo1.getSelectedIndex() == 0){
+            cmbTamanho1.setEnabled(false);cmbNumero1.setEnabled(false);cmbTamanho1.setSelectedIndex(0);cmbNumero1.setSelectedIndex(0);
+        }
+        if(cmbTipo1.getSelectedIndex() == 1 || cmbTipo1.getSelectedIndex() == 2 || cmbTipo1.getSelectedIndex() == 3){
+            cmbTamanho1.setEnabled(true);cmbNumero1.setEnabled(false);cmbNumero1.setSelectedIndex(0);
+        }
+        if(cmbTipo1.getSelectedIndex() == 4 || cmbTipo1.getSelectedIndex() == 5 || cmbTipo1.getSelectedIndex() == 6){
+            cmbTamanho1.setEnabled(false);cmbNumero1.setEnabled(true);cmbTamanho1.setSelectedIndex(0);
+        }
     }//GEN-LAST:event_cmbTipo1ActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        
+        if(txtNome2.getText().equals("") && cmbTipo2.getSelectedIndex() == 0 && cmbTamanho2.getSelectedIndex() == 0 
+            && cmbNumero2.getSelectedIndex() == 0 && txtCodigo2.getText().equals("")){
+            pesquisa();
+        }
+        if(cmbTipo2.getSelectedIndex() != 0){
+            String tipo = cmbTipo2.getSelectedItem().toString();
+            pesquisaPorTipo(tipo);
+        }
+        if(cmbTamanho2.getSelectedIndex() != 0){
+            String tamanho = cmbTamanho2.getSelectedItem().toString();
+            pesquisaPorTamanho(tamanho);
+        }
+        if(cmbNumero2.getSelectedIndex() != 0){
+            int num = Integer.parseInt(cmbNumero2.getSelectedItem().toString());
+            pesquisaPorNumero(num);
+        }
+        if(!txtNome2.getText().equals("")){
+            String nome = txtNome2.getText();
+            pesquisaPorNome(nome);
+        }
+        if(!txtCodigo2.getText().equals("")){
+            int codigo = Integer.parseInt(txtCodigo2.getText());
+            pesquisaPorCodigo(codigo);
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        String nome = table.getValueAt(table.getSelectedRow(), 1).toString();
+        if (table.getSelectedRow() >= 0) {
+
+            if (JOptionPane.showConfirmDialog(null, "Deseja excluir realmente?", "Confirmação", 0) == 0) {
+
+                try {
+                    if (arquivoEstoque.excluir(nome)) {
+                        JOptionPane.showMessageDialog(null, "Excluido com sucesso");
+                        pesquisa();
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar1ActionPerformed
+        String nome = table.getValueAt(table.getSelectedRow(), 1).toString();
+        if (table.getSelectedRow() >= 0) {
+            List<Blusas> b = arquivoEstoque.outputBlusas();
+            List<Calcas> c = arquivoEstoque.outputCalcas();
+            for(int i=0;i<b.size();i++){
+                if(b.get(i).getNome().equals(nome)){
+                   txtNome1.setText(b.get(i).getNome());
+                   txtDataRegis1.setText(b.get(i).getDataRegistro());
+                   txtQuant1.setText(b.get(i).getQtde()+"");
+                   txtValor1.setText(b.get(i).getValor()+"");
+                   cmbSexo1.setSelectedItem(b.get(i).getSexo());
+                   cmbTamanho1.setSelectedItem(b.get(i).getTamanho());
+                   cmbTipo1.setSelectedItem(b.get(i).getTipo());
+                   posicao = i;
+                   break;
+                }
+            }
+            for(int i=0;i<c.size();i++){
+                if(c.get(i).getNome().equals(nome)){
+                   txtNome1.setText(c.get(i).getNome());
+                   txtDataRegis1.setText(c.get(i).getDataRegistro());
+                   txtQuant1.setText(c.get(i).getQtde()+"");
+                   txtValor1.setText(c.get(i).getValor()+"");
+                   cmbSexo1.setSelectedItem(c.get(i).getSexo());
+                   cmbNumero1.setSelectedItem(c.get(i).getNumero()+"");
+                   cmbTipo1.setSelectedItem(c.get(i).getTipo());
+                   posicao = i;
+                   break;
+                }
+            }
+            
+            jTabbedPane1.setSelectedIndex(1);
+        }else{
+           JOptionPane.showMessageDialog(null, "Selecione uma linha.");
+        }
+    }//GEN-LAST:event_btnAlterar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -754,7 +1095,7 @@ public class JEstoque extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table;
     private javax.swing.JTextField txtCodigo2;
     private javax.swing.JFormattedTextField txtDataRegis;
     private javax.swing.JFormattedTextField txtDataRegis1;
