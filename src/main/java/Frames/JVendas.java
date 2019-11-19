@@ -98,6 +98,15 @@ public class JVendas extends javax.swing.JFrame {
         }
     }
     
+    public boolean vazioAlterar() {
+        if (cmbTipo1.getSelectedIndex() == 0 && cmbCliente1.getSelectedIndex() == 0 && txtData1.getText().equals("") && txtProd1.getText().equals("")
+                && txtQtde1.getText().equals("") && txtValorTotal1.getText().equals("")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     public void pesquisa(){
         List<VendaAVista> vista = arquivoVenda.outputVendaVista();
         List<VendaAPrazo> prazo = arquivoVenda.outputVendaPrazo();
@@ -1525,7 +1534,43 @@ public class JVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpar1ActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        if (vazioAlterar()== true) {
+            JOptionPane.showMessageDialog(null, "Há campos vazios.");
+        } else {
+            String tipoPag = cmbTipo1.getSelectedItem().toString();
+            String tipoCliente = cmbCliente1.getSelectedItem().toString();
+            String cpf = txtCPF1.getText();
+            String cnpj = txtCNPJ1.getText();
+            String data = txtData1.getText();
+            int codigoProd = Integer.parseInt(txtProd1.getText());
+            int quantidade = Integer.parseInt(txtQtde1.getText());
+            double valorTotal = Double.parseDouble(txtValorTotal1.getText());
+            String tipoProduto = cmbTipoProduto1.getSelectedItem().toString();
+
+            if (tipoPag.equals("Vista")) {
+
+                try {
+                    arquivoVenda.alterarVendaVista(tipoPag, tipoCliente, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valorTotal, posicao);
+                    JOptionPane.showMessageDialog(null, "Alterado com sucesso.");
+                    limpaAlterar();
+                } catch (IOException ex) {
+                    Logger.getLogger(JVendas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                if (tipoPag.equals("Prazo")) {
+                    double valorParcelado = Double.parseDouble(txtValorParc1.getText());
+                    String parcelas = cmbParcela1.getSelectedItem().toString();
+                   
+                    try {
+                        arquivoVenda.alterarVendaPrazo(tipoPag, tipoCliente, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valorTotal, parcelas, valorParcelado, posicao);
+                        JOptionPane.showMessageDialog(null, "Alterado com sucesso.");
+                        limpaAlterar();
+                    } catch (IOException ex) {
+                        Logger.getLogger(JVendas.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed

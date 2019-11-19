@@ -197,4 +197,54 @@ public class ArquivoVenda {
         }
         return valida;
     }
+    
+    public void alterarVendaVista(String tipoVenda,String tipoPessoa, String cpf, String cnpj, int codProd, String tipoProduto,String dataRegis, int qtde, double valorTotal, int pos) throws IOException{
+        
+        Type tipo = new TypeToken<List<VendaAVista>>() {}.getType();
+        Gson gson = new Gson();
+        List<VendaAVista> vv = outputVendaVista();
+        
+        vv.get(pos).setTipoVenda(tipoVenda);
+        vv.get(pos).setTipoPessoa(tipoPessoa);
+        vv.get(pos).setCpf(cpf);
+        vv.get(pos).setCnpj(cnpj);
+        vv.get(pos).setCodigoProduto(codProd);
+        vv.get(pos).setTipoProduto(tipoProduto);
+        vv.get(pos).setData(dataRegis);
+        vv.get(pos).setQtde(qtde);
+        vv.get(pos).setValor(valorTotal);
+        vendaVista.addAll(vv);
+        String json = gson.toJson(vv, tipo);
+        File file = new File("arquivoVendaVista.json");
+        file.delete();
+        FileWriter input = new FileWriter(file);
+        input.write(json);
+        input.close(); 
+    }  
+    public void alterarVendaPrazo(String tipoVenda,String tipoPessoa, String cpf, String cnpj, int codProd, String tipoProduto,String dataRegis, int qtde, double valorTotal, String parcelas, double valorParcela, int pos) throws IOException{
+        
+        Type tipo = new TypeToken<List<VendaAPrazo>>() {}.getType();
+        Gson gson = new Gson();
+        List<VendaAPrazo> vp = outputVendaPrazo();
+        
+        vp.get(pos).setTipoVenda(tipoVenda);
+        vp.get(pos).setTipoPessoa(tipoPessoa);
+        vp.get(pos).setCpf(cpf);
+        vp.get(pos).setCnpj(cnpj);
+        vp.get(pos).setCodigoProduto(codProd);
+        vp.get(pos).setTipoProduto(tipoProduto);
+        vp.get(pos).setData(dataRegis);
+        vp.get(pos).setQtde(qtde);
+        vp.get(pos).setValor(valorTotal);
+        vp.get(pos).setParcelas(parcelas);
+        vp.get(pos).setValorParc(valorParcela);
+        vendaPrazo.addAll(vp);
+        String json = gson.toJson(vp, tipo);
+        File file = new File("arquivoVendaPrazo.json");
+        file.delete();
+        FileWriter input = new FileWriter(file);
+        input.write(json);
+        input.close(); 
+    }
+    
 }
