@@ -32,6 +32,7 @@ public class JVendas extends javax.swing.JFrame {
     String vetTabela[] = new String[12];
     ArquivoVenda arquivoVenda;
     int codigo = 0;
+    int posicao;
     public JVendas() {
         initComponents();
         arquivoVenda = new ArquivoVenda();
@@ -1005,6 +1006,11 @@ public class JVendas extends javax.swing.JFrame {
         });
 
         btnAlterar1.setText("Alterar");
+        btnAlterar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterar1ActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -1834,6 +1840,64 @@ public class JVendas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar1ActionPerformed
+        String tipo = table.getValueAt(table.getSelectedRow(), 1).toString();
+        int cod = Integer.parseInt(table.getValueAt(table.getSelectedRow(), 0).toString());
+        if (table.getSelectedRow() >= 0) {
+            if(tipo.equals("Vista")){
+                List<VendaAVista> vv = arquivoVenda.outputVendaVista();
+                
+                for(int i=0;i<vv.size();i++){
+                    if(vv.get(i).getCodigo() == cod){
+                        cmbTipo1.setSelectedIndex(1);
+                        cmbCliente1.setSelectedItem(vv.get(i).getTipoPessoa());
+                        txtCPF1.setText(vv.get(i).getCpf());
+                        txtCNPJ1.setText(vv.get(i).getCnpj());
+                        txtData1.setText(vv.get(i).getData());
+                        txtProd1.setText(vv.get(i).getCodigoProduto()+"");
+                        txtQtde1.setText(vv.get(i).getQtde()+"");
+                        txtValorTotal1.setText(vv.get(i).getValor()+"");
+                        cmbParcela1.setSelectedIndex(0);
+                        txtValorParc1.setText("");
+                        txtDesconto1.setText(vv.get(i).getDesconto()+"");
+                        cmbTipoProduto1.setSelectedItem(vv.get(i).getTipoProduto());
+
+                        posicao = i;
+                        break;
+                    }
+                }
+                jTabbedPane1.setSelectedIndex(1);
+            }else{
+                if(tipo.equals("Prazo")){
+                    List<VendaAPrazo> vp = arquivoVenda.outputVendaPrazo();
+                
+                    for(int i=0;i<vp.size();i++){
+                        if(vp.get(i).getCodigo() == cod){
+                            cmbTipo1.setSelectedIndex(1);
+                            cmbCliente1.setSelectedItem(vp.get(i).getTipoPessoa());
+                            txtCPF1.setText(vp.get(i).getCpf());
+                            txtCNPJ1.setText(vp.get(i).getCnpj());
+                            txtData1.setText(vp.get(i).getData());
+                            txtProd1.setText(vp.get(i).getCodigoProduto()+"");
+                            txtQtde1.setText(vp.get(i).getQtde()+"");
+                            txtValorTotal1.setText(vp.get(i).getValor()+"");
+                            cmbParcela1.setSelectedItem(vp.get(i).getParcelas());
+                            txtValorParc1.setText(vp.get(i).getValorParc()+"");
+                            txtDesconto1.setText("");
+                            cmbTipoProduto1.setSelectedItem(vp.get(i).getTipoProduto());
+
+                            posicao = i;
+                            break;
+                        }
+                    }
+                    jTabbedPane1.setSelectedIndex(1);
+                } 
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione uma linha.");
+        }    
+    }//GEN-LAST:event_btnAlterar1ActionPerformed
 
     /**
      * @param args the command line arguments
