@@ -4,7 +4,15 @@ import Registros.PessoaFisica;
 import Registros.Produto;
 import Registros.VendaAPrazo;
 import Registros.VendaAVista;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +27,8 @@ import java.util.List;
 
  */
 public class ArquivoVenda {
-    List<VendaAVista> vendaVista;
-    List<VendaAPrazo> vendaPrazo;
+    public List<VendaAVista> vendaVista;
+    public List<VendaAPrazo> vendaPrazo;
     
     public ArquivoVenda(){
         this.vendaVista = new ArrayList<>();
@@ -28,7 +36,7 @@ public class ArquivoVenda {
     }
     
     
-    public void cadastraVendaVista(int codigoVenda,String tipoVenda,String tipoPessoa, String cpf, String cnpj, String dataRegis, int qtde, double valorTotal, double desconto) throws IOException{
+    public void cadastraVendaVista(int codigoVenda,String tipoVenda,String tipoPessoa, String cpf, String cnpj, int codProd, String tipoProduto,String dataRegis, int qtde, double valorTotal, double desconto) throws IOException{
         VendaAVista vv = new VendaAVista();
         
         vv.setCodigo(codigoVenda);
@@ -36,6 +44,8 @@ public class ArquivoVenda {
         vv.setTipoPessoa(tipoPessoa);
         vv.setCpf(cpf);
         vv.setCnpj(cnpj);
+        vv.setCodigoProduto(codProd);
+        vv.setTipoProduto(tipoProduto);
         vv.setData(dataRegis);
         vv.setQtde(qtde);
         vv.setValor(valorTotal);
@@ -43,19 +53,24 @@ public class ArquivoVenda {
         vendaVista.add(vv);        
     }
 
-    public void cadastraVendaAPrazo(int codigoVenda,String tipoVenda,String tipoPessoa, String cpf, String cnpj, String dataRegis, int qtde, double valorTotal, int parcelas, double valorParc) throws IOException{
-        VendaAPrazo vp = new VendaAPrazo();
+    public void inputVendaAVista() throws IOException{
+        Type tipoLista = new TypeToken<List<VendaAVista>>() {}.getType();
+        Gson gson = new Gson();
+        String json = gson.toJson(vendaVista, tipoLista);
         
-        vp.setCodigo(codigoVenda);
-        vp.setTipoVenda(tipoVenda);
-        vp.setTipoPessoa(tipoPessoa);
-        vp.setCpf(cpf);
-        vp.setCnpj(cnpj);
-        vp.setData(dataRegis);
-        vp.setQtde(qtde);
-        vp.setValor(valorTotal);
-        vp.setParcelas(parcelas);
-        vp.setValorParc(valorParc);
-        vendaPrazo.add(vp);        
-    }
+        File file = new File("arquivoVendaVista.json");
+          
+            if(file.exists()){
+                
+                Writer fw = new OutputStreamWriter( new FileOutputStream(file) ) ;
+                fw.write(json);
+                fw.close();
+            }else{
+                
+                FileWriter input = new FileWriter(file);
+            
+                input.write(json);
+                input.close();
+            }
+    }   
 }

@@ -22,6 +22,8 @@ public class Venda{
     private String cpf;
     private String cnpj;
     private String data;
+    private int codigoProduto;
+    private String tipoProduto;
     private ArquivoCliente cliente;
     private ArquivoEstoque estoque;
     
@@ -34,8 +36,10 @@ public class Venda{
         cpf = "";
         cnpj = "";
         data = "";
-        cliente = null;
-        estoque = null;
+        codigoProduto = 0;
+        tipoProduto = "";
+        cliente = new ArquivoCliente();
+        estoque = new ArquivoEstoque();
     }
 
     /**
@@ -176,6 +180,34 @@ public class Venda{
      */
     public void setEstoque(ArquivoEstoque estoque) {
         this.estoque = estoque;
+    }
+
+    /**
+     * @return the codigoProduto
+     */
+    public int getCodigoProduto() {
+        return codigoProduto;
+    }
+
+    /**
+     * @param codigoProduto the codigoProduto to set
+     */
+    public void setCodigoProduto(int codigoProduto) {
+        this.codigoProduto = codigoProduto;
+    }
+
+    /**
+     * @return the tipoProduto
+     */
+    public String getTipoProduto() {
+        return tipoProduto;
+    }
+
+    /**
+     * @param tipoProduto the tipoProduto to set
+     */
+    public void setTipoProduto(String tipoProduto) {
+        this.tipoProduto = tipoProduto;
     }
     
     

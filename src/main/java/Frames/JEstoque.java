@@ -27,8 +27,12 @@ public class JEstoque extends javax.swing.JFrame {
     ArquivoEstoque arquivoEstoque;
     
     int posicao;
+    public void setIndex3(){
+        jTabbedPane1.setSelectedIndex(2);
+    }
     public JEstoque() {
         initComponents();
+        
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         arquivoEstoque = new ArquivoEstoque();

@@ -141,6 +141,7 @@ public class JPrincipal extends javax.swing.JFrame {
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
         JClientes clientes = new JClientes();
         clientes.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnClienteActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -152,16 +153,19 @@ public class JPrincipal extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         JLogin login = new JLogin();
         login.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
         JEstoque estoque = new JEstoque();
         estoque.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnEstoqueActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
         JVendas vendas = new JVendas();
         vendas.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnVendasActionPerformed
 
     /**

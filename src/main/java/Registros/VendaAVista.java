@@ -14,7 +14,7 @@ public class VendaAVista extends Venda{
     private double desconto;
     
     public VendaAVista(){
-        desconto = 0.0;
+        desconto = 0.15;
     }
 
     public double getDesconto() {
