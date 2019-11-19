@@ -14,19 +14,19 @@ import java.util.List;
 
  */
 public class VendaAPrazo extends Venda{
-    private int parcelas;
+    private String parcelas;
     private double valorParc;
     
     public VendaAPrazo(){
-        parcelas = 0;
+        parcelas = "";
         valorParc = 0.0;
     }
 
-    public int getParcelas() {
+    public String getParcelas() {
         return parcelas;
     }
 
-    public void setParcelas(int parcelas) {
+    public void setParcelas(String parcelas) {
         this.parcelas = parcelas;
     }
 

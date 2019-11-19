@@ -6,8 +6,10 @@ import Registros.VendaAPrazo;
 import Registros.VendaAVista;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -15,6 +17,7 @@ import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -52,7 +55,7 @@ public class ArquivoVenda {
         vendaVista.add(vv);        
     }
 
-    public void cadastraVendaPrazo(int codigoVenda,String tipoVenda,String tipoPessoa, String cpf, String cnpj, int codProd, String tipoProduto,String dataRegis, int qtde, double valorTotal, int parcelas, double valorParcela){
+    public void cadastraVendaPrazo(int codigoVenda,String tipoVenda,String tipoPessoa, String cpf, String cnpj, int codProd, String tipoProduto,String dataRegis, int qtde, double valorTotal, String parcelas, double valorParcela){
         VendaAPrazo vp = new VendaAPrazo();
         
         vp.setCodigo(codigoVenda);
@@ -110,4 +113,45 @@ public class ArquivoVenda {
                 input.close();
             }
     }   
+
+    public List<VendaAVista> outputVendaVista(){
+        
+        Gson gson = new Gson();
+        Type tipo = new TypeToken<List<VendaAVista>>() {}.getType();
+        File nome = new File("arquivoVendaVista.json");
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(nome));
+            
+            String collect = br.lines().collect(Collectors.joining());
+            
+            List<VendaAVista> lista = gson.fromJson(collect, tipo);
+         
+            vendaVista.clear();
+            vendaVista.addAll(lista);
+            return lista;
+        }catch (IOException e){
+            e.printStackTrace();
+        }       
+        return null;
+    }
+    public List<VendaAPrazo> outputVendaPrazo(){
+        
+        Gson gson = new Gson();
+        Type tipo = new TypeToken<List<VendaAPrazo>>() {}.getType();
+        File nome = new File("arquivoVendaPrazo.json");
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(nome));
+            
+            String collect = br.lines().collect(Collectors.joining());
+            
+            List<VendaAPrazo> lista = gson.fromJson(collect, tipo);
+         
+            vendaPrazo.clear();
+            vendaPrazo.addAll(lista);
+            return lista;
+        }catch (IOException e){
+            e.printStackTrace();
+        }       
+        return null;
+    }
 }
