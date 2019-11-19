@@ -97,6 +97,7 @@ public class ArquivoLogin {
             
             List<Login> lista = gson.fromJson(collect, tipo);
          
+            logins.clear();
             logins.addAll(lista);
             return lista;
         }catch (IOException e){

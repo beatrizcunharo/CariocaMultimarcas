@@ -1,5 +1,8 @@
 package Registros;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  *  
@@ -12,13 +15,11 @@ package Registros;
  */
 public class VendaAPrazo extends Venda{
     private int parcelas;
-    private double valor;
-    private double juros;
+    private double valorParc;
     
     public VendaAPrazo(){
         parcelas = 0;
-        valor = 0.0;
-        juros = 0.0;
+        valorParc = 0.0;
     }
 
     public int getParcelas() {
@@ -29,19 +30,17 @@ public class VendaAPrazo extends Venda{
         this.parcelas = parcelas;
     }
 
-    public double getValor() {
-        return valor;
+    /**
+     * @return the valorParc
+     */
+    public double getValorParc() {
+        return valorParc;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    /**
+     * @param valorParc the valorParc to set
+     */
+    public void setValorParc(double valorParc) {
+        this.valorParc = valorParc;
     }
-
-    public double getJuros() {
-        return juros;
-    }
-
-    public void setJuros(double juros) {
-        this.juros = juros;
-    }    
 }

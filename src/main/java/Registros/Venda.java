@@ -1,6 +1,7 @@
 package Registros;
 
-import java.util.Date;
+import Arquivo.ArquivoCliente;
+import Arquivo.ArquivoEstoque;
 
 /**
  *
@@ -13,60 +14,169 @@ import java.util.Date;
 
  */
 public class Venda{
+    private int codigo;
     private int qtde;
     private double valor;
-    private Pessoa pessoa;
-    private Date data;
-    //private ArquivoEstoque estoque;
+    private String tipoVenda;
+    private String tipoPessoa;
+    private String cpf;
+    private String cnpj;
+    private String data;
+    private ArquivoCliente cliente;
+    private ArquivoEstoque estoque;
     
     public Venda(){
+        codigo = 0;
         qtde = 0;
         valor = 0.0;
-        pessoa = null;
-        data = null;
-        //estoque = null;
+        tipoVenda = "";
+        tipoPessoa = "";
+        cpf = "";
+        cnpj = "";
+        data = "";
+        cliente = null;
+        estoque = null;
     }
 
+    /**
+     * @return the codigo
+     */
+    public int getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @param codigo the codigo to set
+     */
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    /**
+     * @return the qtde
+     */
     public int getQtde() {
         return qtde;
     }
 
+    /**
+     * @param qtde the qtde to set
+     */
     public void setQtde(int qtde) {
         this.qtde = qtde;
     }
 
+    /**
+     * @return the valor
+     */
     public double getValor() {
         return valor;
     }
 
+    /**
+     * @param valor the valor to set
+     */
     public void setValor(double valor) {
         this.valor = valor;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    /**
+     * @return the tipoVenda
+     */
+    public String getTipoVenda() {
+        return tipoVenda;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }  
+    /**
+     * @param tipoVenda the tipoVenda to set
+     */
+    public void setTipoVenda(String tipoVenda) {
+        this.tipoVenda = tipoVenda;
+    }
 
-    public Date getData() {
+    /**
+     * @return the tipoPessoa
+     */
+    public String getTipoPessoa() {
+        return tipoPessoa;
+    }
+
+    /**
+     * @param tipoPessoa the tipoPessoa to set
+     */
+    public void setTipoPessoa(String tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
+    }
+
+    /**
+     * @return the cpf
+     */
+    public String getCpf() {
+        return cpf;
+    }
+
+    /**
+     * @param cpf the cpf to set
+     */
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    /**
+     * @return the cnpj
+     */
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    /**
+     * @param cnpj the cnpj to set
+     */
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    /**
+     * @return the data
+     */
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    /**
+     * @param data the data to set
+     */
+    public void setData(String data) {
         this.data = data;
     }
 
-   // public Estoque getEstoque() {
-   //     return estoque;
-   // }
+    /**
+     * @return the cliente
+     */
+    public ArquivoCliente getCliente() {
+        return cliente;
+    }
 
-    //public void setEstoque(Estoque estoque) {
-   //     this.estoque = estoque;
-   // }
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(ArquivoCliente cliente) {
+        this.cliente = cliente;
+    }
+
+    /**
+     * @return the estoque
+     */
+    public ArquivoEstoque getEstoque() {
+        return estoque;
+    }
+
+    /**
+     * @param estoque the estoque to set
+     */
+    public void setEstoque(ArquivoEstoque estoque) {
+        this.estoque = estoque;
+    }
+    
+    
 }
-
-
-

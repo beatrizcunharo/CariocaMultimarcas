@@ -22,6 +22,9 @@ import javax.swing.table.DefaultTableModel;
 
  */
 public class JClientes extends javax.swing.JFrame {
+    public void setIndex3(){
+        jTabbedPane1.setSelectedIndex(2);
+    }
     DefaultTableModel tabela=new DefaultTableModel();
     String vetTabela[]=new String[18];
     ArquivoCliente arquivoCliente;
@@ -1035,12 +1038,9 @@ public class JClientes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbTipo2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(329, 329, 329)
                         .addComponent(btnBuscar)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(107, 107, 107)
                 .addComponent(btnVoltar2)
@@ -1049,6 +1049,7 @@ public class JClientes extends javax.swing.JFrame {
                 .addGap(161, 161, 161)
                 .addComponent(btnExcluir)
                 .addGap(172, 172, 172))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

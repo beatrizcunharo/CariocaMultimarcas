@@ -192,6 +192,7 @@ public class ArquivoCliente {
             
             List<PessoaFisica> lista = gson.fromJson(collect, tipo);
             
+            clientef.clear();
             clientef.addAll(lista);
             return lista;
         }catch (IOException e){
@@ -211,6 +212,7 @@ public class ArquivoCliente {
             
             List<PessoaJuridica> lista = gson.fromJson(collect, tipo);
            
+            clientej.clear();
             clientej.addAll(lista);
             return lista;
         }catch (IOException e){
@@ -231,6 +233,7 @@ public class ArquivoCliente {
             
             List<Endereco> lista = gson.fromJson(collect, tipo);
             
+            enderecoF.clear();
             enderecoF.addAll(lista);
             return lista;
         }catch (IOException e){
@@ -250,6 +253,7 @@ public class ArquivoCliente {
             
             List<Endereco> lista = gson.fromJson(collect, tipo);
             
+            enderecoJ.clear();
             enderecoJ.addAll(lista);
             return lista;
         }catch (IOException e){

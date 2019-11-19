@@ -121,7 +121,8 @@ public class ArquivoEstoque {
             String collect = br.lines().collect(Collectors.joining());
             
             List<Blusas> lista = gson.fromJson(collect, tipo);
-         
+            
+            blusas.clear();
             blusas.addAll(lista);
             return lista;
         }catch (IOException e){
@@ -141,6 +142,7 @@ public class ArquivoEstoque {
             
             List<Calcas> lista = gson.fromJson(collect, tipo);
          
+            calcas.clear();
             calcas.addAll(lista);
             return lista;
         }catch (IOException e){
