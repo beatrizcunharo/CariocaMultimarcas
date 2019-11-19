@@ -28,6 +28,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class JVendas extends javax.swing.JFrame {
 
+    public void setIndex0(){
+        jTabbedPane1.setSelectedIndex(0);
+    }
+    public void setIndex1(){
+        jTabbedPane1.setSelectedIndex(1);
+    }
     DefaultTableModel tabela = new DefaultTableModel();
     String vetTabela[] = new String[12];
     ArquivoVenda arquivoVenda;
@@ -1234,9 +1240,8 @@ public class JVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbParcelaActionPerformed
 
     private void btnBuscaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaProdutoActionPerformed
-        JEstoque estoque = new JEstoque();
-        estoque.setVisible(true);
-        estoque.setIndex3();
+        JBuscaCodProduto busca = new JBuscaCodProduto();
+        busca.setVisible(true);
 
     }//GEN-LAST:event_btnBuscaProdutoActionPerformed
 
@@ -1305,7 +1310,7 @@ public class JVendas extends javax.swing.JFrame {
                     List<Blusas> blusas = vendaPrazo.getEstoque().outputBlusas();
                     List<Calcas> calcas = vendaPrazo.getEstoque().outputCalcas();
 
-                    arquivoVenda.cadastraVendaPrazo(codigo, tipoCliente, tipoPag, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valorTotal, parcelas, valorParcelado);
+                    arquivoVenda.cadastraVendaPrazo(codigo, tipoPag, tipoCliente, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valorTotal, parcelas, valorParcelado);
                     try {
                         arquivoVenda.inputVendaAPrazo();
                         JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
@@ -1381,30 +1386,7 @@ public class JVendas extends javax.swing.JFrame {
 
         if (cmbTipo.getSelectedIndex() == 1) {
             VendaAVista vendaVista = new VendaAVista();
-            List<PessoaFisica> listaF = vendaVista.getCliente().outputPessoaFisica();
-            List<PessoaJuridica> listaJ = vendaVista.getCliente().outputPessoaJuridica();
-            if (cmbCliente.getSelectedIndex() == 1) {
-                for (int i = 0; i < listaF.size(); i++) {
-                    if (listaF.get(i).getNumCompras() > 5) {
-                        txtDesconto.setText(vendaVista.getDesconto() + "");
-                        break;
-                    }
-                }
-            } else {
-                if (cmbCliente.getSelectedIndex() == 2) {
-                    for (int i = 0; i < listaJ.size(); i++) {
-                        if (listaJ.get(i).getNumCompras() > 5) {
-                            txtDesconto.setText(vendaVista.getDesconto() + "");
-                            break;
-                        }
-                    }
-                } else {
-                    if (cmbCliente.getSelectedIndex() == 0) {
-                        JOptionPane.showMessageDialog(null, "Selecione o tipo do cliente.");
-                    }
-                }
-            }
-
+            txtDesconto.setText(vendaVista.getDesconto() + "");
             List<Blusas> listaBlusas = vendaVista.getEstoque().outputBlusas();
             List<Calcas> listaCalcas = vendaVista.getEstoque().outputCalcas();
             for (int i = 0; i < listaBlusas.size(); i++) {
@@ -1413,7 +1395,7 @@ public class JVendas extends javax.swing.JFrame {
                         double desconto = Double.parseDouble(txtDesconto.getText());
                         valorTotal = listaBlusas.get(i).getValor();
                         double valor = valorTotal - (valorTotal * desconto);
-                        txtValorTotal.setText(valor + "");
+                        txtValorTotal.setText(Math.round(valor) + "");
                     }
                     tipoProduto = listaBlusas.get(i).getTipo();
                     cmbTipoProduto.setSelectedItem(tipoProduto);
@@ -1425,7 +1407,7 @@ public class JVendas extends javax.swing.JFrame {
                         double desconto = Double.parseDouble(txtDesconto.getText());
                         valorTotal = listaCalcas.get(i).getValor();
                         double valor = valorTotal - (valorTotal * desconto);
-                        txtValorTotal.setText(valor + "");
+                        txtValorTotal.setText(Math.round(valor) + "");
                     }
                     tipoProduto = listaCalcas.get(i).getTipo();
                     cmbTipoProduto.setSelectedItem(tipoProduto);
@@ -1665,9 +1647,9 @@ public class JVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbParcela1ActionPerformed
 
     private void btnBuscaProduto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaProduto1ActionPerformed
-        JEstoque estoque = new JEstoque();
-        estoque.setVisible(true);
-        estoque.setIndex3();
+        JBuscaCodProduto busca = new JBuscaCodProduto();
+        busca.setVisible(true);
+        
     }//GEN-LAST:event_btnBuscaProduto1ActionPerformed
 
     private void txtDesconto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDesconto1ActionPerformed
@@ -1685,30 +1667,7 @@ public class JVendas extends javax.swing.JFrame {
 
         if (cmbTipo1.getSelectedIndex() == 1) {
             VendaAVista vendaVista = new VendaAVista();
-            List<PessoaFisica> listaF = vendaVista.getCliente().outputPessoaFisica();
-            List<PessoaJuridica> listaJ = vendaVista.getCliente().outputPessoaJuridica();
-            if (cmbCliente1.getSelectedIndex() == 1) {
-                for (int i = 0; i < listaF.size(); i++) {
-                    if (listaF.get(i).getNumCompras() > 5) {
-                        txtDesconto1.setText(vendaVista.getDesconto() + "");
-                        break;
-                    }
-                }
-            } else {
-                if (cmbCliente1.getSelectedIndex() == 2) {
-                    for (int i = 0; i < listaJ.size(); i++) {
-                        if (listaJ.get(i).getNumCompras() > 5) {
-                            txtDesconto1.setText(vendaVista.getDesconto() + "");
-                            break;
-                        }
-                    }
-                } else {
-                    if (cmbCliente1.getSelectedIndex() == 0) {
-                        JOptionPane.showMessageDialog(null, "Selecione o tipo do cliente.");
-                    }
-                }
-            }
-
+            txtDesconto1.setText(vendaVista.getDesconto() + "");
             List<Blusas> listaBlusas = vendaVista.getEstoque().outputBlusas();
             List<Calcas> listaCalcas = vendaVista.getEstoque().outputCalcas();
             for (int i = 0; i < listaBlusas.size(); i++) {
@@ -1717,7 +1676,7 @@ public class JVendas extends javax.swing.JFrame {
                         double desconto = Double.parseDouble(txtDesconto1.getText());
                         valorTotal = listaBlusas.get(i).getValor();
                         double valor = valorTotal - (valorTotal * desconto);
-                        txtValorTotal1.setText(valor + "");
+                        txtValorTotal1.setText(Math.round(valor) + "");
                     }
                     tipoProduto = listaBlusas.get(i).getTipo();
                     cmbTipoProduto1.setSelectedItem(tipoProduto);
@@ -1729,7 +1688,7 @@ public class JVendas extends javax.swing.JFrame {
                         double desconto = Double.parseDouble(txtDesconto1.getText());
                         valorTotal = listaCalcas.get(i).getValor();
                         double valor = valorTotal - (valorTotal * desconto);
-                        txtValorTotal1.setText(valor + "");
+                        txtValorTotal1.setText(Math.round(valor) + "");
                     }
                     tipoProduto = listaCalcas.get(i).getTipo();
                     cmbTipoProduto1.setSelectedItem(tipoProduto);

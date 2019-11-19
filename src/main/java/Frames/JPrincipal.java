@@ -21,6 +21,11 @@ public class JPrincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
     }
+    JLogar logar = new JLogar();
+    JClientes clientes = new JClientes();
+    JLogin login = new JLogin();
+    JEstoque estoque = new JEstoque();
+    JVendas vendas = new JVendas();
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -139,31 +144,30 @@ public class JPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
-        JClientes clientes = new JClientes();
         clientes.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnClienteActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        JLogar logar = new JLogar();
         logar.setVisible(true);
         this.dispose();
+        clientes.dispose();
+        login.dispose();
+        estoque.dispose();
+        vendas.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        JLogin login = new JLogin();
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
-        JEstoque estoque = new JEstoque();
         estoque.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEstoqueActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
-        JVendas vendas = new JVendas();
         vendas.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVendasActionPerformed
