@@ -46,7 +46,7 @@ public class JVendas extends javax.swing.JFrame {
     public void limpaCadastro(){
         cmbTipo.setSelectedIndex(0); cmbCliente.setSelectedIndex(0);txtCPF.setText("");txtCNPJ.setText("");
         txtData.setText("");txtProd.setText("");txtQtde.setText("");txtValorTotal.setText("");cmbParcela.setSelectedIndex(0);
-        txtValorParc.setText("");txtDesconto.setText("");
+        txtValorParc.setText("");txtDesconto.setText("");cmbTipoProduto.setSelectedIndex(0);
     }
     
     public boolean vazioCadastro(){
@@ -57,56 +57,7 @@ public class JVendas extends javax.swing.JFrame {
             return false;
     }
     
-    public void getQuantidade(){
-        int codigoProd = Integer.parseInt(txtProd.getText());
-        int quantidade = Integer.parseInt(txtQtde.getText());
-        if(cmbTipo.getSelectedIndex() == 1){
-            VendaAVista vendaVista = new VendaAVista();
-            List<Blusas> listaBlusas = vendaVista.getEstoque().outputBlusas();
-            List<Calcas> listaCalcas = vendaVista.getEstoque().outputCalcas();
-            for(int i=0;i<listaBlusas.size();i++){
-                if(listaBlusas.get(i).getCodigo() == codigoProd){
-                    if((listaBlusas.get(i).getQtde() < quantidade) || (listaBlusas.get(i).getQtde() > quantidade) ){
-                        JOptionPane.showMessageDialog(null, "Não ha quantidade suficiente no estoque.");
-                        txtQtde.setText("");
-                        break;
-                    }
-                }
-            }
-            for(int i=0;i<listaCalcas.size();i++){
-                if(listaCalcas.get(i).getCodigo() == codigoProd){
-                    if((listaCalcas.get(i).getQtde() < quantidade) || (listaCalcas.get(i).getQtde() > quantidade) ){
-                        JOptionPane.showMessageDialog(null, "Não ha quantidade suficiente no estoque.");
-                        txtQtde.setText("");
-                        break;
-                    }
-                }
-            }
-        }else{
-            if(cmbTipo.getSelectedIndex() == 2){
-                VendaAPrazo vendaPrazo = new VendaAPrazo();
-                List<Blusas> listaBlusas = vendaPrazo.getEstoque().outputBlusas();
-                List<Calcas> listaCalcas = vendaPrazo.getEstoque().outputCalcas();
-                for(int i=0;i<listaBlusas.size();i++){
-                    if(listaBlusas.get(i).getCodigo() == codigoProd){
-                        if((listaBlusas.get(i).getQtde() < quantidade) || (listaBlusas.get(i).getQtde() > quantidade) ){
-                            JOptionPane.showMessageDialog(null, "Não ha quantidade suficiente no estoque.");
-                            txtQtde.setText("");
-                        }
-                    }
-                }
-                for(int i=0;i<listaCalcas.size();i++){
-                    if(listaCalcas.get(i).getCodigo() == codigoProd){
-                        if((listaCalcas.get(i).getQtde() < quantidade) || (listaCalcas.get(i).getQtde() > quantidade) ){
-                            JOptionPane.showMessageDialog(null, "Não ha quantidade suficiente no estoque.");
-                            txtQtde.setText("");
-                            break;
-                        }   
-                    }
-                }
-            }
-        }
-    }
+    
     
     File fileV = new File("arquivoVendaVista.json");
     File fileP = new File("arquivoVendaPrazo.json");
@@ -711,31 +662,34 @@ public class JVendas extends javax.swing.JFrame {
                 .addGap(67, 67, 67)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCPF3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(142, 142, 142)
-                        .addComponent(jLabel21)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCNPJ3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(btnVoltar2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
                         .addComponent(btnAlterar1)
                         .addGap(125, 125, 125)
                         .addComponent(btnExcluir)
-                        .addContainerGap(185, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(296, 296, 296)
-                .addComponent(btnBuscar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(185, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(143, 143, 143)
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCPF3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(205, 205, 205)
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCNPJ3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(325, 325, 325)
+                .addComponent(btnBuscar)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -832,7 +786,7 @@ public class JVendas extends javax.swing.JFrame {
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         VendaAVista vendaVista = new VendaAVista();
-        
+        VendaAPrazo vendaPrazo = new VendaAPrazo();
         if(vazioCadastro() == true){
             JOptionPane.showMessageDialog(null, "Há campos vazios.");
         }else{
@@ -845,50 +799,67 @@ public class JVendas extends javax.swing.JFrame {
             int quantidade = Integer.parseInt(txtQtde.getText());
             double valorTotal = Double.parseDouble(txtValorTotal.getText());
             String tipoProduto = cmbTipoProduto.getSelectedItem().toString();
-            double desconto=0;
-            double valor=0;
+            
             if(tipoPag.equals("Vista")){
-                List<PessoaFisica> lista = vendaVista.getCliente().outputPessoaFisica();
-                List<Blusas> blusas = vendaVista.getEstoque().outputBlusas();
-                List<Blusas> calcas = vendaVista.getEstoque().outputBlusas();
                 
-                for(int i=0;i<lista.size();i++){
-                    if(lista.get(i).getNumCompras() > 5){
-                        txtDesconto.setText("15%");
-                        desconto = vendaVista.getDesconto();
-                        break;
-                    }
-                }
-                valor = valorTotal + (valorTotal * desconto);
-                getQuantidade();
-                if(tipoCliente.equals("Cliente Físico")){
-
-                    try{    
-                        arquivoVenda.cadastraVendaVista(0, tipoPag, tipoCliente, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valor, desconto);
-                        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
-                        if(tipoProduto.equals("Camisa") || tipoProduto.equals("Camisa") || tipoProduto.equals("Moletom")){
-                            for(int i=0;i<blusas.size();i++){
-                                if(blusas.get(i).getCodigo() == codigoProd){
-                                    blusas.get(i).setQtde(blusas.get(i).getQtde() - quantidade);
+                List<Blusas> blusas = vendaVista.getEstoque().outputBlusas();
+                List<Calcas> calcas = vendaVista.getEstoque().outputCalcas();
+                             
+                arquivoVenda.cadastraVendaVista(0, tipoPag, tipoCliente, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valorTotal);
+                try{    
+                    arquivoVenda.inputVendaAVista();
+                    JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
+                    if(tipoProduto.equals("Camisa") || tipoProduto.equals("Camisa") || tipoProduto.equals("Moletom")){
+                        for(int i=0;i<blusas.size();i++){
+                            if(blusas.get(i).getCodigo() == codigoProd){
+                                blusas.get(i).setQtde(blusas.get(i).getQtde() - quantidade);
+                            }
+                        }
+                    }else{
+                        if(tipoProduto.equals("Calça") || tipoProduto.equals("Bermuda") || tipoProduto.equals("Short")){
+                            for(int i=0;i<calcas.size();i++){
+                                if(calcas.get(i).getCodigo() == codigoProd){
+                                    calcas.get(i).setQtde(calcas.get(i).getQtde() - quantidade);
                                 }
                             }
-                        }else{
-                           if(tipoProduto.equals("Calça") || tipoProduto.equals("Bermuda") || tipoProduto.equals("Short")){
-                                for(int i=0;i<calcas.size();i++){
-                                    if(calcas.get(i).getCodigo() == codigoProd){
-                                        calcas.get(i).setQtde(calcas.get(i).getQtde() - quantidade);
-                                    }
-                                }
-                            }    
-                        }
-                        limpaCadastro();
-                    } catch (IOException ex) {
-                        Logger.getLogger(JVendas.class.getName()).log(Level.SEVERE, null, ex);
+                        }    
                     }
+                    limpaCadastro();
+                } catch (IOException ex) {
+                    Logger.getLogger(JVendas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                if(tipoPag.equals("Prazo")){
+                
+                List<Blusas> blusas = vendaPrazo.getEstoque().outputBlusas();
+                List<Calcas> calcas = vendaPrazo.getEstoque().outputCalcas();
+                             
+                arquivoVenda.cadastraVendaPrazo(0, tipoCliente, tipoPag, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valorTotal, quantidade, valorTotal);
+                try{    
+                    arquivoVenda.inputVendaAPrazo();
+                    JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
+                    if(tipoProduto.equals("Camisa") || tipoProduto.equals("Camisa") || tipoProduto.equals("Moletom")){
+                        for(int i=0;i<blusas.size();i++){
+                            if(blusas.get(i).getCodigo() == codigoProd){
+                                blusas.get(i).setQtde(blusas.get(i).getQtde() - quantidade);
+                            }
+                        }
+                    }else{
+                        if(tipoProduto.equals("Calça") || tipoProduto.equals("Bermuda") || tipoProduto.equals("Short")){
+                            for(int i=0;i<calcas.size();i++){
+                                if(calcas.get(i).getCodigo() == codigoProd){
+                                    calcas.get(i).setQtde(calcas.get(i).getQtde() - quantidade);
+                                }
+                            }
+                        }    
+                    }
+                    limpaCadastro();
+                } catch (IOException ex) {
+                    Logger.getLogger(JVendas.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
-    
+    }
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void cmbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoActionPerformed
@@ -965,25 +936,58 @@ public class JVendas extends javax.swing.JFrame {
         
            if(cmbTipo.getSelectedIndex() == 1){
             VendaAVista vendaVista = new VendaAVista();
+            List<PessoaFisica> listaF = vendaVista.getCliente().outputPessoaFisica();
+            List<PessoaJuridica> listaJ = vendaVista.getCliente().outputPessoaJuridica();
+            if(cmbCliente.getSelectedIndex() == 1){
+                for(int i=0;i<listaF.size();i++){
+                    if(listaF.get(i).getNumCompras() > 5){
+                        txtDesconto.setText(vendaVista.getDesconto()+"");
+                        break;
+                    }
+                }
+            }else{
+                if(cmbCliente.getSelectedIndex() == 2){
+                    for(int i=0;i<listaJ.size();i++){
+                        if(listaJ.get(i).getNumCompras() > 5){
+                            txtDesconto.setText(vendaVista.getDesconto()+"");
+                            break;
+                        }
+                    }
+                }else{
+                    if(cmbCliente.getSelectedIndex() == 0){
+                        JOptionPane.showMessageDialog(null, "Selecione o tipo do cliente.");
+                    }
+                }
+            }
+            
             List<Blusas> listaBlusas = vendaVista.getEstoque().outputBlusas();
             List<Calcas> listaCalcas = vendaVista.getEstoque().outputCalcas();
             for(int i=0;i<listaBlusas.size();i++){
                 if(listaBlusas.get(i).getCodigo() == codigoProd){
-                    valorTotal = listaBlusas.get(i).getValor();
-                    txtValorTotal.setText(valorTotal+"");
+                    if(!txtDesconto.getText().equals("")){
+                        double desconto = Double.parseDouble(txtDesconto.getText());
+                        valorTotal = listaBlusas.get(i).getValor();
+                        double valor = valorTotal - (valorTotal * desconto);
+                        txtValorTotal.setText(valor+"");
+                    }
                     tipoProduto = listaBlusas.get(i).getTipo();
                     cmbTipoProduto.setSelectedItem(tipoProduto);
                 }
             }
             for(int i=0;i<listaCalcas.size();i++){
                 if(listaCalcas.get(i).getCodigo() == codigoProd){
-                    valorTotal = listaCalcas.get(i).getValor();
-                    txtValorTotal.setText(valorTotal+"");
+                    if(!txtDesconto.getText().equals("")){
+                        double desconto = Double.parseDouble(txtDesconto.getText());
+                        valorTotal = listaCalcas.get(i).getValor();
+                        double valor = valorTotal - (valorTotal * desconto);
+                        txtValorTotal.setText(valor+"");
+                    }
                     tipoProduto = listaCalcas.get(i).getTipo();
                     cmbTipoProduto.setSelectedItem(tipoProduto);
                     break;
                 }
             }
+            
         }else{
             if(cmbTipo.getSelectedIndex() == 2){
                 VendaAPrazo vendaPrazo = new VendaAPrazo();

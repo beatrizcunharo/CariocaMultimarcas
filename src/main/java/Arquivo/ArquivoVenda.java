@@ -36,7 +36,7 @@ public class ArquivoVenda {
     }
     
     
-    public void cadastraVendaVista(int codigoVenda,String tipoVenda,String tipoPessoa, String cpf, String cnpj, int codProd, String tipoProduto,String dataRegis, int qtde, double valorTotal, double desconto) throws IOException{
+    public void cadastraVendaVista(int codigoVenda,String tipoVenda,String tipoPessoa, String cpf, String cnpj, int codProd, String tipoProduto,String dataRegis, int qtde, double valorTotal){
         VendaAVista vv = new VendaAVista();
         
         vv.setCodigo(codigoVenda);
@@ -49,16 +49,53 @@ public class ArquivoVenda {
         vv.setData(dataRegis);
         vv.setQtde(qtde);
         vv.setValor(valorTotal);
-        vv.setDesconto(desconto);
         vendaVista.add(vv);        
     }
 
+    public void cadastraVendaPrazo(int codigoVenda,String tipoVenda,String tipoPessoa, String cpf, String cnpj, int codProd, String tipoProduto,String dataRegis, int qtde, double valorTotal, int parcelas, double valorParcela){
+        VendaAPrazo vp = new VendaAPrazo();
+        
+        vp.setCodigo(codigoVenda);
+        vp.setTipoVenda(tipoVenda);
+        vp.setTipoPessoa(tipoPessoa);
+        vp.setCpf(cpf);
+        vp.setCnpj(cnpj);
+        vp.setCodigoProduto(codProd);
+        vp.setTipoProduto(tipoProduto);
+        vp.setData(dataRegis);
+        vp.setQtde(qtde);
+        vp.setValor(valorTotal);
+        vp.setParcelas(parcelas);
+        vp.setValorParc(valorParcela);
+        vendaPrazo.add(vp);        
+    }
+    
     public void inputVendaAVista() throws IOException{
         Type tipoLista = new TypeToken<List<VendaAVista>>() {}.getType();
         Gson gson = new Gson();
         String json = gson.toJson(vendaVista, tipoLista);
         
         File file = new File("arquivoVendaVista.json");
+          
+            if(file.exists()){
+                
+                Writer fw = new OutputStreamWriter( new FileOutputStream(file) ) ;
+                fw.write(json);
+                fw.close();
+            }else{
+                
+                FileWriter input = new FileWriter(file);
+            
+                input.write(json);
+                input.close();
+            }
+    }   
+    public void inputVendaAPrazo() throws IOException{
+        Type tipoLista = new TypeToken<List<VendaAPrazo>>() {}.getType();
+        Gson gson = new Gson();
+        String json = gson.toJson(vendaPrazo, tipoLista);
+        
+        File file = new File("arquivoVendaPrazo.json");
           
             if(file.exists()){
                 
