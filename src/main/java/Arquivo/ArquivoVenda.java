@@ -1,7 +1,5 @@
 package Arquivo;
 
-import Registros.PessoaFisica;
-import Registros.Produto;
 import Registros.VendaAPrazo;
 import Registros.VendaAVista;
 import com.google.gson.Gson;

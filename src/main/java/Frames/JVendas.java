@@ -1,11 +1,8 @@
 package Frames;
 
-import Arquivo.ArquivoEstoque;
 import Arquivo.ArquivoVenda;
 import Registros.Blusas;
 import Registros.Calcas;
-import Registros.PessoaFisica;
-import Registros.PessoaJuridica;
 import Registros.VendaAPrazo;
 import Registros.VendaAVista;
 import java.io.File;

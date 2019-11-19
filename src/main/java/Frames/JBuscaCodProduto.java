@@ -4,7 +4,6 @@ import Arquivo.ArquivoEstoque;
 import Registros.Blusas;
 import Registros.Calcas;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
