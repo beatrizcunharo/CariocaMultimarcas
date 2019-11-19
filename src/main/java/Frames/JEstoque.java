@@ -118,7 +118,7 @@ public class JEstoque extends javax.swing.JFrame {
             tabela.removeRow(0);
         }
         for(int i=0;i<b.size();i++){
-            if(b.get(i).getNome().equals(nome)){
+            if(b.get(i).getNome().contains(nome)){
                 vetTabela[0] = b.get(i).getCodigo()+"";
                 vetTabela[1] = b.get(i).getNome();
                 vetTabela[2] = b.get(i).getTipo();
@@ -132,7 +132,7 @@ public class JEstoque extends javax.swing.JFrame {
             }
         }
         for(int i=0;i<c.size();i++){
-            if(c.get(i).getNome().equals(nome)){
+            if(c.get(i).getNome().contains(nome)){
                 vetTabela[0] = c.get(i).getCodigo()+"";
                 vetTabela[1] = c.get(i).getNome();
                 vetTabela[2] = c.get(i).getTipo();
@@ -915,7 +915,13 @@ public class JEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnVoltar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar3ActionPerformed
-        // TODO add your handling code here:
+        JPrincipal principal = new JPrincipal();
+        if(principal.isVisible() == false){
+           principal.setVisible(true);
+           this.setVisible(false);
+        }else{
+            this.setVisible(false);
+        } 
     }//GEN-LAST:event_btnVoltar3ActionPerformed
 
     private void cmbTipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipo1ActionPerformed

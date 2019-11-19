@@ -119,14 +119,17 @@ public class JLogar extends javax.swing.JFrame {
                 if(txtSenha.getText().equals(lista.get(i).getSenha())){
                     JOptionPane.showMessageDialog(null, "Bem vindo, "+txtUsu.getText()+"!");
                     principal.setVisible(true);
-                    this.setVisible(false);    
+                    this.setVisible(false);   
+                    break;
                 }else{
                     JOptionPane.showMessageDialog(null, "Senha incorreta");
                     txtSenha.setText("");
+                    break;
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "Usuário inexistente");
                 txtUsu.setText("");
+                break;
             }
         }
     }//GEN-LAST:event_btnOkActionPerformed

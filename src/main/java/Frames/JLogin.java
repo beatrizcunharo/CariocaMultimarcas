@@ -74,7 +74,7 @@ public class JLogin extends javax.swing.JFrame {
             tabela.removeRow(0);
         }
         for (int i=0;i<l.size();i++) {
-            if(txtUsuario2.getText().equals(l.get(i).getUsuario())){
+            if(txtUsuario2.getText().equalsIgnoreCase(l.get(i).getUsuario())){
                 vetTabela[0] = l.get(i).getUsuario();
                 vetTabela[1] = l.get(i).getTipo();
             }
@@ -83,6 +83,7 @@ public class JLogin extends javax.swing.JFrame {
     }
     
     File file = new File("arquivoLogin.json");
+    
      
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -427,7 +428,7 @@ public class JLogin extends javax.swing.JFrame {
 
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
         JPrincipal principal = new JPrincipal();
-        if(!principal.isVisible() == false){
+        if(principal.isVisible() == false){
            principal.setVisible(true);
            this.setVisible(false);
         }else{
