@@ -25,7 +25,7 @@ public class JEstoque extends javax.swing.JFrame {
     DefaultTableModel tabela=new DefaultTableModel();
     String vetTabela[]=new String[9];
     ArquivoEstoque arquivoEstoque;
-    
+    int codigo = 0;
     int posicao;
     public void setIndex3(){
         jTabbedPane1.setSelectedIndex(2);
@@ -827,7 +827,7 @@ public class JEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-        int codigo = 0;
+        
         if(fileB.exists()){
            List<Blusas> blusas = arquivoEstoque.outputBlusas();
            int i = blusas.size()-1;

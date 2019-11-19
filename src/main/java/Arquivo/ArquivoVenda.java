@@ -154,4 +154,47 @@ public class ArquivoVenda {
         }       
         return null;
     }
+    
+    public boolean excluir(int cod) throws IOException{
+        Type tipoVista = new TypeToken<List<VendaAVista>>() {}.getType();
+        Type tipoPrazo = new TypeToken<List<VendaAPrazo>>() {}.getType();
+        File fileV = new File("arquivoVendaVista.json");
+        File fileP = new File("arquivoVendaPrazo.json");
+        Gson gson = new Gson();
+        List<VendaAVista> vv = outputVendaVista();
+        List<VendaAPrazo> vp = outputVendaPrazo();
+        boolean valida = false;
+        for(int i=0;i<vv.size();i++){
+            if(vv.get(i).getCodigo() == cod){
+                vendaVista.remove(i);
+                vv.remove(i);
+               
+                    fileV.delete();
+                    FileWriter input = new FileWriter(fileV);
+                    String json = gson.toJson(vv, tipoVista);
+                    input.write(json);
+                    input.close();
+                    valida = true;
+                    break;
+               
+               
+            }
+        }
+        for(int i=0;i<vp.size();i++){
+            if(vp.get(i).getCodigo() == cod){
+                vendaPrazo.remove(i);
+                vp.remove(i);
+                
+                    fileP.delete();
+                    FileWriter input = new FileWriter(fileP);
+                    String json = gson.toJson(vp, tipoPrazo);
+                    input.write(json);
+                    input.close();
+                    valida = true;
+                    break;
+                
+            }
+        }
+        return valida;
+    }
 }
