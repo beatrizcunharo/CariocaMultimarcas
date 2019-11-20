@@ -1553,28 +1553,28 @@ public class JVendas extends javax.swing.JFrame {
                         String parcelas = cmbParcela.getSelectedItem().toString();
                         List<Blusas> blusas = vendaPrazo.getEstoque().outputBlusas();
                         List<Calcas> calcas = vendaPrazo.getEstoque().outputCalcas();
-
+                        if (tipoProduto.equals("Camisa") || tipoProduto.equals("Camisa") || tipoProduto.equals("Moletom")) {
+                            for (int i = 0; i < blusas.size(); i++) {
+                                if (blusas.get(i).getCodigo() == codigoProd) {
+                                    int quant = blusas.get(i).getQtde();
+                                    blusas.get(i).setQtde(quant - quantidade);
+                                }
+                            }
+                        } else {
+                            if (tipoProduto.equals("Calça") || tipoProduto.equals("Bermuda") || tipoProduto.equals("Short")) {
+                                for (int i = 0; i < calcas.size(); i++) {
+                                    if (calcas.get(i).getCodigo() == codigoProd) {
+                                        int quant = calcas.get(i).getQtde();
+                                        calcas.get(i).setQtde(quant - quantidade);
+                                    }
+                                }
+                            }
+                        }
                         arquivoVenda.cadastraVendaPrazo(codigo, tipoPag, tipoCliente, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valorTotal, parcelas, valorParcelado);
                         try {
                             arquivoVenda.inputVendaAPrazo();
                             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
-                            if (tipoProduto.equals("Camisa") || tipoProduto.equals("Camisa") || tipoProduto.equals("Moletom")) {
-                                for (int i = 0; i < blusas.size(); i++) {
-                                    if (blusas.get(i).getCodigo() == codigoProd) {
-                                        int quant = blusas.get(i).getQtde();
-                                        blusas.get(i).setQtde(quant - quantidade);
-                                    }
-                                }
-                            } else {
-                                if (tipoProduto.equals("Calça") || tipoProduto.equals("Bermuda") || tipoProduto.equals("Short")) {
-                                    for (int i = 0; i < calcas.size(); i++) {
-                                        if (calcas.get(i).getCodigo() == codigoProd) {
-                                            int quant = calcas.get(i).getQtde();
-                                            calcas.get(i).setQtde(quant - quantidade);
-                                        }
-                                    }
-                                }
-                            }
+
                             limpaCadastro();
                         } catch (IOException ex) {
                             Logger.getLogger(JVendas.class.getName()).log(Level.SEVERE, null, ex);

@@ -49,7 +49,17 @@ public class JEstoque extends javax.swing.JFrame {
             || txtQuant.getText().equals("") || txtValor.getText().equals("") || txtDataRegis.getText().equals("")){
                 vazio = true;
         }else{
-            vazio = false;
+            if(cmbTipo.getSelectedIndex() == 1 || cmbTipo.getSelectedIndex() == 2 || cmbTipo.getSelectedIndex() == 3){
+                if(cmbTamanho.getSelectedIndex() == 0){
+                    vazio = true;
+                }
+            }else{
+                if(cmbTipo.getSelectedIndex() == 4 || cmbTipo.getSelectedIndex() == 5 || cmbTipo.getSelectedIndex() == 6){
+                    if(cmbNumero.getSelectedIndex() == 0){
+                        vazio = true;
+                    }
+                }
+            }
         }
         return vazio;
     }
@@ -60,7 +70,17 @@ public class JEstoque extends javax.swing.JFrame {
             || txtQuant1.getText().equals("") || txtValor1.getText().equals("") || txtDataRegis1.getText().equals("")){
                 vazio = true;
         }else{
-            vazio = false;
+            if(cmbTipo1.getSelectedIndex() == 1 || cmbTipo1.getSelectedIndex() == 2 || cmbTipo1.getSelectedIndex() == 3){
+                if(cmbTamanho.getSelectedIndex() == 0){
+                    vazio = true;
+                }
+            }else{
+                if(cmbTipo1.getSelectedIndex() == 4 || cmbTipo1.getSelectedIndex() == 5 || cmbTipo1.getSelectedIndex() == 6){
+                    if(cmbNumero1.getSelectedIndex() == 0){
+                        vazio = true;
+                    }
+                }
+            }
         }
         return vazio;
     }
