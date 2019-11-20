@@ -104,15 +104,21 @@ public class JVendas extends javax.swing.JFrame {
 
     public boolean vazioCadastro() {
         boolean vazio = false;
-        if (cmbTipo.getSelectedIndex() == 0 || cmbCliente.getSelectedIndex() == 0 || txtData.getText().equals("") || txtProd.getText().equals("")
+        if (cmbTipo.getSelectedIndex() == 0 || cmbCliente.getSelectedIndex() == 0 || txtData.getText().equals("  /  /    ") || txtProd.getText().equals("")
                 || txtQtde.getText().equals("") || txtValorTotal.getText().equals("")) {
-            if (cmbCliente.getSelectedIndex() == 1) {
-                if (txtCPF.getText().equals("")) {
+            vazio = true;
+        }else{
+            if(cmbCliente.getSelectedIndex() == 1){
+                if(txtCPF.getText().equals("   .   .   -  ")){
                     vazio = true;
                 }
-            } else {
-                if (cmbCliente.getSelectedIndex() == 2) {
-                    if (txtCNPJ.getText().equals("")) {
+            }else{
+                if(cmbCliente.getSelectedIndex() == 2){
+                    if(txtCNPJ.getText().equals("  .   .   /    -  ")){
+                        vazio = true;
+                    }
+                }else{
+                    if(cmbCliente.getSelectedIndex() == 0){
                         vazio = true;
                     }
                 }
@@ -123,17 +129,21 @@ public class JVendas extends javax.swing.JFrame {
 
     public boolean vazioAlterar() {
         boolean vazio = false;
-        if (cmbTipo1.getSelectedIndex() == 0 || cmbCliente1.getSelectedIndex() == 0 || txtData1.getText().equals("") || txtProd1.getText().equals("")
+        if (cmbTipo1.getSelectedIndex() == 0 || cmbCliente1.getSelectedIndex() == 0 || txtData1.getText().equals("  /  /    ") || txtProd1.getText().equals("")
                 || txtQtde1.getText().equals("") || txtValorTotal1.getText().equals("")) {
             vazio = true;
         }else{
             if(cmbCliente1.getSelectedIndex() == 1){
-                if(txtCPF1.getText().equals("")){
+                if(txtCPF1.getText().equals("   .   .   -  ")){
                     vazio = true;
                 }
             }else{
                 if(cmbCliente1.getSelectedIndex() == 2){
-                    if(txtCNPJ1.getText().equals("")){
+                    if(txtCNPJ1.getText().equals("  .   .   /    -  ")){
+                        vazio = true;
+                    }
+                }else{
+                    if(cmbCliente1.getSelectedIndex() == 0){
                         vazio = true;
                     }
                 }
@@ -1560,6 +1570,8 @@ public class JVendas extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Quantidade insuficiente em estoque.");
                         txtQtde.setText("");
                         break;
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Quantidade suficiente.");
                     }
                 }
             }
@@ -1569,6 +1581,8 @@ public class JVendas extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Quantidade insuficiente em estoque.");
                         txtQtde.setText("");
                         break;
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Quantidade suficiente.");
                     }
                 }
             }
@@ -1741,6 +1755,8 @@ public class JVendas extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Quantidade insuficiente em estoque.");
                         txtQtde1.setText("");
                         break;
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Quantidade suficiente.");
                     }
                 }
             }
@@ -1750,6 +1766,8 @@ public class JVendas extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Quantidade insuficiente em estoque.");
                         txtQtde1.setText("");
                         break;
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Quantidade suficiente.");
                     }
                 }
             }
@@ -1980,7 +1998,7 @@ public class JVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltar1ActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        if (vazioAlterar() == false) {
+        if (vazioAlterar() == true) {
             JOptionPane.showMessageDialog(null, "Há campos vazios.");
         } else {
             String tipoPag = cmbTipo1.getSelectedItem().toString();
