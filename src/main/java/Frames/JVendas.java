@@ -365,6 +365,49 @@ public class JVendas extends javax.swing.JFrame {
         }
     }
 
+    public void pesquisaPorCliente(String tipo) {
+        List<VendaAVista> vista = arquivoVenda.outputVendaVista();
+        List<VendaAPrazo> prazo = arquivoVenda.outputVendaPrazo();
+        int t = tabela.getRowCount();
+        for (int i = 0; i < t; i++) {
+            tabela.removeRow(0);
+        }
+        for (int i = 0; i < vista.size(); i++) {
+            if (vista.get(i).getTipoPessoa().equals(tipo)) {
+                vetTabela[0] = vista.get(i).getCodigo() + "";
+                vetTabela[1] = vista.get(i).getTipoVenda();
+                vetTabela[2] = vista.get(i).getTipoPessoa();
+                vetTabela[3] = vista.get(i).getCpf();
+                vetTabela[4] = vista.get(i).getCnpj();
+                vetTabela[5] = vista.get(i).getData();
+                vetTabela[6] = vista.get(i).getCodigoProduto() + "";
+                vetTabela[7] = vista.get(i).getTipoProduto();
+                vetTabela[8] = vista.get(i).getQtde() + "";
+                vetTabela[9] = vista.get(i).getValor() + "";
+                vetTabela[10] = "";
+                vetTabela[11] = "";
+                tabela.addRow(vetTabela);
+            }
+        }
+        for (int i = 0; i < prazo.size(); i++) {
+            if (prazo.get(i).getTipoPessoa().equals(tipo)) {
+                vetTabela[0] = prazo.get(i).getCodigo() + "";
+                vetTabela[1] = prazo.get(i).getTipoVenda();
+                vetTabela[2] = prazo.get(i).getTipoPessoa();
+                vetTabela[3] = prazo.get(i).getCpf();
+                vetTabela[4] = prazo.get(i).getCnpj();
+                vetTabela[5] = prazo.get(i).getData();
+                vetTabela[6] = prazo.get(i).getCodigoProduto() + "";
+                vetTabela[7] = prazo.get(i).getTipoProduto();
+                vetTabela[8] = prazo.get(i).getQtde() + "";
+                vetTabela[9] = prazo.get(i).getValor() + "";
+                vetTabela[10] = prazo.get(i).getParcelas();
+                vetTabela[11] = prazo.get(i).getValorParc() + "";
+                tabela.addRow(vetTabela);
+            }
+        }
+    }
+
     public boolean verificaQuantidadeCadastro() {
         int codigoProd = Integer.parseInt(txtProd.getText());
         int quantidade = Integer.parseInt(txtQtde.getText());
@@ -422,6 +465,7 @@ public class JVendas extends javax.swing.JFrame {
         }
         return valida;
     }
+
     public boolean verificaQuantidadeAlterar() {
         int codigoProd = Integer.parseInt(txtProd1.getText());
         int quantidade = Integer.parseInt(txtQtde1.getText());
@@ -479,8 +523,7 @@ public class JVendas extends javax.swing.JFrame {
         }
         return valida;
     }
-    
-    
+
     File fileV = new File("arquivoVendaVista.json");
     File fileP = new File("arquivoVendaPrazo.json");
 
@@ -1164,7 +1207,7 @@ public class JVendas extends javax.swing.JFrame {
 
         jLabel19.setText("Cliente: ");
 
-        cmbTipoCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Cliente Físico", "Cliente Jurídico" }));
+        cmbTipoCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Físico", "Jurídico" }));
         cmbTipoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbTipoClienteActionPerformed(evt);
@@ -1229,9 +1272,9 @@ public class JVendas extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
+                        .addGap(282, 282, 282)
                         .addComponent(jLabel19)
-                        .addGap(42, 42, 42)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(67, 67, 67)
@@ -1252,9 +1295,6 @@ public class JVendas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtCodProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(363, 363, 363)
-                        .addComponent(btnBuscar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -1263,7 +1303,10 @@ public class JVendas extends javax.swing.JFrame {
                         .addGap(254, 254, 254)
                         .addComponent(btnAlterar1)
                         .addGap(300, 300, 300)
-                        .addComponent(btnExcluir)))
+                        .addComponent(btnExcluir))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(353, 353, 353)
+                        .addComponent(btnBuscar)))
                 .addGap(11, 11, 11))
         );
         jPanel1Layout.setVerticalGroup(
@@ -1367,7 +1410,7 @@ public class JVendas extends javax.swing.JFrame {
     private void cmbParcelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbParcelaActionPerformed
         int quantidade = Integer.parseInt(txtQtde.getText());
         if (!txtValorTotal.getText().equals("")) {
-            
+
             if (!txtQtde.getText().equals("")) {
                 double valorParcelado = 0.0;
                 if (cmbParcela.getSelectedIndex() == 1) {
@@ -1463,7 +1506,7 @@ public class JVendas extends javax.swing.JFrame {
         if (vazioCadastro() == true) {
             JOptionPane.showMessageDialog(null, "Há campos vazios.");
         } else {
-            if (verificaQuantidadeCadastro()== false) {
+            if (verificaQuantidadeCadastro() == false) {
                 JOptionPane.showMessageDialog(null, "Quantidade insuficiente em estoque.");
             } else {
                 String tipoPag = cmbTipo.getSelectedItem().toString();
@@ -1680,7 +1723,7 @@ public class JVendas extends javax.swing.JFrame {
             if (txtProd.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Preencha o código do produto.");
             } else {
-                if (verificaQuantidadeCadastro()== false) {
+                if (verificaQuantidadeCadastro() == false) {
                     JOptionPane.showMessageDialog(null, "Quantidade insuficiente.");
                 } else {
                     JOptionPane.showMessageDialog(null, "Quantidade suficiente.");
@@ -1750,9 +1793,11 @@ public class JVendas extends javax.swing.JFrame {
                     if (arquivoVenda.excluir(codProd)) {
                         JOptionPane.showMessageDialog(null, "Excluido com sucesso");
                         pesquisa();
+
                     }
                 } catch (IOException ex) {
-                    Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(JLogin.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         } else {
@@ -2078,36 +2123,44 @@ public class JVendas extends javax.swing.JFrame {
         if (vazioAlterar() == true) {
             JOptionPane.showMessageDialog(null, "Há campos vazios.");
         } else {
-            String tipoPag = cmbTipo1.getSelectedItem().toString();
-            String tipoCliente = cmbCliente1.getSelectedItem().toString();
-            String cpf = txtCPF1.getText();
-            String cnpj = txtCNPJ1.getText();
-            String data = txtData1.getText();
-            int codigoProd = Integer.parseInt(txtProd1.getText());
-            int quantidade = Integer.parseInt(txtQtde1.getText());
-            double valorTotal = Double.parseDouble(txtValorTotal1.getText());
-            String tipoProduto = cmbTipoProduto1.getSelectedItem().toString();
-
-            if (tipoPag.equals("Vista")) {
-
-                try {
-                    arquivoVenda.alterarVendaVista(tipoPag, tipoCliente, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valorTotal, posicao);
-                    JOptionPane.showMessageDialog(null, "Alterado com sucesso.");
-                    limpaAlterar();
-                } catch (IOException ex) {
-                    Logger.getLogger(JVendas.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            if (verificaQuantidadeCadastro() == false) {
+                JOptionPane.showMessageDialog(null, "Quantidade insuficiente em estoque.");
             } else {
-                if (tipoPag.equals("Prazo")) {
-                    double valorParcelado = Double.parseDouble(txtValorParc1.getText());
-                    String parcelas = cmbParcela1.getSelectedItem().toString();
+                String tipoPag = cmbTipo1.getSelectedItem().toString();
+                String tipoCliente = cmbCliente1.getSelectedItem().toString();
+                String cpf = txtCPF1.getText();
+                String cnpj = txtCNPJ1.getText();
+                String data = txtData1.getText();
+                int codigoProd = Integer.parseInt(txtProd1.getText());
+                int quantidade = Integer.parseInt(txtQtde1.getText());
+                double valorTotal = Double.parseDouble(txtValorTotal1.getText());
+                String tipoProduto = cmbTipoProduto1.getSelectedItem().toString();
+
+                if (tipoPag.equals("Vista")) {
 
                     try {
-                        arquivoVenda.alterarVendaPrazo(tipoPag, tipoCliente, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valorTotal, parcelas, valorParcelado, posicao);
+                        arquivoVenda.alterarVendaVista(tipoPag, tipoCliente, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valorTotal, posicao);
                         JOptionPane.showMessageDialog(null, "Alterado com sucesso.");
                         limpaAlterar();
+
                     } catch (IOException ex) {
-                        Logger.getLogger(JVendas.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(JVendas.class
+                                .getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    if (tipoPag.equals("Prazo")) {
+                        double valorParcelado = Double.parseDouble(txtValorParc1.getText());
+                        String parcelas = cmbParcela1.getSelectedItem().toString();
+
+                        try {
+                            arquivoVenda.alterarVendaPrazo(tipoPag, tipoCliente, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valorTotal, parcelas, valorParcelado, posicao);
+                            JOptionPane.showMessageDialog(null, "Alterado com sucesso.");
+                            limpaAlterar();
+
+                        } catch (IOException ex) {
+                            Logger.getLogger(JVendas.class
+                                    .getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                 }
             }
@@ -2145,16 +2198,21 @@ public class JVendas extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JVendas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JVendas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JVendas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JVendas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

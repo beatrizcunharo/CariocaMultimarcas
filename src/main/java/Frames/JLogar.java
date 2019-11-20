@@ -7,24 +7,45 @@ import javax.swing.JOptionPane;
 
 /**
  *
- *  
-    @author BEATRIZ CUNHA RODRIGUES             201776038
-    @author DANIEL RIBEIRO LAVRA                201735042
-    @author IVANYLSON HONÓRIO GONÇALVES         201776002
-    @author JAKSON DUARTE MARTINS JÚNIOR	201435004
-    @author MIKAELA CRISTINY QUITZ              201676014
-
+ *
+ * @author BEATRIZ CUNHA RODRIGUES 201776038
+ * @author DANIEL RIBEIRO LAVRA 201735042
+ * @author IVANYLSON HONÓRIO GONÇALVES 201776002
+ * @author JAKSON DUARTE MARTINS JÚNIOR	201435004
+ * @author MIKAELA CRISTINY QUITZ 201676014
+ *
  */
 public class JLogar extends javax.swing.JFrame {
+
     ArquivoLogin arquivoLogin;
+
     public JLogar() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         arquivoLogin = new ArquivoLogin();
-        
+
     }
-    
+
+    public boolean vazio() {
+        boolean valida = false;
+        if (txtUsu.getText().equals("") && txtSenha.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Usuário e senha vazios.");
+            valida = true;
+        } else {
+            if (txtUsu.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Usuário vazio.");
+                valida = true;
+            } else {
+                if (txtSenha.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Senha vazia.");
+                    valida = true;
+                }
+            }
+        }
+        return valida;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -114,24 +135,27 @@ public class JLogar extends javax.swing.JFrame {
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         JPrincipal principal = new JPrincipal();
         List<Login> lista = arquivoLogin.output();
-        for(int i=0;i<lista.size();i++){
-            if(txtUsu.getText().equals(lista.get(i).getUsuario())){
-                if(txtSenha.getText().equals(lista.get(i).getSenha())){
-                    JOptionPane.showMessageDialog(null, "Bem vindo, "+txtUsu.getText()+"!");
-                    principal.setVisible(true);
-                    this.setVisible(false);   
-                    break;
-                }else{
-                    JOptionPane.showMessageDialog(null, "Senha incorreta");
-                    txtSenha.setText("");
+        if (vazio() == false) {
+            for (int i = 0; i < lista.size(); i++) {
+                if (txtUsu.getText().equals(lista.get(i).getUsuario())) {
+                    if (txtSenha.getText().equals(lista.get(i).getSenha())) {
+                        JOptionPane.showMessageDialog(null, "Bem vindo, " + txtUsu.getText() + "!");
+                        principal.setVisible(true);
+                        this.setVisible(false);
+                        break;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Senha incorreta");
+                        txtSenha.setText("");
+                        break;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuário inexistente");
+                    txtUsu.setText("");
                     break;
                 }
-            }else{
-                JOptionPane.showMessageDialog(null, "Usuário inexistente");
-                txtUsu.setText("");
-                break;
             }
         }
+
     }//GEN-LAST:event_btnOkActionPerformed
 
     /**
