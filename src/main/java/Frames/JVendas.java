@@ -25,10 +25,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class JVendas extends javax.swing.JFrame {
 
-    public void setIndex0(){
+    public void setIndex0() {
         jTabbedPane1.setSelectedIndex(0);
     }
-    public void setIndex1(){
+
+    public void setIndex1() {
         jTabbedPane1.setSelectedIndex(1);
     }
     DefaultTableModel tabela = new DefaultTableModel();
@@ -36,14 +37,24 @@ public class JVendas extends javax.swing.JFrame {
     ArquivoVenda arquivoVenda;
     int codigo = 0;
     int posicao;
+
     public JVendas() {
         initComponents();
         arquivoVenda = new ArquivoVenda();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        tabela.addColumn("Código");tabela.addColumn("Tipo");tabela.addColumn("Tipo Cliente");tabela.addColumn("CPF");
-        tabela.addColumn("CNPJ");tabela.addColumn("Data Regis.");tabela.addColumn("Cod. Produto");tabela.addColumn("Tipo Produto");
-        tabela.addColumn("Quant.");tabela.addColumn("Val. Total");tabela.addColumn("Parcelas");tabela.addColumn("Valor Parcela");
+        tabela.addColumn("Código");
+        tabela.addColumn("Tipo");
+        tabela.addColumn("Tipo Cliente");
+        tabela.addColumn("CPF");
+        tabela.addColumn("CNPJ");
+        tabela.addColumn("Data Regis.");
+        tabela.addColumn("Cod. Produto");
+        tabela.addColumn("Tipo Produto");
+        tabela.addColumn("Quant.");
+        tabela.addColumn("Val. Total");
+        tabela.addColumn("Parcelas");
+        tabela.addColumn("Valor Parcela");
         txtCPF.setEnabled(false);
         txtCNPJ.setEnabled(false);
         txtValorParc.setEnabled(false);
@@ -58,7 +69,6 @@ public class JVendas extends javax.swing.JFrame {
         cmbParcela1.setEnabled(false);
         txtDesconto1.setEnabled(false);
         txtValorTotal1.setEnabled(false);
-
 
     }
 
@@ -91,65 +101,91 @@ public class JVendas extends javax.swing.JFrame {
         txtDesconto1.setText("");
         cmbTipoProduto1.setSelectedIndex(0);
     }
-    
+
     public boolean vazioCadastro() {
-        if (cmbTipo.getSelectedIndex() == 0 && cmbCliente.getSelectedIndex() == 0 && txtData.getText().equals("") && txtProd.getText().equals("")
-                && txtQtde.getText().equals("") && txtValorTotal.getText().equals("")) {
-            return true;
-        } else {
-            return false;
+        boolean vazio = false;
+        if (cmbTipo.getSelectedIndex() == 0 || cmbCliente.getSelectedIndex() == 0 || txtData.getText().equals("") || txtProd.getText().equals("")
+                || txtQtde.getText().equals("") || txtValorTotal.getText().equals("")) {
+            if (cmbCliente.getSelectedIndex() == 1) {
+                if (txtCPF.getText().equals("")) {
+                    vazio = true;
+                }
+            } else {
+                if (cmbCliente.getSelectedIndex() == 2) {
+                    if (txtCNPJ.getText().equals("")) {
+                        vazio = true;
+                    }
+                }
+            }
         }
+        return vazio;
     }
-    
+
     public boolean vazioAlterar() {
-        if (cmbTipo1.getSelectedIndex() == 0 && cmbCliente1.getSelectedIndex() == 0 && txtData1.getText().equals("") && txtProd1.getText().equals("")
-                && txtQtde1.getText().equals("") && txtValorTotal1.getText().equals("")) {
-            return true;
-        } else {
-            return false;
+        boolean vazio = false;
+        if (cmbTipo1.getSelectedIndex() == 0 || cmbCliente1.getSelectedIndex() == 0 || txtData1.getText().equals("") || txtProd1.getText().equals("")
+                || txtQtde1.getText().equals("") || txtValorTotal1.getText().equals("")) {
+            vazio = true;
+        }else{
+            if(cmbCliente1.getSelectedIndex() == 1){
+                if(txtCPF1.getText().equals("")){
+                    vazio = true;
+                }
+            }else{
+                if(cmbCliente1.getSelectedIndex() == 2){
+                    if(txtCNPJ1.getText().equals("")){
+                        vazio = true;
+                    }
+                }
+            }
         }
+
+        return vazio;
     }
     
-    public void pesquisa(){
+    
+    
+
+    public void pesquisa() {
         List<VendaAVista> vista = arquivoVenda.outputVendaVista();
         List<VendaAPrazo> prazo = arquivoVenda.outputVendaPrazo();
         int t = tabela.getRowCount();
         for (int i = 0; i < t; i++) {
             tabela.removeRow(0);
         }
-        for(int i=0;i<vista.size();i++){
-            vetTabela[0] = vista.get(i).getCodigo()+"";
+        for (int i = 0; i < vista.size(); i++) {
+            vetTabela[0] = vista.get(i).getCodigo() + "";
             vetTabela[1] = vista.get(i).getTipoVenda();
             vetTabela[2] = vista.get(i).getTipoPessoa();
             vetTabela[3] = vista.get(i).getCpf();
             vetTabela[4] = vista.get(i).getCnpj();
             vetTabela[5] = vista.get(i).getData();
-            vetTabela[6] = vista.get(i).getCodigoProduto()+"";
+            vetTabela[6] = vista.get(i).getCodigoProduto() + "";
             vetTabela[7] = vista.get(i).getTipoProduto();
-            vetTabela[8] = vista.get(i).getQtde()+"";
-            vetTabela[9] = vista.get(i).getValor()+"";
+            vetTabela[8] = vista.get(i).getQtde() + "";
+            vetTabela[9] = vista.get(i).getValor() + "";
             vetTabela[10] = "";
             vetTabela[11] = "";
             tabela.addRow(vetTabela);
         }
-        for(int i=0;i<prazo.size();i++){
-            vetTabela[0] = prazo.get(i).getCodigo()+"";
+        for (int i = 0; i < prazo.size(); i++) {
+            vetTabela[0] = prazo.get(i).getCodigo() + "";
             vetTabela[1] = prazo.get(i).getTipoVenda();
             vetTabela[2] = prazo.get(i).getTipoPessoa();
             vetTabela[3] = prazo.get(i).getCpf();
             vetTabela[4] = prazo.get(i).getCnpj();
             vetTabela[5] = prazo.get(i).getData();
-            vetTabela[6] = prazo.get(i).getCodigoProduto()+"";
+            vetTabela[6] = prazo.get(i).getCodigoProduto() + "";
             vetTabela[7] = prazo.get(i).getTipoProduto();
-            vetTabela[8] = prazo.get(i).getQtde()+"";
-            vetTabela[9] = prazo.get(i).getValor()+"";
+            vetTabela[8] = prazo.get(i).getQtde() + "";
+            vetTabela[9] = prazo.get(i).getValor() + "";
             vetTabela[10] = prazo.get(i).getParcelas();
-            vetTabela[11] = prazo.get(i).getValorParc()+"";
+            vetTabela[11] = prazo.get(i).getValorParc() + "";
             tabela.addRow(vetTabela);
         }
     }
 
-    public void pesquisaPorCodigoProduto(int codigo){
+    public void pesquisaPorCodigoProduto(int codigo) {
         List<VendaAVista> vista = arquivoVenda.outputVendaVista();
         List<VendaAPrazo> prazo = arquivoVenda.outputVendaPrazo();
 
@@ -157,171 +193,171 @@ public class JVendas extends javax.swing.JFrame {
         for (int i = 0; i < t; i++) {
             tabela.removeRow(0);
         }
-        for(int i=0;i<vista.size();i++){
-            if(vista.get(i).getCodigoProduto() == codigo){
-                vetTabela[0] = vista.get(i).getCodigo()+"";
+        for (int i = 0; i < vista.size(); i++) {
+            if (vista.get(i).getCodigoProduto() == codigo) {
+                vetTabela[0] = vista.get(i).getCodigo() + "";
                 vetTabela[1] = vista.get(i).getTipoVenda();
                 vetTabela[2] = vista.get(i).getTipoPessoa();
                 vetTabela[3] = vista.get(i).getCpf();
                 vetTabela[4] = vista.get(i).getCnpj();
                 vetTabela[5] = vista.get(i).getData();
-                vetTabela[6] = vista.get(i).getCodigoProduto()+"";
+                vetTabela[6] = vista.get(i).getCodigoProduto() + "";
                 vetTabela[7] = vista.get(i).getTipoProduto();
-                vetTabela[8] = vista.get(i).getQtde()+"";
-                vetTabela[9] = vista.get(i).getValor()+"";
+                vetTabela[8] = vista.get(i).getQtde() + "";
+                vetTabela[9] = vista.get(i).getValor() + "";
                 vetTabela[10] = "";
                 vetTabela[11] = "";
                 tabela.addRow(vetTabela);
             }
         }
-        for(int i=0;i<prazo.size();i++){
-            if(prazo.get(i).getCodigoProduto() == codigo){
-                vetTabela[0] = prazo.get(i).getCodigo()+"";
+        for (int i = 0; i < prazo.size(); i++) {
+            if (prazo.get(i).getCodigoProduto() == codigo) {
+                vetTabela[0] = prazo.get(i).getCodigo() + "";
                 vetTabela[1] = prazo.get(i).getTipoVenda();
                 vetTabela[2] = prazo.get(i).getTipoPessoa();
                 vetTabela[3] = prazo.get(i).getCpf();
                 vetTabela[4] = prazo.get(i).getCnpj();
                 vetTabela[5] = prazo.get(i).getData();
-                vetTabela[6] = prazo.get(i).getCodigoProduto()+"";
+                vetTabela[6] = prazo.get(i).getCodigoProduto() + "";
                 vetTabela[7] = prazo.get(i).getTipoProduto();
-                vetTabela[8] = prazo.get(i).getQtde()+"";
-                vetTabela[9] = prazo.get(i).getValor()+"";
+                vetTabela[8] = prazo.get(i).getQtde() + "";
+                vetTabela[9] = prazo.get(i).getValor() + "";
                 vetTabela[10] = prazo.get(i).getParcelas();
-                vetTabela[11] = prazo.get(i).getValorParc()+"";
-                tabela.addRow(vetTabela);    
+                vetTabela[11] = prazo.get(i).getValorParc() + "";
+                tabela.addRow(vetTabela);
             }
         }
     }
-    
-    public void pesquisaPorCodigoVenda(int codigo){
+
+    public void pesquisaPorCodigoVenda(int codigo) {
         List<VendaAVista> vista = arquivoVenda.outputVendaVista();
         List<VendaAPrazo> prazo = arquivoVenda.outputVendaPrazo();
         int t = tabela.getRowCount();
         for (int i = 0; i < t; i++) {
             tabela.removeRow(0);
         }
-        for(int i=0;i<vista.size();i++){
-            if(vista.get(i).getCodigo() == codigo){
-                vetTabela[0] = vista.get(i).getCodigo()+"";
+        for (int i = 0; i < vista.size(); i++) {
+            if (vista.get(i).getCodigo() == codigo) {
+                vetTabela[0] = vista.get(i).getCodigo() + "";
                 vetTabela[1] = vista.get(i).getTipoVenda();
                 vetTabela[2] = vista.get(i).getTipoPessoa();
                 vetTabela[3] = vista.get(i).getCpf();
                 vetTabela[4] = vista.get(i).getCnpj();
                 vetTabela[5] = vista.get(i).getData();
-                vetTabela[6] = vista.get(i).getCodigoProduto()+"";
+                vetTabela[6] = vista.get(i).getCodigoProduto() + "";
                 vetTabela[7] = vista.get(i).getTipoProduto();
-                vetTabela[8] = vista.get(i).getQtde()+"";
-                vetTabela[9] = vista.get(i).getValor()+"";
+                vetTabela[8] = vista.get(i).getQtde() + "";
+                vetTabela[9] = vista.get(i).getValor() + "";
                 vetTabela[10] = "";
                 vetTabela[11] = "";
                 tabela.addRow(vetTabela);
             }
         }
-        for(int i=0;i<prazo.size();i++){
-            if(prazo.get(i).getCodigo() == codigo){
-                vetTabela[0] = prazo.get(i).getCodigo()+"";
+        for (int i = 0; i < prazo.size(); i++) {
+            if (prazo.get(i).getCodigo() == codigo) {
+                vetTabela[0] = prazo.get(i).getCodigo() + "";
                 vetTabela[1] = prazo.get(i).getTipoVenda();
                 vetTabela[2] = prazo.get(i).getTipoPessoa();
                 vetTabela[3] = prazo.get(i).getCpf();
                 vetTabela[4] = prazo.get(i).getCnpj();
                 vetTabela[5] = prazo.get(i).getData();
-                vetTabela[6] = prazo.get(i).getCodigoProduto()+"";
+                vetTabela[6] = prazo.get(i).getCodigoProduto() + "";
                 vetTabela[7] = prazo.get(i).getTipoProduto();
-                vetTabela[8] = prazo.get(i).getQtde()+"";
-                vetTabela[9] = prazo.get(i).getValor()+"";
+                vetTabela[8] = prazo.get(i).getQtde() + "";
+                vetTabela[9] = prazo.get(i).getValor() + "";
                 vetTabela[10] = prazo.get(i).getParcelas();
-                vetTabela[11] = prazo.get(i).getValorParc()+"";
-                tabela.addRow(vetTabela);    
+                vetTabela[11] = prazo.get(i).getValorParc() + "";
+                tabela.addRow(vetTabela);
             }
         }
     }
-    
-    public void pesquisaPorCPF(String cpf){
+
+    public void pesquisaPorCPF(String cpf) {
         List<VendaAVista> vista = arquivoVenda.outputVendaVista();
         List<VendaAPrazo> prazo = arquivoVenda.outputVendaPrazo();
         int t = tabela.getRowCount();
         for (int i = 0; i < t; i++) {
             tabela.removeRow(0);
         }
-        for(int i=0;i<vista.size();i++){
-            if(vista.get(i).getCpf().equals(cpf)){
-                vetTabela[0] = vista.get(i).getCodigo()+"";
+        for (int i = 0; i < vista.size(); i++) {
+            if (vista.get(i).getCpf().equals(cpf)) {
+                vetTabela[0] = vista.get(i).getCodigo() + "";
                 vetTabela[1] = vista.get(i).getTipoVenda();
                 vetTabela[2] = vista.get(i).getTipoPessoa();
                 vetTabela[3] = vista.get(i).getCpf();
                 vetTabela[4] = vista.get(i).getCnpj();
                 vetTabela[5] = vista.get(i).getData();
-                vetTabela[6] = vista.get(i).getCodigoProduto()+"";
+                vetTabela[6] = vista.get(i).getCodigoProduto() + "";
                 vetTabela[7] = vista.get(i).getTipoProduto();
-                vetTabela[8] = vista.get(i).getQtde()+"";
-                vetTabela[9] = vista.get(i).getValor()+"";
+                vetTabela[8] = vista.get(i).getQtde() + "";
+                vetTabela[9] = vista.get(i).getValor() + "";
                 vetTabela[10] = "";
                 vetTabela[11] = "";
                 tabela.addRow(vetTabela);
             }
         }
-        for(int i=0;i<prazo.size();i++){
-            if(prazo.get(i).getCpf().equals(cpf)){
-                vetTabela[0] = prazo.get(i).getCodigo()+"";
+        for (int i = 0; i < prazo.size(); i++) {
+            if (prazo.get(i).getCpf().equals(cpf)) {
+                vetTabela[0] = prazo.get(i).getCodigo() + "";
                 vetTabela[1] = prazo.get(i).getTipoVenda();
                 vetTabela[2] = prazo.get(i).getTipoPessoa();
                 vetTabela[3] = prazo.get(i).getCpf();
                 vetTabela[4] = prazo.get(i).getCnpj();
                 vetTabela[5] = prazo.get(i).getData();
-                vetTabela[6] = prazo.get(i).getCodigoProduto()+"";
+                vetTabela[6] = prazo.get(i).getCodigoProduto() + "";
                 vetTabela[7] = prazo.get(i).getTipoProduto();
-                vetTabela[8] = prazo.get(i).getQtde()+"";
-                vetTabela[9] = prazo.get(i).getValor()+"";
+                vetTabela[8] = prazo.get(i).getQtde() + "";
+                vetTabela[9] = prazo.get(i).getValor() + "";
                 vetTabela[10] = prazo.get(i).getParcelas();
-                vetTabela[11] = prazo.get(i).getValorParc()+"";
-                tabela.addRow(vetTabela);    
+                vetTabela[11] = prazo.get(i).getValorParc() + "";
+                tabela.addRow(vetTabela);
             }
         }
     }
-    
-    public void pesquisaPorCNPJ(String cnpj){
+
+    public void pesquisaPorCNPJ(String cnpj) {
         List<VendaAVista> vista = arquivoVenda.outputVendaVista();
         List<VendaAPrazo> prazo = arquivoVenda.outputVendaPrazo();
         int t = tabela.getRowCount();
         for (int i = 0; i < t; i++) {
             tabela.removeRow(0);
         }
-        for(int i=0;i<vista.size();i++){
-            if(vista.get(i).getCnpj().equals(cnpj)){
-                vetTabela[0] = vista.get(i).getCodigo()+"";
+        for (int i = 0; i < vista.size(); i++) {
+            if (vista.get(i).getCnpj().equals(cnpj)) {
+                vetTabela[0] = vista.get(i).getCodigo() + "";
                 vetTabela[1] = vista.get(i).getTipoVenda();
                 vetTabela[2] = vista.get(i).getTipoPessoa();
                 vetTabela[3] = vista.get(i).getCpf();
                 vetTabela[4] = vista.get(i).getCnpj();
                 vetTabela[5] = vista.get(i).getData();
-                vetTabela[6] = vista.get(i).getCodigoProduto()+"";
+                vetTabela[6] = vista.get(i).getCodigoProduto() + "";
                 vetTabela[7] = vista.get(i).getTipoProduto();
-                vetTabela[8] = vista.get(i).getQtde()+"";
-                vetTabela[9] = vista.get(i).getValor()+"";
+                vetTabela[8] = vista.get(i).getQtde() + "";
+                vetTabela[9] = vista.get(i).getValor() + "";
                 vetTabela[10] = "";
                 vetTabela[11] = "";
                 tabela.addRow(vetTabela);
             }
         }
-        for(int i=0;i<prazo.size();i++){
-            if(prazo.get(i).getCnpj().equals(cnpj)){
-                vetTabela[0] = prazo.get(i).getCodigo()+"";
+        for (int i = 0; i < prazo.size(); i++) {
+            if (prazo.get(i).getCnpj().equals(cnpj)) {
+                vetTabela[0] = prazo.get(i).getCodigo() + "";
                 vetTabela[1] = prazo.get(i).getTipoVenda();
                 vetTabela[2] = prazo.get(i).getTipoPessoa();
                 vetTabela[3] = prazo.get(i).getCpf();
                 vetTabela[4] = prazo.get(i).getCnpj();
                 vetTabela[5] = prazo.get(i).getData();
-                vetTabela[6] = prazo.get(i).getCodigoProduto()+"";
+                vetTabela[6] = prazo.get(i).getCodigoProduto() + "";
                 vetTabela[7] = prazo.get(i).getTipoProduto();
-                vetTabela[8] = prazo.get(i).getQtde()+"";
-                vetTabela[9] = prazo.get(i).getValor()+"";
+                vetTabela[8] = prazo.get(i).getQtde() + "";
+                vetTabela[9] = prazo.get(i).getValor() + "";
                 vetTabela[10] = prazo.get(i).getParcelas();
-                vetTabela[11] = prazo.get(i).getValorParc()+"";
-                tabela.addRow(vetTabela);    
+                vetTabela[11] = prazo.get(i).getValorParc() + "";
+                tabela.addRow(vetTabela);
             }
         }
     }
-    
+
     File fileV = new File("arquivoVendaVista.json");
     File fileP = new File("arquivoVendaPrazo.json");
 
@@ -1188,31 +1224,35 @@ public class JVendas extends javax.swing.JFrame {
 
     private void cmbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClienteActionPerformed
         if (cmbCliente.getSelectedIndex() == 0) {
-            txtCPF.setEnabled(false);txtCPF.setText("");
-            txtCNPJ.setEnabled(false);txtCNPJ.setText("");
+            txtCPF.setEnabled(false);
+            txtCPF.setText("");
+            txtCNPJ.setEnabled(false);
+            txtCNPJ.setText("");
         }
         if (cmbCliente.getSelectedIndex() == 1) {
-            txtCPF.setEnabled(true);txtCNPJ.setText("");
+            txtCPF.setEnabled(true);
+            txtCNPJ.setText("");
             txtCNPJ.setEnabled(false);
         }
         if (cmbCliente.getSelectedIndex() == 2) {
-            txtCPF.setEnabled(false);txtCPF.setText("");
+            txtCPF.setEnabled(false);
+            txtCPF.setText("");
             txtCNPJ.setEnabled(true);
         }
     }//GEN-LAST:event_cmbClienteActionPerformed
 
     private void cmbParcelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbParcelaActionPerformed
         int quantidade = Integer.parseInt(txtQtde.getText());
-        if(!txtValorTotal.getText().equals("")){
-            
-            if(!txtQtde.getText().equals("")){
+        if (!txtValorTotal.getText().equals("")) {
+
+            if (!txtQtde.getText().equals("")) {
                 double valorParcelado = 0.0;
                 if (cmbParcela.getSelectedIndex() == 1) {
                     double valorTotal = Double.parseDouble(txtValorTotal.getText());
                     double valor = valorTotal * quantidade;
                     txtValorTotal.setText("");
                     txtValorParc.setText(valor + "");
-                    txtValorTotal.setText(valor+ "");
+                    txtValorTotal.setText(valor + "");
                 }
                 if (cmbParcela.getSelectedIndex() == 2) {
                     double valorTotal = Double.parseDouble(txtValorTotal.getText());
@@ -1266,7 +1306,7 @@ public class JVendas extends javax.swing.JFrame {
                     txtValorParc.setText(valorParcelado + "");
                     txtValorTotal.setText(Math.round(valor * 1.25) + "");
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Preencha a quantidade.");
             }
         }
@@ -1283,21 +1323,21 @@ public class JVendas extends javax.swing.JFrame {
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         VendaAVista vendaVista = new VendaAVista();
         VendaAPrazo vendaPrazo = new VendaAPrazo();
-        
-        if(fileV.exists()){
-           List<VendaAVista> vista = arquivoVenda.outputVendaVista();
-           int i = vista.size()-1;
-           codigo = vista.get(i).getCodigo();
-           codigo = codigo+1;
+
+        if (fileV.exists()) {
+            List<VendaAVista> vista = arquivoVenda.outputVendaVista();
+            int i = vista.size() - 1;
+            codigo = vista.get(i).getCodigo();
+            codigo = codigo + 1;
         }
-        if(fileP.exists()){
+        if (fileP.exists()) {
             List<VendaAPrazo> prazo = arquivoVenda.outputVendaPrazo();
-            int i = prazo.size()-1;
+            int i = prazo.size() - 1;
             codigo = prazo.get(i).getCodigo();
-            codigo = codigo+1;
+            codigo = codigo + 1;
         }
-        
-        if (vazioCadastro() == true) {
+
+        if (vazioCadastro() == false) {
             JOptionPane.showMessageDialog(null, "Há campos vazios.");
         } else {
             String tipoPag = cmbTipo.getSelectedItem().toString();
@@ -1415,13 +1455,13 @@ public class JVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtQtdeFocusLost
 
     private void btnPreencherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreencherActionPerformed
-       
+
         double valorTotal;
         String tipoProduto;
-        if(!txtProd.getText().equals("")){
+        if (!txtProd.getText().equals("")) {
             int codigoProd = Integer.parseInt(txtProd.getText());
-            if (cmbTipo.getSelectedIndex() == 1 ) {
-                if(!txtQtde.getText().equals("")){
+            if (cmbTipo.getSelectedIndex() == 1) {
+                if (!txtQtde.getText().equals("")) {
 
                     VendaAVista vendaVista = new VendaAVista();
                     txtDesconto.setText(vendaVista.getDesconto() + "");
@@ -1458,13 +1498,13 @@ public class JVendas extends javax.swing.JFrame {
                             break;
                         }
                     }
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Preencha a quantidade.");
                 }
 
             } else {
                 if (cmbTipo.getSelectedIndex() == 2) {
-                    if(!txtQtde.getText().equals("")){
+                    if (!txtQtde.getText().equals("")) {
                         VendaAPrazo vendaPrazo = new VendaAPrazo();
                         List<Blusas> listaBlusas = vendaPrazo.getEstoque().outputBlusas();
                         List<Calcas> listaCalcas = vendaPrazo.getEstoque().outputCalcas();
@@ -1490,7 +1530,7 @@ public class JVendas extends javax.swing.JFrame {
                                 break;
                             }
                         }
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "Preencha a quantidade.");
                     }
 
@@ -1500,10 +1540,10 @@ public class JVendas extends javax.swing.JFrame {
                     }
                 }
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Preencha o código.");
         }
-        
+
     }//GEN-LAST:event_btnPreencherActionPerformed
 
     private void btnVerificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificaActionPerformed
@@ -1561,48 +1601,52 @@ public class JVendas extends javax.swing.JFrame {
 
     private void cmbTipoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoClienteActionPerformed
         if (cmbTipoCliente.getSelectedIndex() == 0) {
-            txtCPF2.setEnabled(false);txtCPF2.setText("");
-            txtCNPJ2.setEnabled(false);txtCNPJ2.setText("");
+            txtCPF2.setEnabled(false);
+            txtCPF2.setText("");
+            txtCNPJ2.setEnabled(false);
+            txtCNPJ2.setText("");
         }
         if (cmbTipoCliente.getSelectedIndex() == 1) {
-            txtCPF2.setEnabled(true);txtCNPJ2.setText("");
+            txtCPF2.setEnabled(true);
+            txtCNPJ2.setText("");
             txtCNPJ2.setEnabled(false);
         }
         if (cmbTipoCliente.getSelectedIndex() == 2) {
-            txtCPF2.setEnabled(false);txtCPF2.setText("");
+            txtCPF2.setEnabled(false);
+            txtCPF2.setText("");
             txtCNPJ2.setEnabled(true);
         }
     }//GEN-LAST:event_cmbTipoClienteActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        if(cmbTipoCliente.getSelectedIndex() == 0  && txtCodProduto.getText().equals("") && txtCodVenda.getText().equals("")){
+        if (cmbTipoCliente.getSelectedIndex() == 0 && txtCodProduto.getText().equals("") && txtCodVenda.getText().equals("")) {
             pesquisa();
         }
-        if(!txtCodProduto.getText().equals("")){
+        if (!txtCodProduto.getText().equals("")) {
             int codigo = Integer.parseInt(txtCodProduto.getText());
             pesquisaPorCodigoProduto(codigo);
             txtCodProduto.setText("");
         }
-        if(!txtCodVenda.getText().equals("")){
+        if (!txtCodVenda.getText().equals("")) {
             int codigo = Integer.parseInt(txtCodVenda.getText());
             pesquisaPorCodigoVenda(codigo);
             txtCodVenda.setText("");
         }
-        if(cmbTipoCliente.getSelectedIndex() == 1){
-            if(!txtCPF2.getText().equals("")){
+        if (cmbTipoCliente.getSelectedIndex() == 1) {
+            if (!txtCPF2.getText().equals("")) {
                 String cpf = txtCPF2.getText();
                 pesquisaPorCPF(cpf);
                 txtCPF2.setText("");
             }
         }
-        if(cmbTipoCliente.getSelectedIndex() == 2){
-            if(!txtCNPJ2.getText().equals("")){
+        if (cmbTipoCliente.getSelectedIndex() == 2) {
+            if (!txtCNPJ2.getText().equals("")) {
                 String cnpj = txtCNPJ2.getText();
                 pesquisaPorCNPJ(cnpj);
                 txtCNPJ2.setText("");
             }
         }
-        
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -1629,22 +1673,22 @@ public class JVendas extends javax.swing.JFrame {
         String tipo = table.getValueAt(table.getSelectedRow(), 1).toString();
         int cod = Integer.parseInt(table.getValueAt(table.getSelectedRow(), 0).toString());
         if (table.getSelectedRow() >= 0) {
-            if(tipo.equals("Vista")){
+            if (tipo.equals("Vista")) {
                 List<VendaAVista> vv = arquivoVenda.outputVendaVista();
-                
-                for(int i=0;i<vv.size();i++){
-                    if(vv.get(i).getCodigo() == cod){
+
+                for (int i = 0; i < vv.size(); i++) {
+                    if (vv.get(i).getCodigo() == cod) {
                         cmbTipo1.setSelectedIndex(1);
                         cmbCliente1.setSelectedItem(vv.get(i).getTipoPessoa());
                         txtCPF1.setText(vv.get(i).getCpf());
                         txtCNPJ1.setText(vv.get(i).getCnpj());
                         txtData1.setText(vv.get(i).getData());
-                        txtProd1.setText(vv.get(i).getCodigoProduto()+"");
-                        txtQtde1.setText(vv.get(i).getQtde()+"");
-                        txtValorTotal1.setText(vv.get(i).getValor()+"");
+                        txtProd1.setText(vv.get(i).getCodigoProduto() + "");
+                        txtQtde1.setText(vv.get(i).getQtde() + "");
+                        txtValorTotal1.setText(vv.get(i).getValor() + "");
                         cmbParcela1.setSelectedIndex(0);
                         txtValorParc1.setText("");
-                        txtDesconto1.setText(vv.get(i).getDesconto()+"");
+                        txtDesconto1.setText(vv.get(i).getDesconto() + "");
                         cmbTipoProduto1.setSelectedItem(vv.get(i).getTipoProduto());
 
                         posicao = i;
@@ -1652,22 +1696,22 @@ public class JVendas extends javax.swing.JFrame {
                     }
                 }
                 jTabbedPane1.setSelectedIndex(1);
-            }else{
-                if(tipo.equals("Prazo")){
+            } else {
+                if (tipo.equals("Prazo")) {
                     List<VendaAPrazo> vp = arquivoVenda.outputVendaPrazo();
-                
-                    for(int i=0;i<vp.size();i++){
-                        if(vp.get(i).getCodigo() == cod){
+
+                    for (int i = 0; i < vp.size(); i++) {
+                        if (vp.get(i).getCodigo() == cod) {
                             cmbTipo1.setSelectedIndex(1);
                             cmbCliente1.setSelectedItem(vp.get(i).getTipoPessoa());
                             txtCPF1.setText(vp.get(i).getCpf());
                             txtCNPJ1.setText(vp.get(i).getCnpj());
                             txtData1.setText(vp.get(i).getData());
-                            txtProd1.setText(vp.get(i).getCodigoProduto()+"");
-                            txtQtde1.setText(vp.get(i).getQtde()+"");
-                            txtValorTotal1.setText(vp.get(i).getValor()+"");
+                            txtProd1.setText(vp.get(i).getCodigoProduto() + "");
+                            txtQtde1.setText(vp.get(i).getQtde() + "");
+                            txtValorTotal1.setText(vp.get(i).getValor() + "");
                             cmbParcela1.setSelectedItem(vp.get(i).getParcelas());
-                            txtValorParc1.setText(vp.get(i).getValorParc()+"");
+                            txtValorParc1.setText(vp.get(i).getValorParc() + "");
                             txtDesconto1.setText("");
                             cmbTipoProduto1.setSelectedItem(vp.get(i).getTipoProduto());
 
@@ -1676,11 +1720,11 @@ public class JVendas extends javax.swing.JFrame {
                         }
                     }
                     jTabbedPane1.setSelectedIndex(1);
-                } 
+                }
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Selecione uma linha.");
-        }    
+        }
     }//GEN-LAST:event_btnAlterar1ActionPerformed
 
     private void btnVerifica1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifica1ActionPerformed
@@ -1740,10 +1784,10 @@ public class JVendas extends javax.swing.JFrame {
 
         double valorTotal;
         String tipoProduto;
-        if(!txtProd1.getText().equals("")){
+        if (!txtProd1.getText().equals("")) {
             int codigoProd = Integer.parseInt(txtProd1.getText());
-            if (cmbTipo1.getSelectedIndex() == 1 ) {
-                if(!txtQtde1.getText().equals("")){
+            if (cmbTipo1.getSelectedIndex() == 1) {
+                if (!txtQtde1.getText().equals("")) {
 
                     VendaAVista vendaVista = new VendaAVista();
                     txtDesconto1.setText(vendaVista.getDesconto() + "");
@@ -1780,13 +1824,13 @@ public class JVendas extends javax.swing.JFrame {
                             break;
                         }
                     }
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Preencha a quantidade.");
                 }
 
             } else {
                 if (cmbTipo1.getSelectedIndex() == 2) {
-                    if(!txtQtde1.getText().equals("")){
+                    if (!txtQtde1.getText().equals("")) {
                         VendaAPrazo vendaPrazo = new VendaAPrazo();
                         List<Blusas> listaBlusas = vendaPrazo.getEstoque().outputBlusas();
                         List<Calcas> listaCalcas = vendaPrazo.getEstoque().outputCalcas();
@@ -1812,7 +1856,7 @@ public class JVendas extends javax.swing.JFrame {
                                 break;
                             }
                         }
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "Preencha a quantidade.");
                     }
 
@@ -1822,7 +1866,7 @@ public class JVendas extends javax.swing.JFrame {
                     }
                 }
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Preencha o código.");
         }
     }//GEN-LAST:event_btnPreencher1ActionPerformed
@@ -1841,7 +1885,7 @@ public class JVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscaProduto1ActionPerformed
 
     private void cmbParcela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbParcela1ActionPerformed
-        if(!txtValorTotal1.getText().equals("")){
+        if (!txtValorTotal1.getText().equals("")) {
             double valorTotal = Double.parseDouble(txtValorTotal1.getText());
             double valorParcelado = 0.0;
             if (cmbParcela1.getSelectedIndex() == 1) {
@@ -1908,15 +1952,19 @@ public class JVendas extends javax.swing.JFrame {
 
     private void cmbCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCliente1ActionPerformed
         if (cmbCliente1.getSelectedIndex() == 0) {
-            txtCPF1.setEnabled(false);txtCPF1.setText("");
-            txtCNPJ1.setEnabled(false);txtCNPJ1.setText("");
+            txtCPF1.setEnabled(false);
+            txtCPF1.setText("");
+            txtCNPJ1.setEnabled(false);
+            txtCNPJ1.setText("");
         }
         if (cmbCliente1.getSelectedIndex() == 1) {
-            txtCPF1.setEnabled(true);txtCNPJ1.setText("");
+            txtCPF1.setEnabled(true);
+            txtCNPJ1.setText("");
             txtCNPJ1.setEnabled(false);
         }
         if (cmbCliente1.getSelectedIndex() == 2) {
-            txtCPF1.setEnabled(false);txtCPF1.setText("");
+            txtCPF1.setEnabled(false);
+            txtCPF1.setText("");
             txtCNPJ1.setEnabled(true);
         }
     }//GEN-LAST:event_cmbCliente1ActionPerformed
@@ -1932,7 +1980,7 @@ public class JVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltar1ActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        if (vazioAlterar()== true) {
+        if (vazioAlterar() == false) {
             JOptionPane.showMessageDialog(null, "Há campos vazios.");
         } else {
             String tipoPag = cmbTipo1.getSelectedItem().toString();
