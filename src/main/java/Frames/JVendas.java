@@ -1305,7 +1305,7 @@ public class JVendas extends javax.swing.JFrame {
                         .addGap(300, 300, 300)
                         .addComponent(btnExcluir))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(353, 353, 353)
+                        .addGap(349, 349, 349)
                         .addComponent(btnBuscar)))
                 .addGap(11, 11, 11))
         );
