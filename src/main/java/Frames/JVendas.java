@@ -334,13 +334,13 @@ public class JVendas extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        cmbTipo = new javax.swing.JComboBox<>();
+        cmbTipo = new javax.swing.JComboBox<String>();
         jLabel9 = new javax.swing.JLabel();
         btnLimpar = new javax.swing.JButton();
         btnEnviar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        cmbCliente = new javax.swing.JComboBox<>();
+        cmbCliente = new javax.swing.JComboBox<String>();
         jLabel7 = new javax.swing.JLabel();
         txtProd = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -348,7 +348,7 @@ public class JVendas extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtValorTotal = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        cmbParcela = new javax.swing.JComboBox<>();
+        cmbParcela = new javax.swing.JComboBox<String>();
         txtValorParc = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -365,13 +365,13 @@ public class JVendas extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        cmbTipo1 = new javax.swing.JComboBox<>();
+        cmbTipo1 = new javax.swing.JComboBox<String>();
         jLabel14 = new javax.swing.JLabel();
         btnLimpar1 = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnVoltar1 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
-        cmbCliente1 = new javax.swing.JComboBox<>();
+        cmbCliente1 = new javax.swing.JComboBox<String>();
         jLabel16 = new javax.swing.JLabel();
         txtProd1 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
@@ -379,7 +379,7 @@ public class JVendas extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         txtValorTotal1 = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
-        cmbParcela1 = new javax.swing.JComboBox<>();
+        cmbParcela1 = new javax.swing.JComboBox<String>();
         txtValorParc1 = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
@@ -395,7 +395,7 @@ public class JVendas extends javax.swing.JFrame {
         btnVerifica1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        cmbTipoCliente = new javax.swing.JComboBox<>();
+        cmbTipoCliente = new javax.swing.JComboBox<String>();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -418,24 +418,19 @@ public class JVendas extends javax.swing.JFrame {
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Tipo de Pagamento:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 21, -1, -1));
 
         jLabel6.setText("CPF:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 109, -1, -1));
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Vista", "Prazo" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Vista", "Prazo" }));
         cmbTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbTipoActionPerformed(evt);
             }
         });
-        jPanel2.add(cmbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 18, 190, -1));
 
         jLabel9.setText("Cliente:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 68, -1, -1));
 
         btnLimpar.setText("Limpar");
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -443,7 +438,6 @@ public class JVendas extends javax.swing.JFrame {
                 btnLimparActionPerformed(evt);
             }
         });
-        jPanel2.add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 334, 130, -1));
 
         btnEnviar.setText("Enviar");
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
@@ -451,7 +445,6 @@ public class JVendas extends javax.swing.JFrame {
                 btnEnviarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 334, 130, -1));
 
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -459,21 +452,17 @@ public class JVendas extends javax.swing.JFrame {
                 btnVoltarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(681, 334, 130, -1));
 
         jLabel5.setText("CNPJ:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 153, -1, -1));
 
-        cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Físico", "Jurídico" }));
+        cmbCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Físico", "Jurídico" }));
         cmbCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbClienteActionPerformed(evt);
             }
         });
-        jPanel2.add(cmbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 65, 190, -1));
 
         jLabel7.setText("Código Produto:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 21, -1, -1));
 
         txtProd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -485,10 +474,8 @@ public class JVendas extends javax.swing.JFrame {
                 txtProdActionPerformed(evt);
             }
         });
-        jPanel2.add(txtProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 18, 90, -1));
 
         jLabel1.setText("Quantidade:");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 109, -1, -1));
 
         txtQtde.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -500,36 +487,27 @@ public class JVendas extends javax.swing.JFrame {
                 txtQtdeActionPerformed(evt);
             }
         });
-        jPanel2.add(txtQtde, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 106, 139, -1));
 
         jLabel3.setText("Valor Total:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, -1, -1));
-        jPanel2.add(txtValorTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(589, 266, 139, -1));
 
         jLabel4.setText("Parcelas:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(384, 156, -1, -1));
 
-        cmbParcela.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "1x", "2x", "3x", "4x", "5x", "6x c/ juros", "7x c/ juros", "8x c/ juros" }));
+        cmbParcela.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "1x", "2x", "3x", "4x", "5x", "6x c/ juros", "7x c/ juros", "8x c/ juros" }));
         cmbParcela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbParcelaActionPerformed(evt);
             }
         });
-        jPanel2.add(cmbParcela, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 153, 139, -1));
-        jPanel2.add(txtValorParc, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 191, 139, -1));
 
         jLabel8.setText("Valores:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 194, -1, -1));
 
         jLabel22.setText("Data Registro:");
-        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 232, -1, -1));
 
         try {
             txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel2.add(txtData, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 229, 139, -1));
 
         btnBuscaProduto.setText("Buscar");
         btnBuscaProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -537,34 +515,28 @@ public class JVendas extends javax.swing.JFrame {
                 btnBuscaProdutoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscaProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(547, 17, -1, -1));
 
         try {
             txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel2.add(txtCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 106, 190, -1));
 
         try {
             txtCNPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel2.add(txtCNPJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 153, 190, -1));
 
         jLabel10.setText("Desconto:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 194, -1, -1));
 
         txtDesconto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescontoActionPerformed(evt);
             }
         });
-        jPanel2.add(txtDesconto, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 191, 190, -1));
 
         jLabel11.setText("Tipo Produto:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(362, 68, -1, -1));
 
         cmbTipoProduto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Camisa", "Camiseta", "Moletom", "Calça", "Bermuda", "Short" }));
         cmbTipoProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -572,7 +544,6 @@ public class JVendas extends javax.swing.JFrame {
                 cmbTipoProdutoActionPerformed(evt);
             }
         });
-        jPanel2.add(cmbTipoProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 65, 139, -1));
 
         btnPreencher.setText("Preencher");
         btnPreencher.addActionListener(new java.awt.event.ActionListener() {
@@ -580,7 +551,6 @@ public class JVendas extends javax.swing.JFrame {
                 btnPreencherActionPerformed(evt);
             }
         });
-        jPanel2.add(btnPreencher, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 17, -1, -1));
 
         btnVerifica.setText("Verifica");
         btnVerifica.addActionListener(new java.awt.event.ActionListener() {
@@ -588,7 +558,158 @@ public class JVendas extends javax.swing.JFrame {
                 btnVerificaActionPerformed(evt);
             }
         });
-        jPanel2.add(btnVerifica, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 105, -1, -1));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2)
+                .addGap(4, 4, 4)
+                .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel7)
+                .addGap(4, 4, 4)
+                .addComponent(txtProd, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(btnBuscaProduto)
+                .addGap(18, 18, 18)
+                .addComponent(btnPreencher))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(jLabel9)
+                .addGap(4, 4, 4)
+                .addComponent(cmbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
+                .addComponent(jLabel11)
+                .addGap(4, 4, 4)
+                .addComponent(cmbTipoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jLabel6)
+                .addGap(4, 4, 4)
+                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
+                .addComponent(jLabel1)
+                .addGap(4, 4, 4)
+                .addComponent(txtQtde, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btnVerifica))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(jLabel5)
+                .addGap(4, 4, 4)
+                .addComponent(txtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(84, 84, 84)
+                .addComponent(jLabel4)
+                .addGap(4, 4, 4)
+                .addComponent(cmbParcela, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jLabel10)
+                .addGap(4, 4, 4)
+                .addComponent(txtDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(jLabel8)
+                .addGap(4, 4, 4)
+                .addComponent(txtValorParc, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel22)
+                .addGap(4, 4, 4)
+                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(530, 530, 530)
+                .addComponent(jLabel3)
+                .addGap(4, 4, 4)
+                .addComponent(txtValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(btnEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(190, 190, 190)
+                .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(221, 221, 221)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel7))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(txtProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBuscaProduto)
+                    .addComponent(btnPreencher))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTipoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel11))))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(txtQtde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnVerifica))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(txtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel4))
+                    .addComponent(cmbParcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtValorParc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel8))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel22))
+                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel3))
+                    .addComponent(txtValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEnviar)
+                    .addComponent(btnLimpar)
+                    .addComponent(btnVoltar)))
+        );
 
         jTabbedPane1.addTab("Cadastro", jPanel2);
 
@@ -598,7 +719,7 @@ public class JVendas extends javax.swing.JFrame {
 
         jLabel13.setText("CPF:");
 
-        cmbTipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Vista", "Prazo" }));
+        cmbTipo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Vista", "Prazo" }));
         cmbTipo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbTipo1ActionPerformed(evt);
@@ -630,7 +751,7 @@ public class JVendas extends javax.swing.JFrame {
 
         jLabel15.setText("CNPJ:");
 
-        cmbCliente1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Físico", "Jurídico" }));
+        cmbCliente1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Físico", "Jurídico" }));
         cmbCliente1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbCliente1ActionPerformed(evt);
@@ -667,7 +788,7 @@ public class JVendas extends javax.swing.JFrame {
 
         jLabel33.setText("Parcelas:");
 
-        cmbParcela1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "1x", "2x", "3x", "4x", "5x", "6x c/ juros", "7x c/ juros", "8x c/ juros" }));
+        cmbParcela1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "1x", "2x", "3x", "4x", "5x", "6x c/ juros", "7x c/ juros", "8x c/ juros" }));
         cmbParcela1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbParcela1ActionPerformed(evt);
@@ -884,7 +1005,7 @@ public class JVendas extends javax.swing.JFrame {
 
         jLabel19.setText("Cliente: ");
 
-        cmbTipoCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Cliente Físico", "Cliente Jurídico" }));
+        cmbTipoCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Cliente Físico", "Cliente Jurídico" }));
         cmbTipoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbTipoClienteActionPerformed(evt);

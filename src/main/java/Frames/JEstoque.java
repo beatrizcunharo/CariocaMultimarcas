@@ -283,7 +283,7 @@ public class JEstoque extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        cmbSexo = new javax.swing.JComboBox<>();
+        cmbSexo = new javax.swing.JComboBox<String>();
         jLabel9 = new javax.swing.JLabel();
         btnLimpar = new javax.swing.JButton();
         btnEnviar = new javax.swing.JButton();
@@ -303,7 +303,7 @@ public class JEstoque extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         txtNome1 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        cmbSexo1 = new javax.swing.JComboBox<>();
+        cmbSexo1 = new javax.swing.JComboBox<String>();
         jLabel22 = new javax.swing.JLabel();
         btnLimpar1 = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
@@ -342,20 +342,14 @@ public class JEstoque extends javax.swing.JFrame {
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Nome:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 21, -1, -1));
-        jPanel2.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 18, 189, -1));
 
         jLabel6.setText("Sexo:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 136, -1, -1));
 
-        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino", "Unissex" }));
-        jPanel2.add(cmbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 133, 190, -1));
+        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Feminino", "Masculino", "Unissex" }));
 
         jLabel9.setText("Tamanho:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 97, -1, -1));
 
         btnLimpar.setText("Limpar");
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -363,7 +357,6 @@ public class JEstoque extends javax.swing.JFrame {
                 btnLimparActionPerformed(evt);
             }
         });
-        jPanel2.add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(283, 284, 129, -1));
 
         btnEnviar.setText("Enviar");
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
@@ -371,7 +364,6 @@ public class JEstoque extends javax.swing.JFrame {
                 btnEnviarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 284, 138, -1));
 
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -379,24 +371,16 @@ public class JEstoque extends javax.swing.JFrame {
                 btnVoltarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 284, 90, -1));
 
         jLabel1.setText("Quantidade:");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(352, 21, -1, -1));
-        jPanel2.add(txtQuant, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 18, 160, -1));
 
         jLabel3.setText("Valor unitário:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 59, -1, -1));
-        jPanel2.add(txtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 56, 160, -1));
 
         jLabel5.setText("Data de Registro:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 136, -1, -1));
 
         cmbTamanho.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "PP", "P", "M", "G", "GG" }));
-        jPanel2.add(cmbTamanho, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 94, 189, -1));
 
         jLabel17.setText("Tipo:");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 59, -1, -1));
 
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Camisa", "Camiseta", "Moletom", "Calça", "Bermuda", "Short" }));
         cmbTipo.addActionListener(new java.awt.event.ActionListener() {
@@ -404,38 +388,122 @@ public class JEstoque extends javax.swing.JFrame {
                 cmbTipoActionPerformed(evt);
             }
         });
-        jPanel2.add(cmbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 56, 189, -1));
 
         jLabel21.setText("Número:");
-        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 97, -1, -1));
 
         cmbNumero.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "34", "36", "38", "40", "42", "44", "46", "48", "50", "52", "54", "56" }));
-        jPanel2.add(cmbNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 94, 160, -1));
 
         try {
             txtDataRegis.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel2.add(txtDataRegis, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 133, 160, -1));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(jLabel2)
+                .addGap(4, 4, 4)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
+                .addComponent(jLabel1)
+                .addGap(6, 6, 6)
+                .addComponent(txtQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(jLabel17)
+                .addGap(4, 4, 4)
+                .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(jLabel3)
+                .addGap(6, 6, 6)
+                .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel9)
+                .addGap(4, 4, 4)
+                .addComponent(cmbTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83)
+                .addComponent(jLabel21)
+                .addGap(6, 6, 6)
+                .addComponent(cmbNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(jLabel6)
+                .addGap(4, 4, 4)
+                .addComponent(cmbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel5)
+                .addGap(6, 6, 6)
+                .addComponent(txtDataRegis, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(btnEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98)
+                .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(108, 108, 108)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtQuant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel3))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel21))))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDataRegis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))))
+                .addGap(131, 131, 131)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEnviar)
+                    .addComponent(btnLimpar)
+                    .addComponent(btnVoltar)))
+        );
 
         jTabbedPane1.addTab("Cadastro", jPanel2);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setText("Nome:");
-        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 21, -1, -1));
-        jPanel5.add(txtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 18, 189, -1));
 
         jLabel16.setText("Sexo:");
-        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 130, -1, -1));
 
-        cmbSexo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino", "Unissex" }));
-        jPanel5.add(cmbSexo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 127, 190, -1));
+        cmbSexo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Feminino", "Masculino", "Unissex" }));
 
         jLabel22.setText("Tamanho:");
-        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 91, -1, -1));
 
         btnLimpar1.setText("Limpar");
         btnLimpar1.addActionListener(new java.awt.event.ActionListener() {
@@ -443,7 +511,6 @@ public class JEstoque extends javax.swing.JFrame {
                 btnLimpar1ActionPerformed(evt);
             }
         });
-        jPanel5.add(btnLimpar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(283, 278, 129, -1));
 
         btnAlterar.setText("Alterar");
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
@@ -451,7 +518,6 @@ public class JEstoque extends javax.swing.JFrame {
                 btnAlterarActionPerformed(evt);
             }
         });
-        jPanel5.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 278, 138, -1));
 
         btnVoltar3.setText("Voltar");
         btnVoltar3.addActionListener(new java.awt.event.ActionListener() {
@@ -459,24 +525,16 @@ public class JEstoque extends javax.swing.JFrame {
                 btnVoltar3ActionPerformed(evt);
             }
         });
-        jPanel5.add(btnVoltar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 278, -1, -1));
 
         jLabel23.setText("Quantidade:");
-        jPanel5.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(352, 21, -1, -1));
-        jPanel5.add(txtQuant1, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 18, 160, -1));
 
         jLabel24.setText("Valor unitário:");
-        jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 59, -1, -1));
-        jPanel5.add(txtValor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 56, 160, -1));
 
         jLabel25.setText("Data de Registro:");
-        jPanel5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 130, -1, -1));
 
         cmbTamanho1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "PP", "P", "M", "G", "GG" }));
-        jPanel5.add(cmbTamanho1, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 88, 189, -1));
 
         jLabel26.setText("Tipo:");
-        jPanel5.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 59, -1, -1));
 
         cmbTipo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Camisa", "Camiseta", "Moletom", "Calça", "Bermuda", "Short" }));
         cmbTipo1.addActionListener(new java.awt.event.ActionListener() {
@@ -484,29 +542,116 @@ public class JEstoque extends javax.swing.JFrame {
                 cmbTipo1ActionPerformed(evt);
             }
         });
-        jPanel5.add(cmbTipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 56, 189, -1));
 
         jLabel29.setText("Número:");
-        jPanel5.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 91, -1, -1));
 
         cmbNumero1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "34", "36", "38", "40", "42", "44", "46", "48", "50", "52", "54", "56" }));
-        jPanel5.add(cmbNumero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 88, 160, -1));
 
         try {
             txtDataRegis1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel5.add(txtDataRegis1, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 127, 160, -1));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(jLabel14)
+                .addGap(4, 4, 4)
+                .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
+                .addComponent(jLabel23)
+                .addGap(6, 6, 6)
+                .addComponent(txtQuant1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(jLabel26)
+                .addGap(4, 4, 4)
+                .addComponent(cmbTipo1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(jLabel24)
+                .addGap(6, 6, 6)
+                .addComponent(txtValor1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel22)
+                .addGap(4, 4, 4)
+                .addComponent(cmbTamanho1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83)
+                .addComponent(jLabel29)
+                .addGap(6, 6, 6)
+                .addComponent(cmbNumero1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(jLabel16)
+                .addGap(4, 4, 4)
+                .addComponent(cmbSexo1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel25)
+                .addGap(6, 6, 6)
+                .addComponent(txtDataRegis1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98)
+                .addComponent(btnLimpar1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(138, 138, 138)
+                .addComponent(btnVoltar3))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtQuant1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel23))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbTipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtValor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel24))))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbTamanho1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbNumero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel29))))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbSexo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDataRegis1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel25))))
+                .addGap(131, 131, 131)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAlterar)
+                    .addComponent(btnLimpar1)
+                    .addComponent(btnVoltar3)))
+        );
 
         jTabbedPane1.addTab("Alterar", jPanel5);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel15.setText("Nome:");
-        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 21, -1, -1));
-        jPanel4.add(txtNome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 18, 189, -1));
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -514,7 +659,6 @@ public class JEstoque extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jPanel4.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(562, 103, 138, -1));
 
         btnVoltar2.setText("Voltar");
         btnVoltar2.addActionListener(new java.awt.event.ActionListener() {
@@ -522,21 +666,15 @@ public class JEstoque extends javax.swing.JFrame {
                 btnVoltar2ActionPerformed(evt);
             }
         });
-        jPanel4.add(btnVoltar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 284, -1, -1));
 
         table.setModel(tabela);
         jScrollPane1.setViewportView(table);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 155, 690, 118));
-
         jLabel18.setText("Tipo:");
-        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 21, -1, -1));
 
         cmbTipo2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Camisa", "Camiseta", "Moletom", "Calça", "Bermuda", "Short" }));
-        jPanel4.add(cmbTipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 18, -1, -1));
 
         jLabel19.setText("Tamanho:");
-        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         cmbTamanho2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "PP", "P", "M", "G", "GG" }));
         cmbTamanho2.addActionListener(new java.awt.event.ActionListener() {
@@ -544,11 +682,8 @@ public class JEstoque extends javax.swing.JFrame {
                 cmbTamanho2ActionPerformed(evt);
             }
         });
-        jPanel4.add(cmbTamanho2, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 77, 189, -1));
 
         jLabel20.setText("Código:");
-        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 21, -1, -1));
-        jPanel4.add(txtCodigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(489, 18, 198, -1));
 
         btnAlterar1.setText("Alterar");
         btnAlterar1.addActionListener(new java.awt.event.ActionListener() {
@@ -556,7 +691,6 @@ public class JEstoque extends javax.swing.JFrame {
                 btnAlterar1ActionPerformed(evt);
             }
         });
-        jPanel4.add(btnAlterar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 284, -1, -1));
 
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -564,13 +698,88 @@ public class JEstoque extends javax.swing.JFrame {
                 btnExcluirActionPerformed(evt);
             }
         });
-        jPanel4.add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 284, -1, -1));
 
         jLabel7.setText("Número:");
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 107, -1, -1));
 
         cmbNumero2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "34", "36", "38", "40", "42", "44", "46", "48", "50", "52", "54", "56" }));
-        jPanel4.add(cmbNumero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 104, 189, -1));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel15)
+                .addGap(4, 4, 4)
+                .addComponent(txtNome2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(jLabel18)
+                .addGap(4, 4, 4)
+                .addComponent(cmbTipo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(jLabel20)
+                .addGap(4, 4, 4)
+                .addComponent(txtCodigo2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel19)
+                .addGap(4, 4, 4)
+                .addComponent(cmbTamanho2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel7)
+                .addGap(4, 4, 4)
+                .addComponent(cmbNumero2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(311, 311, 311)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(btnVoltar2)
+                .addGap(170, 170, 170)
+                .addComponent(btnAlterar1)
+                .addGap(136, 136, 136)
+                .addComponent(btnExcluir))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNome2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTipo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel20))))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel19))
+                    .addComponent(cmbTamanho2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel7))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(cmbNumero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBuscar))
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVoltar2)
+                    .addComponent(btnAlterar1)
+                    .addComponent(btnExcluir)))
+        );
 
         jTabbedPane1.addTab("Pesquisar", jPanel4);
 
