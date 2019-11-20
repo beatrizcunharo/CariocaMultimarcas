@@ -107,18 +107,18 @@ public class JVendas extends javax.swing.JFrame {
         if (cmbTipo.getSelectedIndex() == 0 || cmbCliente.getSelectedIndex() == 0 || txtData.getText().equals("  /  /    ") || txtProd.getText().equals("")
                 || txtQtde.getText().equals("") || txtValorTotal.getText().equals("")) {
             vazio = true;
-        }else{
-            if(cmbCliente.getSelectedIndex() == 1){
-                if(txtCPF.getText().equals("   .   .   -  ")){
+        } else {
+            if (cmbCliente.getSelectedIndex() == 1) {
+                if (txtCPF.getText().equals("   .   .   -  ")) {
                     vazio = true;
                 }
-            }else{
-                if(cmbCliente.getSelectedIndex() == 2){
-                    if(txtCNPJ.getText().equals("  .   .   /    -  ")){
+            } else {
+                if (cmbCliente.getSelectedIndex() == 2) {
+                    if (txtCNPJ.getText().equals("  .   .   /    -  ")) {
                         vazio = true;
                     }
-                }else{
-                    if(cmbCliente.getSelectedIndex() == 0){
+                } else {
+                    if (cmbCliente.getSelectedIndex() == 0) {
                         vazio = true;
                     }
                 }
@@ -132,18 +132,18 @@ public class JVendas extends javax.swing.JFrame {
         if (cmbTipo1.getSelectedIndex() == 0 || cmbCliente1.getSelectedIndex() == 0 || txtData1.getText().equals("  /  /    ") || txtProd1.getText().equals("")
                 || txtQtde1.getText().equals("") || txtValorTotal1.getText().equals("")) {
             vazio = true;
-        }else{
-            if(cmbCliente1.getSelectedIndex() == 1){
-                if(txtCPF1.getText().equals("   .   .   -  ")){
+        } else {
+            if (cmbCliente1.getSelectedIndex() == 1) {
+                if (txtCPF1.getText().equals("   .   .   -  ")) {
                     vazio = true;
                 }
-            }else{
-                if(cmbCliente1.getSelectedIndex() == 2){
-                    if(txtCNPJ1.getText().equals("  .   .   /    -  ")){
+            } else {
+                if (cmbCliente1.getSelectedIndex() == 2) {
+                    if (txtCNPJ1.getText().equals("  .   .   /    -  ")) {
                         vazio = true;
                     }
-                }else{
-                    if(cmbCliente1.getSelectedIndex() == 0){
+                } else {
+                    if (cmbCliente1.getSelectedIndex() == 0) {
                         vazio = true;
                     }
                 }
@@ -152,9 +152,6 @@ public class JVendas extends javax.swing.JFrame {
 
         return vazio;
     }
-    
-    
-    
 
     public void pesquisa() {
         List<VendaAVista> vista = arquivoVenda.outputVendaVista();
@@ -368,6 +365,122 @@ public class JVendas extends javax.swing.JFrame {
         }
     }
 
+    public boolean verificaQuantidadeCadastro() {
+        int codigoProd = Integer.parseInt(txtProd.getText());
+        int quantidade = Integer.parseInt(txtQtde.getText());
+        boolean valida = false;
+        if (cmbTipo.getSelectedIndex() == 1) {
+            VendaAVista vendaVista = new VendaAVista();
+            List<Blusas> listaBlusas = vendaVista.getEstoque().outputBlusas();
+            List<Calcas> listaCalcas = vendaVista.getEstoque().outputCalcas();
+            for (int i = 0; i < listaBlusas.size(); i++) {
+                if (listaBlusas.get(i).getCodigo() == codigoProd) {
+                    if ((listaBlusas.get(i).getQtde() < quantidade)) {
+                        txtQtde.setText("");
+                        valida = false;
+                    } else {
+                        valida = true;
+                    }
+                }
+            }
+            for (int i = 0; i < listaCalcas.size(); i++) {
+                if (listaCalcas.get(i).getCodigo() == codigoProd) {
+                    if ((listaCalcas.get(i).getQtde() < quantidade)) {
+                        txtQtde.setText("");
+                        valida = false;
+                    } else {
+                        valida = true;
+                    }
+                }
+            }
+        } else {
+            if (cmbTipo.getSelectedIndex() == 2) {
+                VendaAPrazo vendaPrazo = new VendaAPrazo();
+                List<Blusas> listaBlusas = vendaPrazo.getEstoque().outputBlusas();
+                List<Calcas> listaCalcas = vendaPrazo.getEstoque().outputCalcas();
+                for (int i = 0; i < listaBlusas.size(); i++) {
+                    if (listaBlusas.get(i).getCodigo() == codigoProd) {
+                        if ((listaBlusas.get(i).getQtde() < quantidade)) {
+                            txtQtde.setText("");
+                            valida = false;
+                        } else {
+                            valida = true;
+                        }
+                    }
+                }
+                for (int i = 0; i < listaCalcas.size(); i++) {
+                    if (listaCalcas.get(i).getCodigo() == codigoProd) {
+                        if ((listaCalcas.get(i).getQtde() < quantidade)) {
+                            txtQtde.setText("");
+                            valida = false;
+                        } else {
+                            valida = true;
+                        }
+                    }
+                }
+            }
+        }
+        return valida;
+    }
+    public boolean verificaQuantidadeAlterar() {
+        int codigoProd = Integer.parseInt(txtProd1.getText());
+        int quantidade = Integer.parseInt(txtQtde1.getText());
+        boolean valida = false;
+        if (cmbTipo1.getSelectedIndex() == 1) {
+            VendaAVista vendaVista = new VendaAVista();
+            List<Blusas> listaBlusas = vendaVista.getEstoque().outputBlusas();
+            List<Calcas> listaCalcas = vendaVista.getEstoque().outputCalcas();
+            for (int i = 0; i < listaBlusas.size(); i++) {
+                if (listaBlusas.get(i).getCodigo() == codigoProd) {
+                    if ((listaBlusas.get(i).getQtde() < quantidade)) {
+                        txtQtde1.setText("");
+                        valida = false;
+                    } else {
+                        valida = true;
+                    }
+                }
+            }
+            for (int i = 0; i < listaCalcas.size(); i++) {
+                if (listaCalcas.get(i).getCodigo() == codigoProd) {
+                    if ((listaCalcas.get(i).getQtde() < quantidade)) {
+                        txtQtde1.setText("");
+                        valida = false;
+                    } else {
+                        valida = true;
+                    }
+                }
+            }
+        } else {
+            if (cmbTipo1.getSelectedIndex() == 2) {
+                VendaAPrazo vendaPrazo = new VendaAPrazo();
+                List<Blusas> listaBlusas = vendaPrazo.getEstoque().outputBlusas();
+                List<Calcas> listaCalcas = vendaPrazo.getEstoque().outputCalcas();
+                for (int i = 0; i < listaBlusas.size(); i++) {
+                    if (listaBlusas.get(i).getCodigo() == codigoProd) {
+                        if ((listaBlusas.get(i).getQtde() < quantidade)) {
+                            txtQtde1.setText("");
+                            valida = false;
+                        } else {
+                            valida = true;
+                        }
+                    }
+                }
+                for (int i = 0; i < listaCalcas.size(); i++) {
+                    if (listaCalcas.get(i).getCodigo() == codigoProd) {
+                        if ((listaCalcas.get(i).getQtde() < quantidade)) {
+                            txtQtde1.setText("");
+                            valida = false;
+                        } else {
+                            valida = true;
+                        }
+                    }
+                }
+            }
+        }
+        return valida;
+    }
+    
+    
     File fileV = new File("arquivoVendaVista.json");
     File fileP = new File("arquivoVendaPrazo.json");
 
@@ -1254,7 +1367,7 @@ public class JVendas extends javax.swing.JFrame {
     private void cmbParcelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbParcelaActionPerformed
         int quantidade = Integer.parseInt(txtQtde.getText());
         if (!txtValorTotal.getText().equals("")) {
-
+            
             if (!txtQtde.getText().equals("")) {
                 double valorParcelado = 0.0;
                 if (cmbParcela.getSelectedIndex() == 1) {
@@ -1347,71 +1460,42 @@ public class JVendas extends javax.swing.JFrame {
             codigo = codigo + 1;
         }
 
-        if (vazioCadastro() == false) {
+        if (vazioCadastro() == true) {
             JOptionPane.showMessageDialog(null, "Há campos vazios.");
         } else {
-            String tipoPag = cmbTipo.getSelectedItem().toString();
-            String tipoCliente = cmbCliente.getSelectedItem().toString();
-            String cpf = txtCPF.getText();
-            String cnpj = txtCNPJ.getText();
-            String data = txtData.getText();
-            int codigoProd = Integer.parseInt(txtProd.getText());
-            int quantidade = Integer.parseInt(txtQtde.getText());
-            double valorTotal = Double.parseDouble(txtValorTotal.getText());
-            String tipoProduto = cmbTipoProduto.getSelectedItem().toString();
-
-            if (tipoPag.equals("Vista")) {
-
-                List<Blusas> blusas = vendaVista.getEstoque().outputBlusas();
-                List<Calcas> calcas = vendaVista.getEstoque().outputCalcas();
-
-                arquivoVenda.cadastraVendaVista(codigo, tipoPag, tipoCliente, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valorTotal);
-                try {
-                    arquivoVenda.inputVendaAVista();
-                    JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
-                    if (tipoProduto.equals("Camisa") || tipoProduto.equals("Camisa") || tipoProduto.equals("Moletom")) {
-                        for (int i = 0; i < blusas.size(); i++) {
-                            if (blusas.get(i).getCodigo() == codigoProd) {
-                                blusas.get(i).setQtde(blusas.get(i).getQtde() - quantidade);
-                            }
-                        }
-                    } else {
-                        if (tipoProduto.equals("Calça") || tipoProduto.equals("Bermuda") || tipoProduto.equals("Short")) {
-                            for (int i = 0; i < calcas.size(); i++) {
-                                if (calcas.get(i).getCodigo() == codigoProd) {
-                                    calcas.get(i).setQtde(calcas.get(i).getQtde() - quantidade);
-                                }
-                            }
-                        }
-                    }
-                    limpaCadastro();
-                } catch (IOException ex) {
-                    Logger.getLogger(JVendas.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            if (verificaQuantidadeCadastro()== false) {
+                JOptionPane.showMessageDialog(null, "Quantidade insuficiente em estoque.");
             } else {
-                if (tipoPag.equals("Prazo")) {
-                    double valorParcelado = Double.parseDouble(txtValorParc.getText());
-                    String parcelas = cmbParcela.getSelectedItem().toString();
-                    List<Blusas> blusas = vendaPrazo.getEstoque().outputBlusas();
-                    List<Calcas> calcas = vendaPrazo.getEstoque().outputCalcas();
+                String tipoPag = cmbTipo.getSelectedItem().toString();
+                String tipoCliente = cmbCliente.getSelectedItem().toString();
+                String cpf = txtCPF.getText();
+                String cnpj = txtCNPJ.getText();
+                String data = txtData.getText();
+                int codigoProd = Integer.parseInt(txtProd.getText());
+                int quantidade = Integer.parseInt(txtQtde.getText());
+                double valorTotal = Double.parseDouble(txtValorTotal.getText());
+                String tipoProduto = cmbTipoProduto.getSelectedItem().toString();
 
-                    arquivoVenda.cadastraVendaPrazo(codigo, tipoPag, tipoCliente, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valorTotal, parcelas, valorParcelado);
+                if (tipoPag.equals("Vista")) {
+
+                    List<Blusas> blusas = vendaVista.getEstoque().outputBlusas();
+                    List<Calcas> calcas = vendaVista.getEstoque().outputCalcas();
+
+                    arquivoVenda.cadastraVendaVista(codigo, tipoPag, tipoCliente, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valorTotal);
                     try {
-                        arquivoVenda.inputVendaAPrazo();
+                        arquivoVenda.inputVendaAVista();
                         JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
                         if (tipoProduto.equals("Camisa") || tipoProduto.equals("Camisa") || tipoProduto.equals("Moletom")) {
                             for (int i = 0; i < blusas.size(); i++) {
                                 if (blusas.get(i).getCodigo() == codigoProd) {
-                                    int quant = blusas.get(i).getQtde();
-                                    blusas.get(i).setQtde(quant - quantidade);
+                                    blusas.get(i).setQtde(blusas.get(i).getQtde() - quantidade);
                                 }
                             }
                         } else {
                             if (tipoProduto.equals("Calça") || tipoProduto.equals("Bermuda") || tipoProduto.equals("Short")) {
                                 for (int i = 0; i < calcas.size(); i++) {
                                     if (calcas.get(i).getCodigo() == codigoProd) {
-                                        int quant = calcas.get(i).getQtde();
-                                        calcas.get(i).setQtde(quant - quantidade);
+                                        calcas.get(i).setQtde(calcas.get(i).getQtde() - quantidade);
                                     }
                                 }
                             }
@@ -1419,6 +1503,39 @@ public class JVendas extends javax.swing.JFrame {
                         limpaCadastro();
                     } catch (IOException ex) {
                         Logger.getLogger(JVendas.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    if (tipoPag.equals("Prazo")) {
+                        double valorParcelado = Double.parseDouble(txtValorParc.getText());
+                        String parcelas = cmbParcela.getSelectedItem().toString();
+                        List<Blusas> blusas = vendaPrazo.getEstoque().outputBlusas();
+                        List<Calcas> calcas = vendaPrazo.getEstoque().outputCalcas();
+
+                        arquivoVenda.cadastraVendaPrazo(codigo, tipoPag, tipoCliente, cpf, cnpj, codigoProd, tipoProduto, data, quantidade, valorTotal, parcelas, valorParcelado);
+                        try {
+                            arquivoVenda.inputVendaAPrazo();
+                            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
+                            if (tipoProduto.equals("Camisa") || tipoProduto.equals("Camisa") || tipoProduto.equals("Moletom")) {
+                                for (int i = 0; i < blusas.size(); i++) {
+                                    if (blusas.get(i).getCodigo() == codigoProd) {
+                                        int quant = blusas.get(i).getQtde();
+                                        blusas.get(i).setQtde(quant - quantidade);
+                                    }
+                                }
+                            } else {
+                                if (tipoProduto.equals("Calça") || tipoProduto.equals("Bermuda") || tipoProduto.equals("Short")) {
+                                    for (int i = 0; i < calcas.size(); i++) {
+                                        if (calcas.get(i).getCodigo() == codigoProd) {
+                                            int quant = calcas.get(i).getQtde();
+                                            calcas.get(i).setQtde(quant - quantidade);
+                                        }
+                                    }
+                                }
+                            }
+                            limpaCadastro();
+                        } catch (IOException ex) {
+                            Logger.getLogger(JVendas.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                 }
             }
@@ -1557,60 +1674,20 @@ public class JVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPreencherActionPerformed
 
     private void btnVerificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificaActionPerformed
-        int codigoProd = Integer.parseInt(txtProd.getText());
-        int quantidade = Integer.parseInt(txtQtde.getText());
-
-        if (cmbTipo.getSelectedIndex() == 1) {
-            VendaAVista vendaVista = new VendaAVista();
-            List<Blusas> listaBlusas = vendaVista.getEstoque().outputBlusas();
-            List<Calcas> listaCalcas = vendaVista.getEstoque().outputCalcas();
-            for (int i = 0; i < listaBlusas.size(); i++) {
-                if (listaBlusas.get(i).getCodigo() == codigoProd) {
-                    if ((listaBlusas.get(i).getQtde() < quantidade)) {
-                        JOptionPane.showMessageDialog(null, "Quantidade insuficiente em estoque.");
-                        txtQtde.setText("");
-                        break;
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Quantidade suficiente.");
-                    }
-                }
-            }
-            for (int i = 0; i < listaCalcas.size(); i++) {
-                if (listaCalcas.get(i).getCodigo() == codigoProd) {
-                    if ((listaCalcas.get(i).getQtde() < quantidade)) {
-                        JOptionPane.showMessageDialog(null, "Quantidade insuficiente em estoque.");
-                        txtQtde.setText("");
-                        break;
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Quantidade suficiente.");
-                    }
-                }
-            }
+        if (txtQtde.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Preencha a quantidade.");
         } else {
-            if (cmbTipo.getSelectedIndex() == 2) {
-                VendaAPrazo vendaPrazo = new VendaAPrazo();
-                List<Blusas> listaBlusas = vendaPrazo.getEstoque().outputBlusas();
-                List<Calcas> listaCalcas = vendaPrazo.getEstoque().outputCalcas();
-                for (int i = 0; i < listaBlusas.size(); i++) {
-                    if (listaBlusas.get(i).getCodigo() == codigoProd) {
-                        if ((listaBlusas.get(i).getQtde() < quantidade)) {
-                            JOptionPane.showMessageDialog(null, "Quantidade insuficiente em estoque.");
-                            txtQtde.setText("");
-                            break;
-                        }
-                    }
-                }
-                for (int i = 0; i < listaCalcas.size(); i++) {
-                    if (listaCalcas.get(i).getCodigo() == codigoProd) {
-                        if ((listaCalcas.get(i).getQtde() < quantidade)) {
-                            JOptionPane.showMessageDialog(null, "Quantidade insuficiente em estoque.");
-                            txtQtde.setText("");
-                            break;
-                        }
-                    }
+            if (txtProd.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Preencha o código do produto.");
+            } else {
+                if (verificaQuantidadeCadastro()== false) {
+                    JOptionPane.showMessageDialog(null, "Quantidade insuficiente.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Quantidade suficiente.");
                 }
             }
         }
+
     }//GEN-LAST:event_btnVerificaActionPerformed
 
     private void cmbTipoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoClienteActionPerformed
@@ -1755,7 +1832,7 @@ public class JVendas extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Quantidade insuficiente em estoque.");
                         txtQtde1.setText("");
                         break;
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "Quantidade suficiente.");
                     }
                 }
@@ -1766,7 +1843,7 @@ public class JVendas extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Quantidade insuficiente em estoque.");
                         txtQtde1.setText("");
                         break;
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "Quantidade suficiente.");
                     }
                 }
