@@ -692,6 +692,12 @@ public class JVendas extends javax.swing.JFrame {
 
         jLabel3.setText("Valor Total:");
 
+        txtValorTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorTotalActionPerformed(evt);
+            }
+        });
+
         jLabel4.setText("Parcelas:");
 
         cmbParcela.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "1x", "2x", "3x", "4x", "5x", "6x c/ juros", "7x c/ juros", "8x c/ juros" }));
@@ -1408,73 +1414,82 @@ public class JVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbClienteActionPerformed
 
     private void cmbParcelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbParcelaActionPerformed
-        int quantidade = Integer.parseInt(txtQtde.getText());
+        double valor = 0.0;
         if (!txtValorTotal.getText().equals("")) {
-
+            int quantidade = Integer.parseInt(txtQtde.getText());
             if (!txtQtde.getText().equals("")) {
-                double valorParcelado = 0.0;
-                if (cmbParcela.getSelectedIndex() == 1) {
-                    double valorTotal = Double.parseDouble(txtValorTotal.getText());
-                    double valor = valorTotal * quantidade;
-                    txtValorTotal.setText("");
-                    txtValorParc.setText(valor + "");
-                    txtValorTotal.setText(valor + "");
-                }
-                if (cmbParcela.getSelectedIndex() == 2) {
-                    double valorTotal = Double.parseDouble(txtValorTotal.getText());
-                    double valor = valorTotal * quantidade;
-                    txtValorTotal.setText("");
-                    txtValorParc.setText(Math.round(valor / 2) + "");
-                    txtValorTotal.setText(valor + "");
-                }
-                if (cmbParcela.getSelectedIndex() == 3) {
-                    double valorTotal = Double.parseDouble(txtValorTotal.getText());
-                    double valor = valorTotal * quantidade;
-                    txtValorTotal.setText("");
-                    txtValorParc.setText(Math.round(valor / 3) + "");
-                    txtValorTotal.setText(valor + "");
-                }
-                if (cmbParcela.getSelectedIndex() == 4) {
-                    double valorTotal = Double.parseDouble(txtValorTotal.getText());
-                    double valor = valorTotal * quantidade;
-                    txtValorTotal.setText("");
-                    txtValorParc.setText(Math.round(valor / 4) + "");
-                    txtValorTotal.setText(valor + "");
-                }
-                if (cmbParcela.getSelectedIndex() == 5) {
-                    double valorTotal = Double.parseDouble(txtValorTotal.getText());
-                    double valor = valorTotal * quantidade;
-                    txtValorTotal.setText("");
-                    txtValorParc.setText(Math.round(valor / 5) + "");
-                    txtValorTotal.setText(valor + "");
-                }
-                if (cmbParcela.getSelectedIndex() == 6) {
-                    double valorTotal = Double.parseDouble(txtValorTotal.getText());
-                    double valor = valorTotal * quantidade;
-                    txtValorTotal.setText("");
-                    valorParcelado = Math.round((valor / 6) * 1.15);
-                    txtValorParc.setText(valorParcelado + "");
-                    txtValorTotal.setText(Math.round(valor * 1.15) + "");
-                }
-                if (cmbParcela.getSelectedIndex() == 7) {
-                    double valorTotal = Double.parseDouble(txtValorTotal.getText());
-                    double valor = valorTotal * quantidade;
-                    txtValorTotal.setText("");
-                    valorParcelado = Math.round((valor / 7) * 1.20);
-                    txtValorParc.setText(valorParcelado + "");
-                    txtValorTotal.setText(Math.round(valor * 1.20) + "");
-                }
-                if (cmbParcela.getSelectedIndex() == 8) {
-                    double valorTotal = Double.parseDouble(txtValorTotal.getText());
-                    double valor = valorTotal * quantidade;
-                    txtValorTotal.setText("");
-                    valorParcelado = Math.round((valor / 8) * 1.25);
-                    txtValorParc.setText(valorParcelado + "");
-                    txtValorTotal.setText(Math.round(valor * 1.25) + "");
+                if (!txtProd.getText().equals("")) {
+                    int codigoProd = Integer.parseInt(txtProd.getText());
+                    VendaAPrazo vendaPrazo = new VendaAPrazo();
+                    List<Blusas> listaBlusas = vendaPrazo.getEstoque().outputBlusas();
+                    List<Calcas> listaCalcas = vendaPrazo.getEstoque().outputCalcas();
+                    for (int i = 0; i < listaBlusas.size(); i++) {
+                        if (listaBlusas.get(i).getCodigo() == codigoProd) {
+                            double valorTotal = listaBlusas.get(i).getValor();
+                            valor = valorTotal * quantidade;
+                            txtValorTotal.setText(Math.round(valor) + "");
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < listaCalcas.size(); i++) {
+                        if (listaCalcas.get(i).getCodigo() == codigoProd) {
+                            double valorTotal = listaCalcas.get(i).getValor();
+                            valor = valorTotal * quantidade;
+                            txtValorTotal.setText(Math.round(valor) + "");
+                            break;
+                        }
+                    }
+                    if (cmbParcela.getSelectedIndex() == 1) {
+                        txtValorParc.setText("");
+                        txtValorParc.setText(valor + "");
+                        txtValorTotal.setText(valor + "");
+                    }
+                    if (cmbParcela.getSelectedIndex() == 2) {
+                        txtValorParc.setText("");
+                        txtValorParc.setText(Math.round(valor / 2) + "");
+                        txtValorTotal.setText(valor + "");
+                    }
+                    if (cmbParcela.getSelectedIndex() == 3) {
+                        txtValorParc.setText("");
+                        txtValorParc.setText(Math.round(valor / 3) + "");
+                        txtValorTotal.setText(valor + "");
+                    }
+                    if (cmbParcela.getSelectedIndex() == 4) {
+                        txtValorParc.setText("");
+                        txtValorParc.setText(Math.round(valor / 4) + "");
+                        txtValorTotal.setText(valor + "");
+                    }
+                    if (cmbParcela.getSelectedIndex() == 5) {
+                        txtValorParc.setText("");
+                        txtValorParc.setText(Math.round(valor / 5) + "");
+                        txtValorTotal.setText(valor + "");
+                    }
+                    if (cmbParcela.getSelectedIndex() == 6) {
+                        txtValorParc.setText("");
+                        double valorParcelado = Math.round((valor / 6) * 1.15);
+                        txtValorParc.setText(valorParcelado + "");
+                        txtValorTotal.setText(Math.round(valor * 1.15) + "");
+                    }
+                    if (cmbParcela.getSelectedIndex() == 7) {
+                        txtValorParc.setText("");
+                        double valorParcelado = Math.round((valor / 7) * 1.20);
+                        txtValorParc.setText(valorParcelado + "");
+                        txtValorTotal.setText(Math.round(valor * 1.20) + "");
+                    }
+                    if (cmbParcela.getSelectedIndex() == 8) {
+                        txtValorParc.setText("");
+                        double valorParcelado = Math.round((valor / 8) * 1.25);
+                        txtValorParc.setText(valorParcelado + "");
+                        txtValorTotal.setText(Math.round(valor * 1.25) + "");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Preencha o código do produto.");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Preencha a quantidade.");
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "Clique para preencher os dados.");
         }
 
 
@@ -1626,8 +1641,6 @@ public class JVendas extends javax.swing.JFrame {
 
     private void btnPreencherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreencherActionPerformed
 
-        double valorTotal;
-        String tipoProduto;
         if (!txtProd.getText().equals("")) {
             int codigoProd = Integer.parseInt(txtProd.getText());
             if (cmbTipo.getSelectedIndex() == 1) {
@@ -1643,12 +1656,12 @@ public class JVendas extends javax.swing.JFrame {
                                 int quantidade = Integer.parseInt(txtQtde.getText());
                                 quantidade = Integer.parseInt(txtQtde.getText());
                                 double desconto = Double.parseDouble(txtDesconto.getText());
-                                valorTotal = listaBlusas.get(i).getValor();
+                                double valorTotal = listaBlusas.get(i).getValor();
                                 double valor = valorTotal * quantidade;
                                 double valorT = valor - (valor * desconto);
                                 txtValorTotal.setText(Math.round(valorT) + "");
                             }
-                            tipoProduto = listaBlusas.get(i).getTipo();
+                            String tipoProduto = listaBlusas.get(i).getTipo();
                             cmbTipoProduto.setSelectedItem(tipoProduto);
                         }
                     }
@@ -1658,12 +1671,12 @@ public class JVendas extends javax.swing.JFrame {
                                 int quantidade = Integer.parseInt(txtQtde.getText());
                                 quantidade = Integer.parseInt(txtQtde.getText());
                                 double desconto = Double.parseDouble(txtDesconto.getText());
-                                valorTotal = listaCalcas.get(i).getValor();
+                                double valorTotal = listaCalcas.get(i).getValor();
                                 double valor = valorTotal * quantidade;
                                 double valorT = valor - (valor * desconto);
                                 txtValorTotal.setText(Math.round(valorT) + "");
                             }
-                            tipoProduto = listaCalcas.get(i).getTipo();
+                            String tipoProduto = listaCalcas.get(i).getTipo();
                             cmbTipoProduto.setSelectedItem(tipoProduto);
                             break;
                         }
@@ -1680,8 +1693,8 @@ public class JVendas extends javax.swing.JFrame {
                         List<Calcas> listaCalcas = vendaPrazo.getEstoque().outputCalcas();
                         for (int i = 0; i < listaBlusas.size(); i++) {
                             if (listaBlusas.get(i).getCodigo() == codigoProd) {
-                                valorTotal = listaBlusas.get(i).getValor();
-                                tipoProduto = listaBlusas.get(i).getTipo();
+                                double valorTotal = listaBlusas.get(i).getValor();
+                                String tipoProduto = listaBlusas.get(i).getTipo();
                                 cmbTipoProduto.setSelectedItem(tipoProduto);
                                 int quantidade = Integer.parseInt(txtQtde.getText());
                                 double valor = valorTotal * quantidade;
@@ -1691,8 +1704,8 @@ public class JVendas extends javax.swing.JFrame {
                         }
                         for (int i = 0; i < listaCalcas.size(); i++) {
                             if (listaCalcas.get(i).getCodigo() == codigoProd) {
-                                valorTotal = listaCalcas.get(i).getValor();
-                                tipoProduto = listaCalcas.get(i).getTipo();
+                                double valorTotal = listaCalcas.get(i).getValor();
+                                String tipoProduto = listaCalcas.get(i).getTipo();
                                 cmbTipoProduto.setSelectedItem(tipoProduto);
                                 int quantidade = Integer.parseInt(txtQtde.getText());
                                 double valor = valorTotal * quantidade;
@@ -2025,52 +2038,82 @@ public class JVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscaProduto1ActionPerformed
 
     private void cmbParcela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbParcela1ActionPerformed
+        double valor = 0.0;
         if (!txtValorTotal1.getText().equals("")) {
-            double valorTotal = Double.parseDouble(txtValorTotal1.getText());
-            double valorParcelado = 0.0;
-            if (cmbParcela1.getSelectedIndex() == 1) {
-                txtValorTotal1.setText("");
-                txtValorParc1.setText(valorTotal + "");
-                txtValorTotal1.setText(valorTotal + "");
+            int quantidade = Integer.parseInt(txtQtde1.getText());
+            if (!txtQtde1.getText().equals("")) {
+                if (!txtProd1.getText().equals("")) {
+                    int codigoProd = Integer.parseInt(txtProd1.getText());
+                    VendaAPrazo vendaPrazo = new VendaAPrazo();
+                    List<Blusas> listaBlusas = vendaPrazo.getEstoque().outputBlusas();
+                    List<Calcas> listaCalcas = vendaPrazo.getEstoque().outputCalcas();
+                    for (int i = 0; i < listaBlusas.size(); i++) {
+                        if (listaBlusas.get(i).getCodigo() == codigoProd) {
+                            double valorTotal = listaBlusas.get(i).getValor();
+                            valor = valorTotal * quantidade;
+                            txtValorTotal1.setText(Math.round(valor) + "");
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < listaCalcas.size(); i++) {
+                        if (listaCalcas.get(i).getCodigo() == codigoProd) {
+                            double valorTotal = listaCalcas.get(i).getValor();
+                            valor = valorTotal * quantidade;
+                            txtValorTotal1.setText(Math.round(valor) + "");
+                            break;
+                        }
+                    }
+                    if (cmbParcela1.getSelectedIndex() == 1) {
+                        txtValorParc1.setText("");
+                        txtValorParc1.setText(valor + "");
+                        txtValorTotal1.setText(valor + "");
+                    }
+                    if (cmbParcela1.getSelectedIndex() == 2) {
+                        txtValorParc1.setText("");
+                        txtValorParc1.setText(Math.round(valor / 2) + "");
+                        txtValorTotal1.setText(valor + "");
+                    }
+                    if (cmbParcela1.getSelectedIndex() == 3) {
+                        txtValorParc1.setText("");
+                        txtValorParc1.setText(Math.round(valor / 3) + "");
+                        txtValorTotal1.setText(valor + "");
+                    }
+                    if (cmbParcela1.getSelectedIndex() == 4) {
+                        txtValorParc1.setText("");
+                        txtValorParc1.setText(Math.round(valor / 4) + "");
+                        txtValorTotal1.setText(valor + "");
+                    }
+                    if (cmbParcela1.getSelectedIndex() == 5) {
+                        txtValorParc1.setText("");
+                        txtValorParc1.setText(Math.round(valor / 5) + "");
+                        txtValorTotal1.setText(valor + "");
+                    }
+                    if (cmbParcela1.getSelectedIndex() == 6) {
+                        txtValorParc1.setText("");
+                        double valorParcelado = Math.round((valor / 6) * 1.15);
+                        txtValorParc1.setText(valorParcelado + "");
+                        txtValorTotal1.setText(Math.round(valor * 1.15) + "");
+                    }
+                    if (cmbParcela1.getSelectedIndex() == 7) {
+                        txtValorParc1.setText("");
+                        double valorParcelado = Math.round((valor / 7) * 1.20);
+                        txtValorParc1.setText(valorParcelado + "");
+                        txtValorTotal1.setText(Math.round(valor * 1.20) + "");
+                    }
+                    if (cmbParcela1.getSelectedIndex() == 8) {
+                        txtValorParc1.setText("");
+                        double valorParcelado = Math.round((valor / 8) * 1.25);
+                        txtValorParc1.setText(valorParcelado + "");
+                        txtValorTotal1.setText(Math.round(valor * 1.25) + "");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Preencha o código do produto.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Preencha a quantidade.");
             }
-            if (cmbParcela1.getSelectedIndex() == 2) {
-                txtValorTotal1.setText("");
-                txtValorParc1.setText(Math.round(valorTotal / 2) + "");
-                txtValorTotal1.setText(valorTotal + "");
-            }
-            if (cmbParcela1.getSelectedIndex() == 3) {
-                txtValorTotal1.setText("");
-                txtValorParc1.setText(Math.round(valorTotal / 3) + "");
-                txtValorTotal1.setText(valorTotal + "");
-            }
-            if (cmbParcela1.getSelectedIndex() == 4) {
-                txtValorTotal1.setText("");
-                txtValorParc1.setText(Math.round(valorTotal / 4) + "");
-                txtValorTotal1.setText(valorTotal + "");
-            }
-            if (cmbParcela1.getSelectedIndex() == 5) {
-                txtValorTotal1.setText("");
-                txtValorParc1.setText(Math.round(valorTotal / 5) + "");
-                txtValorTotal1.setText(valorTotal + "");
-            }
-            if (cmbParcela1.getSelectedIndex() == 6) {
-                txtValorTotal1.setText("");
-                valorParcelado = Math.round((valorTotal / 6) * 1.15);
-                txtValorParc1.setText(valorParcelado + "");
-                txtValorTotal1.setText(Math.round(valorTotal * 1.15) + "");
-            }
-            if (cmbParcela1.getSelectedIndex() == 7) {
-                txtValorTotal1.setText("");
-                valorParcelado = Math.round((valorTotal / 7) * 1.20);
-                txtValorParc1.setText(valorParcelado + "");
-                txtValorTotal1.setText(Math.round(valorTotal * 1.20) + "");
-            }
-            if (cmbParcela1.getSelectedIndex() == 8) {
-                txtValorTotal1.setText("");
-                valorParcelado = Math.round((valorTotal / 8) * 1.25);
-                txtValorParc1.setText(valorParcelado + "");
-                txtValorTotal1.setText(Math.round(valorTotal * 1.25) + "");
-            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Clique para preencher os dados.");
         }
     }//GEN-LAST:event_cmbParcela1ActionPerformed
 
@@ -2123,7 +2166,7 @@ public class JVendas extends javax.swing.JFrame {
         if (vazioAlterar() == true) {
             JOptionPane.showMessageDialog(null, "Há campos vazios.");
         } else {
-            if (verificaQuantidadeCadastro() == false) {
+            if (verificaQuantidadeAlterar() == false) {
                 JOptionPane.showMessageDialog(null, "Quantidade insuficiente em estoque.");
             } else {
                 String tipoPag = cmbTipo1.getSelectedItem().toString();
@@ -2183,6 +2226,10 @@ public class JVendas extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_cmbTipo1ActionPerformed
+
+    private void txtValorTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValorTotalActionPerformed
 
     /**
      * @param args the command line arguments

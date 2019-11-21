@@ -141,24 +141,22 @@ public class JClientes extends javax.swing.JFrame {
                         || txtRua.getText().equals("") || txtBairro.getText().equals("") || txtCidade.getText().equals("") || txtNumero.getText().equals("")
                         || cmbEstado.getSelectedItem().equals("Selecione aqui...") || txtPais.getText().equals("") || txtComplemento.getText().equals("")) {
                     vazio = true;
-                } else {
-                    if (cmbTipo.getSelectedIndex() == 2) {
-                        if (txtNome.getText().equals("") || txtTel.getText().equals("(  )          ") || txtCNPJ.getText().equals("  .   .   /    -  ") || txtIE.getText().equals("")
-                                || txtDataRegis.getText().equals("  /  /    ") || txtCEP.getText().equals("     -   ") || txtRua.getText().equals("") || txtBairro.getText().equals("")
-                                || txtCidade.getText().equals("") || txtNumero.getText().equals("") || cmbEstado.getSelectedItem().equals("Selecione aqui...")
-                                || txtPais.getText().equals("") || txtComplemento.getText().equals("")) {
-                            vazio = true;
-                        } else {
-                            vazio = false;
-                        }
+                }
+            } else {
+                if (cmbTipo.getSelectedIndex() == 2) {
+                    if (txtNome.getText().equals("") || txtTel.getText().equals("(  )          ") || txtCNPJ.getText().equals("  .   .   /    -  ") || txtIE.getText().equals("")
+                            || txtDataRegis.getText().equals("  /  /    ") || txtCEP.getText().equals("     -   ") || txtRua.getText().equals("") || txtBairro.getText().equals("")
+                            || txtCidade.getText().equals("") || txtNumero.getText().equals("") || cmbEstado.getSelectedItem().equals("Selecione aqui...")
+                            || txtPais.getText().equals("") || txtComplemento.getText().equals("")) {
+                        vazio = true;
                     }
                 }
             }
         }
-        return vazio;
-    }
+     return vazio ;
+}
 
-    public boolean vazioAlterar() {
+public boolean vazioAlterar() {
         boolean vazio = false;
         if (cmbTipo3.getSelectedIndex() == 0) {
             vazio = true;
@@ -1253,8 +1251,12 @@ public class JClientes extends javax.swing.JFrame {
                     arquivoCliente.inputPessoaFisica();
                     JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
                     limparCadastro();
-                } catch (IOException ex) {
-                    Logger.getLogger(JClientes.class.getName()).log(Level.SEVERE, null, ex);
+                
+
+} catch (IOException ex) {
+                    Logger.getLogger(JClientes.class  
+
+.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
                 if (cmbTipo.getSelectedIndex() == 2) {
@@ -1264,8 +1266,12 @@ public class JClientes extends javax.swing.JFrame {
                         arquivoCliente.inputPessoaJuridica();
                         JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
                         limparCadastro();
-                    } catch (IOException ex) {
-                        Logger.getLogger(JClientes.class.getName()).log(Level.SEVERE, null, ex);
+                    
+
+} catch (IOException ex) {
+                        Logger.getLogger(JClientes.class  
+
+.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
@@ -1305,8 +1311,12 @@ public class JClientes extends javax.swing.JFrame {
                     arquivoCliente.alterarFisico(tipo, nome, cpf, sexo, telefone, dataNasc, numCompras, dataRegistro, bairro, rua, CEP, complemento, cidade, pais, estado, numero, posicao);
                     JOptionPane.showMessageDialog(null, "Alterado com sucesso.");
                     limparAlterar();
-                } catch (IOException ex) {
-                    Logger.getLogger(JClientes.class.getName()).log(Level.SEVERE, null, ex);
+                
+
+} catch (IOException ex) {
+                    Logger.getLogger(JClientes.class  
+
+.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
                 if (cmbTipo3.getSelectedIndex() == 2) {
@@ -1315,8 +1325,12 @@ public class JClientes extends javax.swing.JFrame {
                         arquivoCliente.alterarJuridico(tipo, nome, cnpj, ie, telefone, numCompras, dataRegistro, bairro, rua, CEP, complemento, cidade, pais, estado, numero, posicao);
                         JOptionPane.showMessageDialog(null, "Alterado com sucesso.");
                         limparAlterar();
-                    } catch (IOException ex) {
-                        Logger.getLogger(JClientes.class.getName()).log(Level.SEVERE, null, ex);
+                    
+
+} catch (IOException ex) {
+                        Logger.getLogger(JClientes.class  
+
+.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
@@ -1513,12 +1527,16 @@ public class JClientes extends javax.swing.JFrame {
                             if (arquivoCliente.excluirPessoaJuridica(cnpj)) {
                                 JOptionPane.showMessageDialog(null, "Excluido com sucesso");
                                 pesquisa();
-                            }
+                            
+
+}
                         }
                     }
 
                 } catch (IOException ex) {
-                    Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(JLogin.class  
+
+.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         } else {
@@ -1605,16 +1623,32 @@ public class JClientes extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+                
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JClientes.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(JClientes.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(JClientes.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(JClientes.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
