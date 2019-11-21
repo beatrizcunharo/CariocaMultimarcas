@@ -13,7 +13,7 @@ import Arquivo.ArquivoEstoque;
     @author MIKAELA CRISTINY QUITZ              201676014
 
  */
-public class Venda{
+public abstract class Venda{
     private int codigo;
     private int qtde;
     private double valor;

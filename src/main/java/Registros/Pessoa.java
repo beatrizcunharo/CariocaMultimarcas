@@ -10,7 +10,7 @@ package Registros;
     @author MIKAELA CRISTINY QUITZ              201676014
 
  */
-public class Pessoa {
+public abstract class Pessoa {
     private String tipo;
     private String nome;
     private String telefone;
@@ -27,7 +27,7 @@ public class Pessoa {
         numCompras = 0;
     }
 
-    public String getNome() {
+    public String getNome(){
         return nome;
     }
 

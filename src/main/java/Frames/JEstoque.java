@@ -71,7 +71,7 @@ public class JEstoque extends javax.swing.JFrame {
                 vazio = true;
         }else{
             if(cmbTipo1.getSelectedIndex() == 1 || cmbTipo1.getSelectedIndex() == 2 || cmbTipo1.getSelectedIndex() == 3){
-                if(cmbTamanho.getSelectedIndex() == 0){
+                if(cmbTamanho1.getSelectedIndex() == 0){
                     vazio = true;
                 }
             }else{

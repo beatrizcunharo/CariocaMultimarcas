@@ -13,109 +13,180 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- *  
-    @author BEATRIZ CUNHA RODRIGUES             201776038
-    @author DANIEL RIBEIRO LAVRA                201735042
-    @author IVANYLSON HONÓRIO GONÇALVES         201776002
-    @author JAKSON DUARTE MARTINS JÚNIOR	201435004
-    @author MIKAELA CRISTINY QUITZ              201676014
-
+ *
+ * @author BEATRIZ CUNHA RODRIGUES 201776038
+ * @author DANIEL RIBEIRO LAVRA 201735042
+ * @author IVANYLSON HONÓRIO GONÇALVES 201776002
+ * @author JAKSON DUARTE MARTINS JÚNIOR	201435004
+ * @author MIKAELA CRISTINY QUITZ 201676014
+ *
  */
 public class JClientes extends javax.swing.JFrame {
-    
-    DefaultTableModel tabela=new DefaultTableModel();
-    String vetTabela[]=new String[18];
+
+    DefaultTableModel tabela = new DefaultTableModel();
+    String vetTabela[] = new String[18];
     ArquivoCliente arquivoCliente;
     int posicao;
+
     public JClientes() {
         initComponents();
         arquivoCliente = new ArquivoCliente();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        tabela.addColumn("Tipo");tabela.addColumn("Nome");tabela.addColumn("CPF");tabela.addColumn("Sexo");tabela.addColumn("Telefone");
-        tabela.addColumn("CNPJ");tabela.addColumn("IE");tabela.addColumn("Data Nasc");tabela.addColumn("Data R.");
-        tabela.addColumn("CEP");tabela.addColumn("Rua");tabela.addColumn("Número");tabela.addColumn("Bairro");tabela.addColumn("Cidade");
-        tabela.addColumn("Estado");tabela.addColumn("País");tabela.addColumn("Complemento");tabela.addColumn("Num Compras");
-        txtNome.setEnabled(false);txtTel.setEnabled(false);cmbSexo.setEnabled(false); txtBairro.setEnabled(false);
-        txtCEP.setEnabled(false);txtCNPJ.setEnabled(false);txtCPF.setEnabled(false);txtCidade.setEnabled(false);
-        txtComplemento.setEnabled(false);txtDataNasc.setEnabled(false);txtDataRegis.setEnabled(false);txtIE.setEnabled(false);
-        txtNumero.setEnabled(false);txtPais.setEnabled(false);txtRua.setEnabled(false);cmbEstado.setEnabled(false);btnEnviar.setEnabled(false);
-        txtCPF3.setEnabled(false);txtCNPJ3.setEnabled(false);
-        txtNome2.setEnabled(false);txtTel2.setEnabled(false);cmbSexo2.setEnabled(false); txtBairro2.setEnabled(false);
-        txtCEP2.setEnabled(false);txtCNPJ2.setEnabled(false);txtCPF2.setEnabled(false);txtCidade2.setEnabled(false);
-        txtComplemento2.setEnabled(false);txtDataNasc2.setEnabled(false);txtDataRegis2.setEnabled(false);txtIE2.setEnabled(false);
-        txtNumero2.setEnabled(false);txtPais2.setEnabled(false);txtRua2.setEnabled(false);cmbEstado2.setEnabled(false);btnAlterar.setEnabled(false);
-              
+        tabela.addColumn("Tipo");
+        tabela.addColumn("Nome");
+        tabela.addColumn("CPF");
+        tabela.addColumn("Sexo");
+        tabela.addColumn("Telefone");
+        tabela.addColumn("CNPJ");
+        tabela.addColumn("IE");
+        tabela.addColumn("Data Nasc");
+        tabela.addColumn("Data R.");
+        tabela.addColumn("CEP");
+        tabela.addColumn("Rua");
+        tabela.addColumn("Número");
+        tabela.addColumn("Bairro");
+        tabela.addColumn("Cidade");
+        tabela.addColumn("Estado");
+        tabela.addColumn("País");
+        tabela.addColumn("Complemento");
+        tabela.addColumn("Num Compras");
+        txtNome.setEnabled(false);
+        txtTel.setEnabled(false);
+        cmbSexo.setEnabled(false);
+        txtBairro.setEnabled(false);
+        txtCEP.setEnabled(false);
+        txtCNPJ.setEnabled(false);
+        txtCPF.setEnabled(false);
+        txtCidade.setEnabled(false);
+        txtComplemento.setEnabled(false);
+        txtDataNasc.setEnabled(false);
+        txtDataRegis.setEnabled(false);
+        txtIE.setEnabled(false);
+        txtNumero.setEnabled(false);
+        txtPais.setEnabled(false);
+        txtRua.setEnabled(false);
+        cmbEstado.setEnabled(false);
+        btnEnviar.setEnabled(false);
+        txtCPF3.setEnabled(false);
+        txtCNPJ3.setEnabled(false);
+        txtNome2.setEnabled(false);
+        txtTel2.setEnabled(false);
+        cmbSexo2.setEnabled(false);
+        txtBairro2.setEnabled(false);
+        txtCEP2.setEnabled(false);
+        txtCNPJ2.setEnabled(false);
+        txtCPF2.setEnabled(false);
+        txtCidade2.setEnabled(false);
+        txtComplemento2.setEnabled(false);
+        txtDataNasc2.setEnabled(false);
+        txtDataRegis2.setEnabled(false);
+        txtIE2.setEnabled(false);
+        txtNumero2.setEnabled(false);
+        txtPais2.setEnabled(false);
+        txtRua2.setEnabled(false);
+        cmbEstado2.setEnabled(false);
+        btnAlterar.setEnabled(false);
+
     }
-    
-    public void limparCadastro(){
-        cmbTipo.setSelectedItem("Selecione..."); txtNome.setText("");txtTel.setText("");txtCPF.setText("");cmbSexo.setSelectedItem("Selecione...");
-        txtCEP.setText(""); txtRua.setText("");txtBairro.setText("");txtCidade.setText(""); txtCNPJ.setText("");txtIE.setText("");
-        txtDataNasc.setText(""); txtDataRegis.setText(""); txtNumero.setText("");cmbEstado.setSelectedItem("Selecione...");
-        txtPais.setText(""); txtComplemento.setText("");
+
+    public void limparCadastro() {
+        cmbTipo.setSelectedItem("Selecione...");
+        txtNome.setText("");
+        txtTel.setText("");
+        txtCPF.setText("");
+        cmbSexo.setSelectedItem("Selecione...");
+        txtCEP.setText("");
+        txtRua.setText("");
+        txtBairro.setText("");
+        txtCidade.setText("");
+        txtCNPJ.setText("");
+        txtIE.setText("");
+        txtDataNasc.setText("");
+        txtDataRegis.setText("");
+        txtNumero.setText("");
+        cmbEstado.setSelectedItem("Selecione...");
+        txtPais.setText("");
+        txtComplemento.setText("");
     }
-    public void limparAlterar(){
-        cmbTipo3.setSelectedItem("Selecione..."); txtNome2.setText("");txtTel2.setText("");txtCPF2.setText("");cmbSexo2.setSelectedItem("Selecione...");
-        txtCEP2.setText(""); txtRua2.setText("");txtBairro2.setText("");txtCidade2.setText(""); txtCNPJ2.setText("");txtIE2.setText("");
-        txtDataNasc2.setText(""); txtDataRegis2.setText(""); txtNumero2.setText("");cmbEstado2.setSelectedItem("Selecione...");
-        txtPais2.setText(""); txtComplemento2.setText("");
+
+    public void limparAlterar() {
+        cmbTipo3.setSelectedItem("Selecione...");
+        txtNome2.setText("");
+        txtTel2.setText("");
+        txtCPF2.setText("");
+        cmbSexo2.setSelectedItem("Selecione...");
+        txtCEP2.setText("");
+        txtRua2.setText("");
+        txtBairro2.setText("");
+        txtCidade2.setText("");
+        txtCNPJ2.setText("");
+        txtIE2.setText("");
+        txtDataNasc2.setText("");
+        txtDataRegis2.setText("");
+        txtNumero2.setText("");
+        cmbEstado2.setSelectedItem("Selecione...");
+        txtPais2.setText("");
+        txtComplemento2.setText("");
     }
-    
-    public boolean vazioCadastro(){
+
+    public boolean vazioCadastro() {
         boolean vazio = false;
-        if(cmbTipo.getSelectedIndex() == 0)
+        if (cmbTipo.getSelectedIndex() == 0) {
             vazio = true;
-        else{
-            if(cmbTipo.getSelectedIndex() == 1){
-                if(txtNome.getText().equals("") || txtTel.getText().equals("(  )          ") || txtCPF.getText().equals("   .   .   -  ") || cmbSexo.getSelectedItem().equals("Selecione aqui...")
-                    || txtDataNasc.getText().equals("  /  /    ") || txtDataRegis.getText().equals("  /  /    ") || txtCEP.getText().equals("     -   ")
-                    || txtRua.getText().equals("") || txtBairro.getText().equals("") || txtCidade.getText().equals("") || txtNumero.getText().equals("")
-                    || cmbEstado.getSelectedItem().equals("Selecione aqui...") || txtPais.getText().equals("") || txtComplemento.getText().equals("") ){
-                        vazio = true;
-                }else{
-                    if(cmbTipo.getSelectedIndex() == 2){
-                        if(txtNome.getText().equals("") || txtTel.getText().equals("(  )          ") || txtCNPJ.getText().equals("  .   .   /    -  ") || txtIE.getText().equals("")
-                            || txtDataRegis.getText().equals("  /  /    ") || txtCEP.getText().equals("     -   ") || txtRua.getText().equals("") || txtBairro.getText().equals("")
-                            || txtCidade.getText().equals("") || txtNumero.getText().equals("") || cmbEstado.getSelectedItem().equals("Selecione aqui...")
-                            || txtPais.getText().equals("") || txtComplemento.getText().equals("")){
-                                vazio = true;
-                        }else
+        } else {
+            if (cmbTipo.getSelectedIndex() == 1) {
+                if (txtNome.getText().equals("") || txtTel.getText().equals("(  )          ") || txtCPF.getText().equals("   .   .   -  ") || cmbSexo.getSelectedItem().equals("Selecione aqui...")
+                        || txtDataNasc.getText().equals("  /  /    ") || txtDataRegis.getText().equals("  /  /    ") || txtCEP.getText().equals("     -   ")
+                        || txtRua.getText().equals("") || txtBairro.getText().equals("") || txtCidade.getText().equals("") || txtNumero.getText().equals("")
+                        || cmbEstado.getSelectedItem().equals("Selecione aqui...") || txtPais.getText().equals("") || txtComplemento.getText().equals("")) {
+                    vazio = true;
+                } else {
+                    if (cmbTipo.getSelectedIndex() == 2) {
+                        if (txtNome.getText().equals("") || txtTel.getText().equals("(  )          ") || txtCNPJ.getText().equals("  .   .   /    -  ") || txtIE.getText().equals("")
+                                || txtDataRegis.getText().equals("  /  /    ") || txtCEP.getText().equals("     -   ") || txtRua.getText().equals("") || txtBairro.getText().equals("")
+                                || txtCidade.getText().equals("") || txtNumero.getText().equals("") || cmbEstado.getSelectedItem().equals("Selecione aqui...")
+                                || txtPais.getText().equals("") || txtComplemento.getText().equals("")) {
+                            vazio = true;
+                        } else {
                             vazio = false;
+                        }
                     }
                 }
-            }            
-        }    
+            }
+        }
         return vazio;
     }
-    
-    public boolean vazioAlterar(){
+
+    public boolean vazioAlterar() {
         boolean vazio = false;
-        if(cmbTipo3.getSelectedIndex() == 0)
+        if (cmbTipo3.getSelectedIndex() == 0) {
             vazio = true;
-        else{
-            if(cmbTipo3.getSelectedIndex() == 1){
-                if(txtNome2.getText().equals("") || txtTel2.getText().equals("(  )          ") || txtCPF2.getText().equals("   .   .   -  ") || cmbSexo2.getSelectedItem().equals("Selecione aqui...")
-                    || txtDataNasc2.getText().equals("  /  /    ") || txtDataRegis2.getText().equals("  /  /    ") || txtCEP2.getText().equals("     -   ")
-                    || txtRua2.getText().equals("") || txtBairro2.getText().equals("") || txtCidade2.getText().equals("") || txtNumero2.getText().equals("")
-                    || cmbEstado2.getSelectedItem().equals("Selecione aqui...") || txtPais2.getText().equals("") || txtComplemento2.getText().equals("") ){
-                        vazio = true;
-                }else{
-                    if(cmbTipo3.getSelectedIndex() == 2){
-                        if(txtNome2.getText().equals("") || txtTel2.getText().equals("(  )          ") || txtCNPJ2.getText().equals("  .   .   /    -  ") || txtIE2.getText().equals("")
-                            || txtDataRegis2.getText().equals("  /  /    ") || txtCEP2.getText().equals("     -   ") || txtRua2.getText().equals("") || txtBairro2.getText().equals("")
-                            || txtCidade2.getText().equals("") || txtNumero2.getText().equals("") || cmbEstado2.getSelectedItem().equals("Selecione aqui...")
-                            || txtPais2.getText().equals("") || txtComplemento2.getText().equals("")){
-                                vazio = true;
-                        }else
+        } else {
+            if (cmbTipo3.getSelectedIndex() == 1) {
+                if (txtNome2.getText().equals("") || txtTel2.getText().equals("(  )          ") || txtCPF2.getText().equals("   .   .   -  ") || cmbSexo2.getSelectedItem().equals("Selecione aqui...")
+                        || txtDataNasc2.getText().equals("  /  /    ") || txtDataRegis2.getText().equals("  /  /    ") || txtCEP2.getText().equals("     -   ")
+                        || txtRua2.getText().equals("") || txtBairro2.getText().equals("") || txtCidade2.getText().equals("") || txtNumero2.getText().equals("")
+                        || cmbEstado2.getSelectedItem().equals("Selecione aqui...") || txtPais2.getText().equals("") || txtComplemento2.getText().equals("")) {
+                    vazio = true;
+                } else {
+                    if (cmbTipo3.getSelectedIndex() == 2) {
+                        if (txtNome2.getText().equals("") || txtTel2.getText().equals("(  )          ") || txtCNPJ2.getText().equals("  .   .   /    -  ") || txtIE2.getText().equals("")
+                                || txtDataRegis2.getText().equals("  /  /    ") || txtCEP2.getText().equals("     -   ") || txtRua2.getText().equals("") || txtBairro2.getText().equals("")
+                                || txtCidade2.getText().equals("") || txtNumero2.getText().equals("") || cmbEstado2.getSelectedItem().equals("Selecione aqui...")
+                                || txtPais2.getText().equals("") || txtComplemento2.getText().equals("")) {
+                            vazio = true;
+                        } else {
                             vazio = false;
+                        }
                     }
                 }
-            }            
-        }    
+            }
+        }
         return vazio;
     }
-    
-    public void pesquisa(){
+
+    public void pesquisa() {
         List<PessoaFisica> f = arquivoCliente.outputPessoaFisica();
         List<Endereco> ef = arquivoCliente.outputEnderecoFisico();
         List<PessoaJuridica> j = arquivoCliente.outputPessoaJuridica();
@@ -124,7 +195,7 @@ public class JClientes extends javax.swing.JFrame {
         for (int i = 0; i < t; i++) {
             tabela.removeRow(0);
         }
-        for(int i=0;i<f.size();i++){
+        for (int i = 0; i < f.size(); i++) {
             vetTabela[0] = f.get(i).getTipo();
             vetTabela[1] = f.get(i).getNome();
             vetTabela[2] = f.get(i).getCpf();
@@ -136,16 +207,16 @@ public class JClientes extends javax.swing.JFrame {
             vetTabela[8] = f.get(i).getDataRegistro();
             vetTabela[9] = ef.get(i).getCEP();
             vetTabela[10] = ef.get(i).getRua();
-            vetTabela[11] = ef.get(i).getNumero()+"";
+            vetTabela[11] = ef.get(i).getNumero() + "";
             vetTabela[12] = ef.get(i).getBairro();
             vetTabela[13] = ef.get(i).getCidade();
             vetTabela[14] = ef.get(i).getEstado();
             vetTabela[15] = ef.get(i).getPais();
             vetTabela[16] = ef.get(i).getComplemento();
-            vetTabela[17] = f.get(i).getNumCompras()+"";
+            vetTabela[17] = f.get(i).getNumCompras() + "";
             tabela.addRow(vetTabela);
         }
-        for(int i=0;i<j.size();i++){
+        for (int i = 0; i < j.size(); i++) {
             vetTabela[0] = j.get(i).getTipo();
             vetTabela[1] = j.get(i).getNome();
             vetTabela[2] = "";
@@ -157,26 +228,26 @@ public class JClientes extends javax.swing.JFrame {
             vetTabela[8] = j.get(i).getDataRegistro();
             vetTabela[9] = ej.get(i).getCEP();
             vetTabela[10] = ej.get(i).getRua();
-            vetTabela[11] = ej.get(i).getNumero()+"";
+            vetTabela[11] = ej.get(i).getNumero() + "";
             vetTabela[12] = ej.get(i).getBairro();
             vetTabela[13] = ej.get(i).getCidade();
             vetTabela[14] = ej.get(i).getEstado();
             vetTabela[15] = ej.get(i).getPais();
             vetTabela[16] = ej.get(i).getComplemento();
-            vetTabela[17] = j.get(i).getNumCompras()+"";
+            vetTabela[17] = j.get(i).getNumCompras() + "";
             tabela.addRow(vetTabela);
         }
     }
-    
-    public void pesquisaPorCPF(){
+
+    public void pesquisaPorCPF() {
         List<PessoaFisica> f = arquivoCliente.outputPessoaFisica();
         List<Endereco> ef = arquivoCliente.outputEnderecoFisico();
         int t = tabela.getRowCount();
         for (int i = 0; i < t; i++) {
             tabela.removeRow(0);
         }
-        for (int i=0;i<f.size();i++) {
-            if(txtCPF3.getText().equals(f.get(i).getCpf())){
+        for (int i = 0; i < f.size(); i++) {
+            if (txtCPF3.getText().equals(f.get(i).getCpf())) {
                 vetTabela[0] = f.get(i).getTipo();
                 vetTabela[1] = f.get(i).getNome();
                 vetTabela[2] = f.get(i).getCpf();
@@ -188,28 +259,28 @@ public class JClientes extends javax.swing.JFrame {
                 vetTabela[8] = f.get(i).getDataRegistro();
                 vetTabela[9] = ef.get(i).getCEP();
                 vetTabela[10] = ef.get(i).getRua();
-                vetTabela[11] = ef.get(i).getNumero()+"";
+                vetTabela[11] = ef.get(i).getNumero() + "";
                 vetTabela[12] = ef.get(i).getBairro();
                 vetTabela[13] = ef.get(i).getCidade();
                 vetTabela[14] = ef.get(i).getEstado();
                 vetTabela[15] = ef.get(i).getPais();
                 vetTabela[16] = ef.get(i).getComplemento();
-                vetTabela[17] = f.get(i).getNumCompras()+"";
-            
+                vetTabela[17] = f.get(i).getNumCompras() + "";
+
             }
         }
         tabela.addRow(vetTabela);
     }
-    
-    public void pesquisaPorCNPJ(){
+
+    public void pesquisaPorCNPJ() {
         List<PessoaJuridica> j = arquivoCliente.outputPessoaJuridica();
         List<Endereco> ej = arquivoCliente.outputEnderecoJuridico();
         int t = tabela.getRowCount();
         for (int i = 0; i < t; i++) {
             tabela.removeRow(0);
         }
-        for (int i=0;i<j.size();i++) {
-            if(txtCNPJ3.getText().equals(j.get(i).getCnpj())){
+        for (int i = 0; i < j.size(); i++) {
+            if (txtCNPJ3.getText().equals(j.get(i).getCnpj())) {
                 vetTabela[0] = j.get(i).getTipo();
                 vetTabela[1] = j.get(i).getNome();
                 vetTabela[2] = "";
@@ -221,17 +292,76 @@ public class JClientes extends javax.swing.JFrame {
                 vetTabela[8] = j.get(i).getDataRegistro();
                 vetTabela[9] = ej.get(i).getCEP();
                 vetTabela[10] = ej.get(i).getRua();
-                vetTabela[11] = ej.get(i).getNumero()+"";
+                vetTabela[11] = ej.get(i).getNumero() + "";
                 vetTabela[12] = ej.get(i).getBairro();
                 vetTabela[13] = ej.get(i).getCidade();
                 vetTabela[14] = ej.get(i).getEstado();
                 vetTabela[15] = ej.get(i).getPais();
                 vetTabela[16] = ej.get(i).getComplemento();
-                vetTabela[17] = j.get(i).getNumCompras()+"";
+                vetTabela[17] = j.get(i).getNumCompras() + "";
             }
         }
         tabela.addRow(vetTabela);
     }
+
+    public void pesquisaPorTipoCliente() {
+        List<PessoaFisica> f = arquivoCliente.outputPessoaFisica();
+        List<Endereco> ef = arquivoCliente.outputEnderecoFisico();
+        List<PessoaJuridica> j = arquivoCliente.outputPessoaJuridica();
+        List<Endereco> ej = arquivoCliente.outputEnderecoJuridico();
+        int t = tabela.getRowCount();
+        for (int i = 0; i < t; i++) {
+            tabela.removeRow(0);
+        }
+        for (int i = 0; i < f.size(); i++) {
+            if (cmbTipo2.getSelectedIndex() == 1) {
+                vetTabela[0] = f.get(i).getTipo();
+                vetTabela[1] = f.get(i).getNome();
+                vetTabela[2] = f.get(i).getCpf();
+                vetTabela[3] = f.get(i).getSexo();
+                vetTabela[4] = f.get(i).getTelefone();
+                vetTabela[5] = "";
+                vetTabela[6] = "";
+                vetTabela[7] = f.get(i).getDataNasc();
+                vetTabela[8] = f.get(i).getDataRegistro();
+                vetTabela[9] = ef.get(i).getCEP();
+                vetTabela[10] = ef.get(i).getRua();
+                vetTabela[11] = ef.get(i).getNumero() + "";
+                vetTabela[12] = ef.get(i).getBairro();
+                vetTabela[13] = ef.get(i).getCidade();
+                vetTabela[14] = ef.get(i).getEstado();
+                vetTabela[15] = ef.get(i).getPais();
+                vetTabela[16] = ef.get(i).getComplemento();
+                vetTabela[17] = f.get(i).getNumCompras() + "";
+                tabela.addRow(vetTabela);
+
+            }
+        }
+        for (int i = 0; i < j.size(); i++) {
+            if (cmbTipo2.getSelectedIndex() == 2) {
+                vetTabela[0] = j.get(i).getTipo();
+                vetTabela[1] = j.get(i).getNome();
+                vetTabela[2] = "";
+                vetTabela[3] = "";
+                vetTabela[4] = j.get(i).getTelefone();
+                vetTabela[5] = j.get(i).getCnpj();
+                vetTabela[6] = j.get(i).getIe();
+                vetTabela[7] = "";
+                vetTabela[8] = j.get(i).getDataRegistro();
+                vetTabela[9] = ej.get(i).getCEP();
+                vetTabela[10] = ej.get(i).getRua();
+                vetTabela[11] = ej.get(i).getNumero() + "";
+                vetTabela[12] = ej.get(i).getBairro();
+                vetTabela[13] = ej.get(i).getCidade();
+                vetTabela[14] = ej.get(i).getEstado();
+                vetTabela[15] = ej.get(i).getPais();
+                vetTabela[16] = ej.get(i).getComplemento();
+                vetTabela[17] = j.get(i).getNumCompras() + "";
+                tabela.addRow(vetTabela);
+            }
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -1071,20 +1201,20 @@ public class JClientes extends javax.swing.JFrame {
 
     private void btnVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar2ActionPerformed
         JPrincipal principal = new JPrincipal();
-        if(principal.isVisible() == false){
-           principal.setVisible(true);
-           this.setVisible(false);
-        }else{
+        if (principal.isVisible() == false) {
+            principal.setVisible(true);
+            this.setVisible(false);
+        } else {
             this.setVisible(false);
         }
     }//GEN-LAST:event_btnVoltar2ActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         JPrincipal principal = new JPrincipal();
-        if(principal.isVisible() == false){
-           principal.setVisible(true);
-           this.setVisible(false);
-        }else{
+        if (principal.isVisible() == false) {
+            principal.setVisible(true);
+            this.setVisible(false);
+        } else {
             this.setVisible(false);
         }
     }//GEN-LAST:event_btnVoltarActionPerformed
@@ -1094,10 +1224,10 @@ public class JClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-       
-       if(vazioCadastro() == true){
-           JOptionPane.showMessageDialog(null, "Há campos vazios.");
-       }else{
+
+        if (vazioCadastro() == true) {
+            JOptionPane.showMessageDialog(null, "Há campos vazios.");
+        } else {
             String tipo = cmbTipo.getSelectedItem().toString();
             String nome = txtNome.getText();
             String telefone = txtTel.getText();
@@ -1116,8 +1246,8 @@ public class JClientes extends javax.swing.JFrame {
             String dataNasc = txtDataNasc.getText();
             String ie = txtIE.getText();
             String cnpj = txtCNPJ.getText();
-            if(cmbTipo.getSelectedIndex() == 1){
-                
+            if (cmbTipo.getSelectedIndex() == 1) {
+
                 try {
                     arquivoCliente.cadastraPessoaFisica(tipo, nome, cpf, sexo, telefone, dataNasc, numCompras, dataRegistro, bairro, rua, CEP, complemento, cidade, pais, estado, numero);
                     arquivoCliente.inputPessoaFisica();
@@ -1126,9 +1256,9 @@ public class JClientes extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(JClientes.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }else{
-                if(cmbTipo.getSelectedIndex() == 2){
-                    
+            } else {
+                if (cmbTipo.getSelectedIndex() == 2) {
+
                     try {
                         arquivoCliente.cadastraPessoaJuridica(tipo, nome, cnpj, ie, telefone, numCompras, dataRegistro, bairro, rua, CEP, complemento, cidade, pais, estado, numero);
                         arquivoCliente.inputPessoaJuridica();
@@ -1140,7 +1270,7 @@ public class JClientes extends javax.swing.JFrame {
                 }
             }
         }
-   
+
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnLimpar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar2ActionPerformed
@@ -1148,9 +1278,9 @@ public class JClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpar2ActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-    if(vazioAlterar() == true){
-           JOptionPane.showMessageDialog(null, "Há campos vazios.");
-       }else{
+        if (vazioAlterar() == true) {
+            JOptionPane.showMessageDialog(null, "Há campos vazios.");
+        } else {
             String tipo = cmbTipo3.getSelectedItem().toString();
             String nome = txtNome2.getText();
             String telefone = txtTel2.getText();
@@ -1169,8 +1299,8 @@ public class JClientes extends javax.swing.JFrame {
             String dataNasc = txtDataNasc2.getText();
             String ie = txtIE2.getText();
             String cnpj = txtCNPJ2.getText();
-            if(cmbTipo3.getSelectedIndex() == 1){
-                
+            if (cmbTipo3.getSelectedIndex() == 1) {
+
                 try {
                     arquivoCliente.alterarFisico(tipo, nome, cpf, sexo, telefone, dataNasc, numCompras, dataRegistro, bairro, rua, CEP, complemento, cidade, pais, estado, numero, posicao);
                     JOptionPane.showMessageDialog(null, "Alterado com sucesso.");
@@ -1178,9 +1308,9 @@ public class JClientes extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(JClientes.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }else{
-                if(cmbTipo3.getSelectedIndex() == 2){
-                    
+            } else {
+                if (cmbTipo3.getSelectedIndex() == 2) {
+
                     try {
                         arquivoCliente.alterarJuridico(tipo, nome, cnpj, ie, telefone, numCompras, dataRegistro, bairro, rua, CEP, complemento, cidade, pais, estado, numero, posicao);
                         JOptionPane.showMessageDialog(null, "Alterado com sucesso.");
@@ -1195,87 +1325,174 @@ public class JClientes extends javax.swing.JFrame {
 
     private void btnVoltar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar3ActionPerformed
         JPrincipal principal = new JPrincipal();
-        if(principal.isVisible() == false){
-           principal.setVisible(true);
-           this.setVisible(false);
-        }else{
+        if (principal.isVisible() == false) {
+            principal.setVisible(true);
+            this.setVisible(false);
+        } else {
             this.setVisible(false);
         }
     }//GEN-LAST:event_btnVoltar3ActionPerformed
 
     private void cmbTipo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipo3ActionPerformed
-        if(cmbTipo3.getSelectedIndex() == 0){
-            txtNome2.setEnabled(false);txtTel2.setEnabled(false);cmbSexo2.setEnabled(false); txtBairro2.setEnabled(false);
-            txtCEP2.setEnabled(false);txtCNPJ2.setEnabled(false);txtCPF2.setEnabled(false);txtCidade2.setEnabled(false);
-            txtComplemento2.setEnabled(false);txtDataNasc2.setEnabled(false);txtDataRegis2.setEnabled(false);txtIE2.setEnabled(false);
-            txtNumero2.setEnabled(false);txtPais2.setEnabled(false);txtRua2.setEnabled(false);cmbEstado2.setEnabled(false);
+        if (cmbTipo3.getSelectedIndex() == 0) {
+            txtNome2.setEnabled(false);
+            txtTel2.setEnabled(false);
+            cmbSexo2.setEnabled(false);
+            txtBairro2.setEnabled(false);
+            txtCEP2.setEnabled(false);
+            txtCNPJ2.setEnabled(false);
+            txtCPF2.setEnabled(false);
+            txtCidade2.setEnabled(false);
+            txtComplemento2.setEnabled(false);
+            txtDataNasc2.setEnabled(false);
+            txtDataRegis2.setEnabled(false);
+            txtIE2.setEnabled(false);
+            txtNumero2.setEnabled(false);
+            txtPais2.setEnabled(false);
+            txtRua2.setEnabled(false);
+            cmbEstado2.setEnabled(false);
             btnAlterar.setEnabled(false);
         }
-        if(cmbTipo3.getSelectedIndex() == 1){
-            txtNome2.setEnabled(true);txtTel2.setEnabled(true);cmbSexo2.setEnabled(true); txtBairro2.setEnabled(true);
-            txtCEP2.setEnabled(true);txtCNPJ2.setEnabled(false);txtCPF2.setEnabled(true);txtCidade2.setEnabled(true);
-            txtComplemento2.setEnabled(true);txtDataNasc2.setEnabled(true);txtDataRegis2.setEnabled(true);txtIE2.setEnabled(false);
-            txtNumero2.setEnabled(true);txtPais2.setEnabled(true);txtRua2.setEnabled(true);cmbEstado2.setEnabled(true);
+        if (cmbTipo3.getSelectedIndex() == 1) {
+            txtNome2.setEnabled(true);
+            txtTel2.setEnabled(true);
+            cmbSexo2.setEnabled(true);
+            txtBairro2.setEnabled(true);
+            txtCEP2.setEnabled(true);
+            txtCNPJ2.setEnabled(false);
+            txtCPF2.setEnabled(true);
+            txtCidade2.setEnabled(true);
+            txtComplemento2.setEnabled(true);
+            txtDataNasc2.setEnabled(true);
+            txtDataRegis2.setEnabled(true);
+            txtIE2.setEnabled(false);
+            txtNumero2.setEnabled(true);
+            txtPais2.setEnabled(true);
+            txtRua2.setEnabled(true);
+            cmbEstado2.setEnabled(true);
             btnAlterar.setEnabled(true);
-        }   
-        if(cmbTipo3.getSelectedIndex() == 2){
-            txtNome2.setEnabled(true);txtTel2.setEnabled(true);cmbSexo2.setEnabled(false); txtBairro2.setEnabled(true);
-            txtCEP2.setEnabled(true);txtCNPJ2.setEnabled(true);txtCPF2.setEnabled(false);txtCidade2.setEnabled(true);
-            txtComplemento2.setEnabled(true);txtDataNasc2.setEnabled(false);txtDataRegis2.setEnabled(true);txtIE2.setEnabled(true);
-            txtNumero2.setEnabled(true);txtPais2.setEnabled(true);txtRua2.setEnabled(true);cmbEstado2.setEnabled(true);
+        }
+        if (cmbTipo3.getSelectedIndex() == 2) {
+            txtNome2.setEnabled(true);
+            txtTel2.setEnabled(true);
+            cmbSexo2.setEnabled(false);
+            txtBairro2.setEnabled(true);
+            txtCEP2.setEnabled(true);
+            txtCNPJ2.setEnabled(true);
+            txtCPF2.setEnabled(false);
+            txtCidade2.setEnabled(true);
+            txtComplemento2.setEnabled(true);
+            txtDataNasc2.setEnabled(false);
+            txtDataRegis2.setEnabled(true);
+            txtIE2.setEnabled(true);
+            txtNumero2.setEnabled(true);
+            txtPais2.setEnabled(true);
+            txtRua2.setEnabled(true);
+            cmbEstado2.setEnabled(true);
             btnAlterar.setEnabled(true);
         }
     }//GEN-LAST:event_cmbTipo3ActionPerformed
 
     private void cmbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoActionPerformed
-        if(cmbTipo.getSelectedIndex() == 0){
-            txtNome.setEnabled(false);txtTel.setEnabled(false);cmbSexo.setEnabled(false); txtBairro.setEnabled(false);
-            txtCEP.setEnabled(false);txtCNPJ.setEnabled(false);txtCPF.setEnabled(false);txtCidade.setEnabled(false);
-            txtComplemento.setEnabled(false);txtDataNasc.setEnabled(false);txtDataRegis.setEnabled(false);txtIE.setEnabled(false);
-            txtNumero.setEnabled(false);txtPais.setEnabled(false);txtRua.setEnabled(false);cmbEstado.setEnabled(false);
+        if (cmbTipo.getSelectedIndex() == 0) {
+            txtNome.setEnabled(false);
+            txtTel.setEnabled(false);
+            cmbSexo.setEnabled(false);
+            txtBairro.setEnabled(false);
+            txtCEP.setEnabled(false);
+            txtCNPJ.setEnabled(false);
+            txtCPF.setEnabled(false);
+            txtCidade.setEnabled(false);
+            txtComplemento.setEnabled(false);
+            txtDataNasc.setEnabled(false);
+            txtDataRegis.setEnabled(false);
+            txtIE.setEnabled(false);
+            txtNumero.setEnabled(false);
+            txtPais.setEnabled(false);
+            txtRua.setEnabled(false);
+            cmbEstado.setEnabled(false);
             btnEnviar.setEnabled(false);
         }
-        if(cmbTipo.getSelectedIndex() == 1){
-            txtNome.setEnabled(true);txtTel.setEnabled(true);cmbSexo.setEnabled(true); txtBairro.setEnabled(true);
-            txtCEP.setEnabled(true);txtCNPJ.setEnabled(false);txtCPF.setEnabled(true);txtCidade.setEnabled(true);
-            txtComplemento.setEnabled(true);txtDataNasc.setEnabled(true);txtDataRegis.setEnabled(true);txtIE.setEnabled(false);
-            txtNumero.setEnabled(true);txtPais.setEnabled(true);txtRua.setEnabled(true);cmbEstado.setEnabled(true);btnEnviar.setEnabled(true);
+        if (cmbTipo.getSelectedIndex() == 1) {
+            txtNome.setEnabled(true);
+            txtTel.setEnabled(true);
+            cmbSexo.setEnabled(true);
+            txtBairro.setEnabled(true);
+            txtCEP.setEnabled(true);
+            txtCNPJ.setEnabled(false);
+            txtCPF.setEnabled(true);
+            txtCidade.setEnabled(true);
+            txtComplemento.setEnabled(true);
+            txtDataNasc.setEnabled(true);
+            txtDataRegis.setEnabled(true);
+            txtIE.setEnabled(false);
+            txtNumero.setEnabled(true);
+            txtPais.setEnabled(true);
+            txtRua.setEnabled(true);
+            cmbEstado.setEnabled(true);
+            btnEnviar.setEnabled(true);
         }
-        if(cmbTipo.getSelectedIndex() == 2){
-            txtNome.setEnabled(true);txtTel.setEnabled(true);cmbSexo.setEnabled(false); txtBairro.setEnabled(true);
-            txtCEP.setEnabled(true);txtCNPJ.setEnabled(true);txtCPF.setEnabled(false);txtCidade.setEnabled(true);
-            txtComplemento.setEnabled(true);txtDataNasc.setEnabled(false);txtDataRegis.setEnabled(true);txtIE.setEnabled(true);
-            txtNumero.setEnabled(true);txtPais.setEnabled(true);txtRua.setEnabled(true);cmbEstado.setEnabled(true);btnEnviar.setEnabled(true);
+        if (cmbTipo.getSelectedIndex() == 2) {
+            txtNome.setEnabled(true);
+            txtTel.setEnabled(true);
+            cmbSexo.setEnabled(false);
+            txtBairro.setEnabled(true);
+            txtCEP.setEnabled(true);
+            txtCNPJ.setEnabled(true);
+            txtCPF.setEnabled(false);
+            txtCidade.setEnabled(true);
+            txtComplemento.setEnabled(true);
+            txtDataNasc.setEnabled(false);
+            txtDataRegis.setEnabled(true);
+            txtIE.setEnabled(true);
+            txtNumero.setEnabled(true);
+            txtPais.setEnabled(true);
+            txtRua.setEnabled(true);
+            cmbEstado.setEnabled(true);
+            btnEnviar.setEnabled(true);
         }
-        
-        
+
+
     }//GEN-LAST:event_cmbTipoActionPerformed
 
     private void cmbTipo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipo2ActionPerformed
-       if(cmbTipo2.getSelectedIndex() == 0){
-           txtCPF3.setEnabled(false); txtCNPJ3.setEnabled(false); txtCPF3.setText(""); txtCNPJ3.setText("");
-       }
-       if(cmbTipo2.getSelectedIndex() == 1){
-           txtCPF3.setEnabled(true); txtCNPJ3.setEnabled(false);txtCNPJ3.setText("");
-       }
-       if(cmbTipo2.getSelectedIndex() == 2){
-           txtCPF3.setEnabled(false); txtCNPJ3.setEnabled(true);txtCPF3.setText("");
-       }
+        if (cmbTipo2.getSelectedIndex() == 0) {
+            txtCPF3.setEnabled(false);
+            txtCNPJ3.setEnabled(false);
+            txtCPF3.setText("");
+            txtCNPJ3.setText("");
+        }
+        if (cmbTipo2.getSelectedIndex() == 1) {
+            txtCPF3.setEnabled(true);
+            txtCNPJ3.setEnabled(false);
+            txtCNPJ3.setText("");
+        }
+        if (cmbTipo2.getSelectedIndex() == 2) {
+            txtCPF3.setEnabled(false);
+            txtCNPJ3.setEnabled(true);
+            txtCPF3.setText("");
+        }
     }//GEN-LAST:event_cmbTipo2ActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        if(cmbTipo2.getSelectedIndex() == 0){
+        if (cmbTipo2.getSelectedIndex() == 0) {
             pesquisa();
-        }else{
-            if((cmbTipo2.getSelectedIndex() == 1) && (!txtCPF3.getText().equals(""))){
+        }
+        if (cmbTipo2.getSelectedIndex() > 0) {
+            if ((cmbTipo2.getSelectedIndex() == 1) && (!txtCPF3.getText().equals(""))) {
                 pesquisaPorCPF();
-            }else{
-                if((cmbTipo2.getSelectedIndex() == 2) && (!txtCNPJ3.getText().equals(""))){
+            } else {
+                if ((cmbTipo2.getSelectedIndex() == 2) && (!txtCNPJ3.getText().equals(""))) {
                     pesquisaPorCNPJ();
+                } else {
+                    if (txtCPF3.getText().equals("   .   .   -  ") && txtCNPJ3.getText().equals("  .   .   /    -  ")) {
+                        pesquisaPorTipoCliente();
+                    }
                 }
             }
         }
-            
+
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -1286,20 +1503,20 @@ public class JClientes extends javax.swing.JFrame {
             if (JOptionPane.showConfirmDialog(null, "Deseja excluir realmente?", "Confirmação", 0) == 0) {
 
                 try {
-                    if(!cpf.equals("")){
+                    if (!cpf.equals("")) {
                         if (arquivoCliente.excluirPessoaFisica(cpf)) {
-                           JOptionPane.showMessageDialog(null, "Excluido com sucesso");
-                           pesquisa();
+                            JOptionPane.showMessageDialog(null, "Excluido com sucesso");
+                            pesquisa();
                         }
-                    }else{
-                        if(!cnpj.equals("")){
-                            if(arquivoCliente.excluirPessoaJuridica(cnpj)){
+                    } else {
+                        if (!cnpj.equals("")) {
+                            if (arquivoCliente.excluirPessoaJuridica(cnpj)) {
                                 JOptionPane.showMessageDialog(null, "Excluido com sucesso");
                                 pesquisa();
                             }
                         }
                     }
-                    
+
                 } catch (IOException ex) {
                     Logger.getLogger(JLogin.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1313,11 +1530,11 @@ public class JClientes extends javax.swing.JFrame {
         String cpf = table.getValueAt(table.getSelectedRow(), 2).toString();
         String cnpj = table.getValueAt(table.getSelectedRow(), 5).toString();
         if (table.getSelectedRow() >= 0) {
-            if(!cpf.equals("")){
+            if (!cpf.equals("")) {
                 List<PessoaFisica> f = arquivoCliente.outputPessoaFisica();
                 List<Endereco> ef = arquivoCliente.outputEnderecoFisico();
-                for(int i=0;i<f.size();i++){
-                    if(f.get(i).getCpf().equals(cpf)){
+                for (int i = 0; i < f.size(); i++) {
+                    if (f.get(i).getCpf().equals(cpf)) {
                         cmbTipo3.setSelectedItem(f.get(i).getTipo());
                         txtNome2.setText(f.get(i).getNome());
                         txtBairro2.setText(ef.get(i).getBairro());
@@ -1329,7 +1546,7 @@ public class JClientes extends javax.swing.JFrame {
                         txtCPF2.setText(f.get(i).getCpf());
                         txtComplemento2.setText(ef.get(i).getComplemento());
                         txtDataRegis2.setText(f.get(i).getDataRegistro());
-                        txtNumero2.setText(ef.get(i).getNumero()+"");
+                        txtNumero2.setText(ef.get(i).getNumero() + "");
                         txtTel2.setText(f.get(i).getTelefone());
                         txtRua2.setText(ef.get(i).getRua());
                         txtPais2.setText(ef.get(i).getPais());
@@ -1338,12 +1555,12 @@ public class JClientes extends javax.swing.JFrame {
                     }
                 }
                 jTabbedPane1.setSelectedIndex(1);
-            }else{
-                if(!cnpj.equals("")){
+            } else {
+                if (!cnpj.equals("")) {
                     List<PessoaJuridica> j = arquivoCliente.outputPessoaJuridica();
                     List<Endereco> ej = arquivoCliente.outputEnderecoJuridico();
-                    for(int i=0;i<j.size();i++){
-                        if(j.get(i).getCnpj().equals(cnpj)){
+                    for (int i = 0; i < j.size(); i++) {
+                        if (j.get(i).getCnpj().equals(cnpj)) {
                             cmbTipo3.setSelectedItem(j.get(i).getTipo());
                             txtNome2.setText(j.get(i).getNome());
                             txtBairro2.setText(ej.get(i).getBairro());
@@ -1354,7 +1571,7 @@ public class JClientes extends javax.swing.JFrame {
                             txtIE2.setText(j.get(i).getIe());
                             txtComplemento2.setText(ej.get(i).getComplemento());
                             txtDataRegis2.setText(j.get(i).getDataRegistro());
-                            txtNumero2.setText(ej.get(i).getNumero()+"");
+                            txtNumero2.setText(ej.get(i).getNumero() + "");
                             txtTel2.setText(j.get(i).getTelefone());
                             txtRua2.setText(ej.get(i).getRua());
                             txtPais2.setText(ej.get(i).getPais());
@@ -1363,7 +1580,7 @@ public class JClientes extends javax.swing.JFrame {
                         }
                     }
                     jTabbedPane1.setSelectedIndex(1);
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Selecione uma linha.");
                 }
             }

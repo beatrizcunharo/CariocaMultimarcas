@@ -1,22 +1,22 @@
-/ice/Área de Trabalho/Carioca/src/main/java/Frames/JVendas.java
-/ice/Área de Trabalho/Carioca/src/main/java/Registros/Endereco.java
-/ice/Área de Trabalho/Carioca/src/main/java/Registros/Login.java
-/ice/Área de Trabalho/Carioca/src/main/java/Frames/JPrincipal.java
-/ice/Área de Trabalho/Carioca/src/main/java/Registros/PessoaJuridica.java
-/ice/Área de Trabalho/Carioca/src/main/java/Registros/PessoaFisica.java
-/ice/Área de Trabalho/Carioca/src/main/java/Registros/Venda.java
-/ice/Área de Trabalho/Carioca/src/main/java/Frames/JLogar.java
-/ice/Área de Trabalho/Carioca/src/main/java/Registros/Produto.java
-/ice/Área de Trabalho/Carioca/src/main/java/Arquivo/ArquivoLogin.java
-/ice/Área de Trabalho/Carioca/src/main/java/Registros/Blusas.java
-/ice/Área de Trabalho/Carioca/src/main/java/Arquivo/ArquivoVenda.java
-/ice/Área de Trabalho/Carioca/src/main/java/Frames/JClientes.java
-/ice/Área de Trabalho/Carioca/src/main/java/Frames/JBuscaCodProduto.java
-/ice/Área de Trabalho/Carioca/src/main/java/Registros/Pessoa.java
-/ice/Área de Trabalho/Carioca/src/main/java/Frames/JEstoque.java
-/ice/Área de Trabalho/Carioca/src/main/java/Frames/JLogin.java
-/ice/Área de Trabalho/Carioca/src/main/java/Arquivo/ArquivoCliente.java
-/ice/Área de Trabalho/Carioca/src/main/java/Arquivo/ArquivoEstoque.java
-/ice/Área de Trabalho/Carioca/src/main/java/Registros/VendaAPrazo.java
-/ice/Área de Trabalho/Carioca/src/main/java/Registros/Calcas.java
-/ice/Área de Trabalho/Carioca/src/main/java/Registros/VendaAVista.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Registros\Endereco.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Frames\JEstoque.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Frames\JBuscaCodProduto.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Frames\JLogin.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Registros\Pessoa.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Registros\Produto.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Registros\VendaAPrazo.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Frames\JVendas.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Registros\PessoaJuridica.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Registros\Venda.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Frames\JLogar.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Registros\Blusas.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Arquivo\ArquivoEstoque.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Frames\JPrincipal.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Registros\Login.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Arquivo\ArquivoLogin.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Frames\JClientes.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Arquivo\ArquivoCliente.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Registros\PessoaFisica.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Registros\VendaAVista.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Arquivo\ArquivoVenda.java
+C:\Users\Beatr\Documents\GitHub\TrabalhoOO\src\main\java\Registros\Calcas.java

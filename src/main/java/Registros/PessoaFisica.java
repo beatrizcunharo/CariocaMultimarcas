@@ -14,6 +14,7 @@ public class PessoaFisica extends Pessoa{
     private String cpf;
     private String dataNasc;
     private String sexo;
+    private Pessoa pessoa;
     
     public PessoaFisica(){
         cpf = null;
@@ -44,5 +45,6 @@ public class PessoaFisica extends Pessoa{
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
+    
 }
 

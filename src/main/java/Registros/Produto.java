@@ -10,7 +10,7 @@ package Registros;
     @author MIKAELA CRISTINY QUITZ              201676014
 
  */
-public class Produto {
+public abstract class Produto {
     private int codigo;
     private int qtde;
     private String tipo;
