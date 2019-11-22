@@ -875,7 +875,7 @@ public class JEstoque extends javax.swing.JFrame {
             List<Calcas> calcas = arquivoEstoque.outputCalcas();
             int i = calcas.size()-1;
             codigo = calcas.get(i).getCodigo();
-            codigo = codigo+1;
+            codigo = codigo+2;
         }
         
         if(vazioCadastro() == true){
