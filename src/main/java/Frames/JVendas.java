@@ -69,6 +69,7 @@ public class JVendas extends javax.swing.JFrame {
         cmbParcela1.setEnabled(false);
         txtDesconto1.setEnabled(false);
         txtValorTotal1.setEnabled(false);
+        cmbTipoProduto.setEnabled(false);
 
     }
 
@@ -1515,7 +1516,7 @@ public class JVendas extends javax.swing.JFrame {
             List<VendaAPrazo> prazo = arquivoVenda.outputVendaPrazo();
             int i = prazo.size() - 1;
             codigo = prazo.get(i).getCodigo();
-            codigo = codigo + 1;
+            codigo = codigo + 2;
         }
 
         if (vazioCadastro() == true) {
